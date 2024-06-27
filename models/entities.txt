@@ -1,0 +1,146 @@
+---------------------------------------
+Trying environmet variables to build database URL
+---------------------------------------
+2024-06-11 23:02:10,818 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2024-06-11 23:02:10,818 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,819 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2024-06-11 23:02:10,819 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,820 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2024-06-11 23:02:10,820 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,821 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2024-06-11 23:02:10,821 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`customers`
+2024-06-11 23:02:10,821 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,822 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`groceries`
+2024-06-11 23:02:10,822 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,823 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`stores`
+2024-06-11 23:02:10,823 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,824 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`delivery`
+2024-06-11 23:02:10,824 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,825 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`orders`
+2024-06-11 23:02:10,825 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,825 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`orderLine`
+2024-06-11 23:02:10,825 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,826 INFO sqlalchemy.engine.Engine DESCRIBE `grocree`.`inventory`
+2024-06-11 23:02:10,826 INFO sqlalchemy.engine.Engine [raw sql] ()
+2024-06-11 23:02:10,828 INFO sqlalchemy.engine.Engine 
+CREATE TABLE customers (
+	id VARCHAR(60) NOT NULL, 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	name VARCHAR(35) NOT NULL, 
+	username VARCHAR(25) NOT NULL, 
+	password VARCHAR(15) NOT NULL, 
+	email VARCHAR(35) NOT NULL, 
+	phone VARCHAR(18) NOT NULL, 
+	latitude NUMERIC(8, 3), 
+	longitude NUMERIC(8, 3), 
+	PRIMARY KEY (id), 
+	UNIQUE (username), 
+	UNIQUE (email), 
+	UNIQUE (phone)
+)
+
+
+2024-06-11 23:02:10,828 INFO sqlalchemy.engine.Engine [no key 0.00011s] ()
+2024-06-11 23:02:13,025 INFO sqlalchemy.engine.Engine 
+CREATE TABLE groceries (
+	id VARCHAR(60) NOT NULL, 
+	`created-at` DATETIME, 
+	`updated-at` DATETIME, 
+	name VARCHAR(20) NOT NULL, 
+	description TEXT NOT NULL, 
+	category VARCHAR(20) NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+2024-06-11 23:02:13,025 INFO sqlalchemy.engine.Engine [no key 0.00017s] ()
+2024-06-11 23:02:13,952 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_groceries_name ON groceries (name)
+2024-06-11 23:02:13,952 INFO sqlalchemy.engine.Engine [no key 0.00019s] ()
+2024-06-11 23:02:14,512 INFO sqlalchemy.engine.Engine 
+CREATE TABLE stores (
+	id VARCHAR(60) NOT NULL, 
+	`created-at` DATETIME, 
+	`updated-at` DATETIME, 
+	name VARCHAR(30) NOT NULL, 
+	areaname VARCHAR(30) NOT NULL, 
+	latitude NUMERIC(8, 3), 
+	longitude NUMERIC(8, 3), 
+	PRIMARY KEY (id)
+)
+
+
+2024-06-11 23:02:14,513 INFO sqlalchemy.engine.Engine [no key 0.00021s] ()
+2024-06-11 23:02:15,181 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_stores_areaname ON stores (areaname)
+2024-06-11 23:02:15,181 INFO sqlalchemy.engine.Engine [no key 0.00038s] ()
+2024-06-11 23:02:15,809 INFO sqlalchemy.engine.Engine CREATE INDEX ix_stores_name ON stores (name)
+2024-06-11 23:02:15,809 INFO sqlalchemy.engine.Engine [no key 0.00032s] ()
+2024-06-11 23:02:16,447 INFO sqlalchemy.engine.Engine 
+CREATE TABLE delivery (
+	id VARCHAR(60) NOT NULL, 
+	`created-at` DATETIME, 
+	`updated-at` DATETIME, 
+	`nationalId` INTEGER NOT NULL, 
+	name VARCHAR(30) NOT NULL, 
+	username VARCHAR(60) NOT NULL, 
+	password VARCHAR(15) NOT NULL, 
+	email VARCHAR(35) NOT NULL, 
+	phone VARCHAR(18) NOT NULL, 
+	latitude NUMERIC(8, 3), 
+	longitude NUMERIC(8, 3), 
+	PRIMARY KEY (id), 
+	UNIQUE (`nationalId`), 
+	UNIQUE (email), 
+	UNIQUE (phone)
+)
+
+
+2024-06-11 23:02:16,447 INFO sqlalchemy.engine.Engine [no key 0.00034s] ()
+2024-06-11 23:02:17,738 INFO sqlalchemy.engine.Engine CREATE UNIQUE INDEX ix_delivery_username ON delivery (username)
+2024-06-11 23:02:17,738 INFO sqlalchemy.engine.Engine [no key 0.00035s] ()
+2024-06-11 23:02:18,346 INFO sqlalchemy.engine.Engine 
+CREATE TABLE orders (
+	id VARCHAR(60) NOT NULL, 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	`customerId` VARCHAR(60), 
+	`storeId` VARCHAR(60), 
+	`deliveryPersonId` VARCHAR(60), 
+	`orderStatus` VARCHAR(12) NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(`customerId`) REFERENCES customers (id), 
+	FOREIGN KEY(`storeId`) REFERENCES stores (id), 
+	FOREIGN KEY(`deliveryPersonId`) REFERENCES delivery (id)
+)
+
+
+2024-06-11 23:02:18,346 INFO sqlalchemy.engine.Engine [no key 0.00031s] ()
+2024-06-11 23:02:19,765 INFO sqlalchemy.engine.Engine 
+CREATE TABLE inventory (
+	id VARCHAR(60) NOT NULL, 
+	`storeId` VARCHAR(60), 
+	`groceryId` VARCHAR(60), 
+	`Stock` NUMERIC(12, 3) NOT NULL CONSTRAINT stock_level CHECK (stock >= 0), 
+	price NUMERIC(12, 3) NOT NULL, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(`storeId`) REFERENCES stores (id), 
+	FOREIGN KEY(`groceryId`) REFERENCES groceries (id)
+)
+
+
+2024-06-11 23:02:19,765 INFO sqlalchemy.engine.Engine [no key 0.00034s] ()
+2024-06-11 23:02:20,904 INFO sqlalchemy.engine.Engine 
+CREATE TABLE `orderLine` (
+	id VARCHAR(60) NOT NULL, 
+	`orderId` VARCHAR(60), 
+	`groceryId` VARCHAR(60), 
+	quantity NUMERIC(12, 2), 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(`orderId`) REFERENCES orders (id), 
+	FOREIGN KEY(`groceryId`) REFERENCES groceries (id)
+)
+
+
+2024-06-11 23:02:20,904 INFO sqlalchemy.engine.Engine [no key 0.00041s] ()
+2024-06-11 23:02:22,019 INFO sqlalchemy.engine.Engine COMMIT

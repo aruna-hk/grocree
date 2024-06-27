@@ -1,0 +1,97 @@
+#customerSection {
+  position: sticky;
+  bottom:0;
+  right: 0;
+  display: flex;
+  flex-direction:column;
+}
+#orders {
+  border: solid;
+  max-width: 100px;
+}
+#shoppingCart {
+  border: solid;
+  max-width: 100px;
+  flex: 1, 100px;
+}
+#SearchBar {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 3fr 1fr;
+  height: 70%;
+  margin: 0 10% 0 10%;
+  border: solid green;
+  border-radius: 1%;
+}
+#USER {
+   border:1px;
+  border-radius: 50%;
+  height: 100%;
+  text-align: center;
+  align-content: center;
+}
+.searchbutton {
+  background: red; 
+}
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  box-sizing: border-box;
+  margin: 0;
+}
+.homebar {
+  box-sizing: border-box;
+  height: 70px;
+  border:solid green 1px;
+  display: grid;
+  grid-template-columns: 4fr 1.5fr;
+  align-items: center;
+  justify-content: space-around;
+  padding:0px;
+  margin: 0 auto;
+}
+.searchbar {
+    border: solid black 1px;
+    border-radius:40%;
+}
+figure {
+  flex: 1 400px;
+  margin: inherit;
+  box-sizing: inherit;
+}
+.desc {
+  display: flex;
+  flex-flow: row wrap;
+  margin: inherit;
+  box-sizing: border-box;
+}.desc > div {
+  border: solid 1px;
+  flex: 1;
+  margin: inherit;
+}
+.groceryItem {
+  border: solid 1px fuchsia;
+}
+figure > img {
+  display: block;
+  margin: 0 auto;
+  background: green;
+}
+.PriceTag {
+  align-content: center;
+  text-align: center;
+}
+.PriceTag div {
+ text-align: center;
+  font-weight: bold;
+}
+dl, dt {
+  margin:0
+}
+dd {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.name {
+  margin: 0;
+}
