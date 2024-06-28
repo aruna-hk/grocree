@@ -1,0 +1,13 @@
+[Unit]
+Description=Grocree WSGI
+After=network.target
+
+[Service]
+User=hk
+Group=hk
+WorkingDirectory=/home/hk/grocree
+Environment="PATH=/home/hk/grocree"
+ExecStart=/usr/bin/gunicorn web-app.v1.app:app
+
+[Install]
+WantedBy=multi-user.target

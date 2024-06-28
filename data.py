@@ -206,6 +206,7 @@ for order in orders:
     for i in range(0, _items):
         _order = {}
         _order['orderId'] = order.id
+        _order['storeId'] = stores[randrange(0, len(stores))].id
         _order['groceryId'] =  items[randrange(0, len(items))].id
         _order['quantity'] = randrange(4, 50)
         _new = Orderline(**_order)

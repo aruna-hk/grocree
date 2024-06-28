@@ -160,8 +160,8 @@ def allocate_store(latitude, longitude):
                     )
     result_proxy = storage.query(stmt)
     #notify the store of order
-    store = result_proxy.first()
-    return store[0]
+    store = result_proxy.fetchall()
+    return store
 
 #get delivery guy
 def get_delivery(store_id):
@@ -185,6 +185,24 @@ def get_delivery(store_id):
         delivery_person = get_delivery(store_id)
     return delivery_person[0]
 
+#closest store
+def _close(latitude, longitude):
+    #binary search--lll
+    
+    #half_radius = _radius / 2
+    stmt = select(Store.id).where(
+                 and_(
+                     latitude <= Store.latitude + g.radius,
+                     latitude >= Store.latitude - g.radius)).where(
+                 and_(
+                         longitude <= Store.longitude + g.radius,
+                         longitude >= Store.longitude - g.radius)
+                    )
+    result_proxy = storage.query(stmt)
+    #notify the store of order
+    store = result_proxy.first()
+    return store[0]
+
 #place order
 @app.route("/users/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
 def orders(user_id):
@@ -201,13 +219,16 @@ def orders(user_id):
     try:
         order_info = {}
         order_info['customerId'] = user_id
+        #get customer location and choose close store
         stmt = select(Customer.latitude, Customer.longitude)
         stmt = stmt.where(Customer.id == user_id)
         result_proxy = storage.query(stmt)
-        #get customer location and choose close store
         latitude, longitude = result_proxy.first()
-        store_id = allocate_store(latitude, longitude)
-        order_info['storeId'] = store_id
+        #return list of close store
+        #look for nearest -- contact --store to centralize
+        #at close store -- dispatch store
+        store_id = _close(latitude, longitude)
+        order_info['storeId'] = store_id 
         #get delivery guys close to the store
         delivery = get_delivery(store_id).id
         order_info['deliveryPersonId'] = delivery
@@ -218,12 +239,18 @@ def orders(user_id):
         storage.new(an_order)
         #create orderLine items from cart
         for key, value in __order.items():
-            storage.new(Orderline(orderId=an_order.id,  groceryId=key, quantity=value))
+            _items = {}
+            for _key, _value in value.items():
+                _items["groceryId"] = _key
+                _items['quantity'] = _value
+            _entry = Orderline(orderId=an_order.id, storeId=key, **_items)
+            storage.new(_entry)
+            storage.save()
         #save orderLine products-orderid association
         try:
             storage.save()
         except IntegrityError as e:
-            abort(400, "integrity Error")
+           abort(400, "integrity Error")
         return jsonify({200: "order created successfully"})
 
     except KeyError as e:
@@ -255,8 +282,9 @@ def _listings(results):
 #home/customer landing page tailor
 @app.route("/home/<user_id>", strict_slashes=False)
 def home(user_id=None):
-    listings_stmt = select(Grocery.name, Grocery.description, Inventory.price)\
-                          .select_from(join(Inventory, Grocery))
+    listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
+                        Grocery.description, Store.name, Store.areaName, \
+                        Inventory.stock, Inventory.price).join(Grocery).join(Store)
     if user_id:
         customer_location_stmt = select(Customer.latitude, Customer.longitude)\
                              .where(Customer.id == user_id)
@@ -264,11 +292,15 @@ def home(user_id=None):
         latitude, longitude = storage.query(customer_location_stmt).first()
         #get close store
         #for tailoring groceries at close store to customer
-        close_store = allocate_store(latitude, longitude)
-        #get groceries from close store
-        listings_stmt = listings_stmt.where(Inventory.storedId == close_store)
-        listings = storage.query(listings_stmt).fetchall()
+        close_stores = allocate_store(latitude, longitude)
+        listings = []
+        #update listing statement
+        #for every close store
+        for store in close_stores:
+            listings_stmt = listings_stmt.where(Store.id == store[0])
+            listings = listings + storage.query(listings_stmt).fetchall()
     else:
+        #just home
         listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
                         Grocery.description, Store.name, Store.areaName, \
                         Inventory.stock, Inventory.price).join(Grocery).join(Store)
@@ -294,7 +326,7 @@ def if_exist(name):
 def inventory_update(store_id, product_id, stock=None, price=None):
     stmt = select(Inventory.stock, Inventory.price).where(
                   and_(
-                       Inventory.storedId == store_id,
+                       Inventory.storeId == store_id,
                        Inventory.groceryId == product_id)
                    )
     response = storage.query(stmt).first()
@@ -302,21 +334,19 @@ def inventory_update(store_id, product_id, stock=None, price=None):
         update_dict = {}
         if stock:
             stock = stock + response[0]
-        else:
-            stock = response[0]
-        update_dict['stock'] = stock
+            update_dict['stock'] = stock
         if price:
             price = price + response[1]
             update_dict['price'] = price
         stmt = update(Inventory).values(update_dict).where(
                    and_(
-                        Inventory.storedId == store_id,
+                        Inventory.storeId == store_id,
                         Inventory.groceryId == product_id)
                     )
         storage.query(stmt)
         storage.save()
         return jsonify({200:" stock level updated"})
-    _new_entry = Inventory(storedId=store_id, groceryId=product_id, stock=stock, price=price)
+    _new_entry = Inventory(storeId=store_id, groceryId=product_id, stock=stock, price=price)
     storage.new(_new_entry)
     storage.save()
     return jsonify({200:"new inventory entry created"})
@@ -325,35 +355,51 @@ def inventory_update(store_id, product_id, stock=None, price=None):
 #products update
 #inventory update
 #inventory check
-@app.route("/<store_id>/products/", methods=["PUT", "POST", "GET"],  strict_slashes=False)
+@app.route("/stores/<store_id>/products/", methods=["PUT", "POST", "GET"],  strict_slashes=False)
 def add_product(store_id):
     if request.method != 'GET':
         req = request.get_json()
         if not request:
-            abort(400, "Products update Error")
+            abort(400, "Products Creation/update Error")
 
     #update product and/or update inventory
     if request.method in ["POST", "PUT"]:
         check_product_exist = if_exist(req['name'])
         if check_product_exist:
-            #add store to inventory
-            #selling product req.name
-            req.pop("description")
-            req.pop("category")
-            req.pop("name")
-            req['storedId'] = store_id
-            req['groceryId'] = check_product_exist
-            return inventory_update(store_id, check_product_exist, req['stock'], req['price'])
+            if ('stock' in req.keys()) or ('price' in req.keys()):
+                try:
+                    _stock = req['stock']
+                except KeyError:
+                    _stock = None,
+                try:
+                    _price = req['price']
+                except KeyError:
+                    _price = None
+                return inventory_update(store_id, check_product_exist, _stock, _price)
+            abort(400, "Inventory update Error")
         _stock = req.pop("stock")
         _price = req.pop("price")
         _product = Grocery(**req)
-        storage.new(_product)
+        try:
+            storage.new(_product)
+        except IntegrityError as e:
+            storage.__session.rollback()
+            abort(400, "Inventory update error")
         storage.save()
         return inventory_update(store_id, _product.id, _stock, _price)
-    stmt = select(Grocery.name, Grocery.category, Inventory.price).select_from(join(Grocery, Inventory))
-    stmt = stmt.distinct(Grocery.id)
+    stmt = select(Inventory.groceryId, Inventory.stock, Inventory.price)\
+                .where(Inventory.storeId == store_id)
     result = storage.query(stmt).fetchall()
-    return str(result)
+    _items = []
+    for _val in result:
+        _entry = {}
+        _entry['groceryId'] = _val.groceryId
+        _entry['stock_level'] = _val.stock
+        _entry['price'] = _val.price
+        _items.append(_entry)
+
+    return  jsonify(_items)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

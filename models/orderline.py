@@ -17,4 +17,5 @@ class Orderline(Base, base):
     __tablename__ = "orderLine"
     orderId = Column(String(60), ForeignKey("orders.id"))
     groceryId = Column(String(60), ForeignKey("groceries.id"))
+    storeId = Column(String(60), ForeignKey("stores.id"))
     quantity = Column(Numeric(12, 2))
