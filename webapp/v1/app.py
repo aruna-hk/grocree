@@ -92,7 +92,7 @@ def delivery_update(delivery_person_id):
 
 #create customer account and/or
 #view users
-@app.route("/users/", methods=['POST', 'GET'], strict_slashes=False)
+@app.route("/users/customers", methods=['POST', 'GET'], strict_slashes=False)
 def create_ac():
     if request.method == 'POST':
         user = request.get_json()
@@ -120,7 +120,7 @@ def create_ac():
 
 
 #get or update user info
-@app.route("/users/<user_id>", methods=["GET", 'PUT'], strict_slashes=False)
+@app.route("/users/customers/<user_id>", methods=["GET", 'PUT'], strict_slashes=False)
 def account_management(user_id):
     if request.method == 'GET':
         statement = select(Customer).where(Customer.id == user_id)
@@ -204,7 +204,7 @@ def _close(latitude, longitude):
     return store[0]
 
 #place order
-@app.route("/users/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
+@app.route("/users/customers/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
 def orders(user_id):
     if request.method == 'GET':
         stmt = select(Order).where(Order.customerId == user_id)
@@ -258,7 +258,8 @@ def orders(user_id):
         abort(400, "invalid Order request")
 
 #track order
-@app.route("/users/<user_id>/orders/<order_id>", methods=['GET'], strict_slashes=False)
+@app.route("/users/customers/<user_id>/orders/<order_id>",\
+             methods=['GET'], strict_slashes=False)
 def track_order(user_id, order_id):
     return "live location tracking"
 
@@ -278,9 +279,10 @@ def _listings(results):
         _listing['stock'] = entry.stock
         _listing['price'] = entry.price
         listings.append(_listing)
+
     return listings
 #home/customer landing page tailor
-@app.route("/home/<user_id>", strict_slashes=False)
+@app.route("/home/customers/<user_id>", strict_slashes=False)
 def home(user_id=None):
     listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
                         Grocery.description, Store.name, Store.areaName, \
@@ -289,7 +291,11 @@ def home(user_id=None):
         customer_location_stmt = select(Customer.latitude, Customer.longitude)\
                              .where(Customer.id == user_id)
         #get customer location
-        latitude, longitude = storage.query(customer_location_stmt).first()
+        _location = storage.query(customer_location_stmt).first()
+        if _location:
+            latitude, longitude = _location
+        else:
+            return jsonify(_listings(storage.query(listings_stmt).fetchall()))    
         #get close store
         #for tailoring groceries at close store to customer
         close_stores = allocate_store(latitude, longitude)
@@ -297,20 +303,17 @@ def home(user_id=None):
         #update listing statement
         #for every close store
         for store in close_stores:
-            listings_stmt = listings_stmt.where(Store.id == store[0])
-            listings = listings + storage.query(listings_stmt).fetchall()
+            __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
+            listings = listings + __listings
     else:
         #just home
-        listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
-                        Grocery.description, Store.name, Store.areaName, \
-                        Inventory.stock, Inventory.price).join(Grocery).join(Store)
         listings = storage.query(listings_stmt).fetchall()
 
     return jsonify(_listings(listings))
 
 #home not logged in
 @app.route("/home", strict_slashes=False)
-@app.route("/", strict_slashes=False)
+@app.route("/home/customers", strict_slashes=False)
 def home_1():
     return home()
 

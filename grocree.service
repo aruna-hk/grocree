@@ -6,8 +6,7 @@ After=network.target
 User=hk
 Group=hk
 WorkingDirectory=/home/hk/grocree
-Environment="PATH=/home/hk/grocree"
-ExecStart=/usr/bin/gunicorn web-app.v1.app:app
+ExecStart=/usr/bin/gunicorn
 
 [Install]
 WantedBy=multi-user.target

@@ -1,4 +1,6 @@
-127.0.0.1 - - [28/Jun/2024:13:24:06 +0300] "GET / HTTP/1.1" 200 4340 "-" "curl/8.5.0"
-127.0.0.1 - - [28/Jun/2024:13:29:36 +0300] "GET / HTTP/1.1" 200 4340 "-" "curl/8.5.0"
-127.0.0.1 - - [28/Jun/2024:13:29:38 +0300] "GET / HTTP/1.1" 200 4340 "-" "curl/8.5.0"
-127.0.0.1 - - [28/Jun/2024:13:55:07 +0300] "GET / HTTP/1.1" 200 4340 "-" "curl/8.5.0"
+
+127.0.0.1 - - [28/Jun/2024:15:46:13 +0300] "PUT /users/customers/cc6a70b2-e6a1-45e1-a15c-94bc3bcbebe7 HTTP/1.0" 200 28 "-" "curl/8.5.0"
+127.0.0.1 - - [28/Jun/2024:15:46:25 +0300] "GET /home/customers/fffabddb-3958-4d77-bb81-54ae8a8e11e9 HTTP/1.0" 200 3 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
+127.0.0.1 - - [28/Jun/2024:16:06:27 +0300] "GET /home/customers/ HTTP/1.0" 200 4340 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
+127.0.0.1 - - [28/Jun/2024:16:06:32 +0300] "GET /home/customers/5b126cb8-2fec-4940-b101-79dc6dcf9664 HTTP/1.0" 200 205 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
+127.0.0.1 - - [28/Jun/2024:16:07:42 +0300] "GET /home/customers/%208ed1280a-17d1-40ec-91a4-1a76725be745 HTTP/1.0" 200 4340 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
