@@ -1,33 +1,78 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="index.css">
+        <meta name="author" content="kiptoo haron">
+        <meta name="desciption" content="grocree.com">
+        <link rel="stylesheet" href="/styles/index.css">
     </head>
     <body>
-       <div class="homebar">
-               <div id="SearchBar">
-                   <input type="text" placeholder="garbage"/>
-                   <button class="searchbutton">SEARCH</button>
-               </div>
-               <div id="USER">USER PROFILE</div>
-       </div>
+        <div class="homebar">
+            <input type="text" placeholder="Search">
+            <div id="notif">
+                <img id="bell" src="/icons/bell.png" alt="bell">
+                4   
+            </div>
+            <div id="USER">
+                <img src="/icons/user.png" alt="users profile">
+                userName
+            </div>
+        </div>
        <main>
-           <figure class="groceryItem">
-               <img alt="groceryImg" src="dds.jpeg">
-               <figcaption class="desc">
-                   <div class="description">
-                       <div class="name">Butter</div>
-                       <dl>
-                           <dt>Category</dt>
-                               <dd>DAIRIES</dd>
-                       </dl>
-                   </div>
-                  <div class="PriceTag"><div>$50</div></div>
-               </figcaption>
-            </figure><figure class="groceryItem">
+           {% for item in items %}
+               <figure class="groceryItem" id={{item.id}}>
+                   <img alt="groceryImg" src="{{item.img}}">
+                   <figcaption class="desc">
+                       <div class="description">
+                           <div class="name">{{item.name}}</div>
+                           <div class="category">{{item.category}}</div>
+                           <div class="p_description">{{item.description}}</div>
+                       </div>
+                       <div class="PriceTag"><div>{{item.price}}</div></div>
+                   </figcaption>
+               </figure>
+
+           {% endfor %}
         </main>
-    </body>
-</html>
+        <address id="contacts">GET IN TOUCH</address>
+        <div id="ordertrack">
+            <div id="shoppingCart">
+                <div id="totalItems">0</div>
+            </div>
+            <div id="orders">
+                <div id='pendingOrders'>0</div>
+            </div>
+        </div>
+        <div class="Xcart">
+            <div class="Xdesc">
+                    <div>Item</div>
+                    <div>price</div>
+                    <div>Total</div>
+             </div>
+             <div class="Xitems">
+                 <div class="XitemEntry">
+                    <div class="Xname">-</div>
+                    <div class="Xquantity">-</div>
+                    <div class="Xamount">-</div>
+                    <div class="Xremove">X</div>
+                  </div>
+              </div>
+              <div class="XcartFooter">
+                    <div> Total </div>
+                    <div id="totalcost">0</div>
+              </div>
+              <button id="completePurchase">SUBMIT</button>
+         </div>
+
+        <ul class="fm">
+            <li> <a href="maito:kiptooharon.hk@gmail.com">Email</a></li>
+            <li> <a href="https://github.com/aruna-hk">Github</a></li>
+            <li> <a href="https://linkedn.com">linkdn</a></li>
+            <li> <a href="https://twitter.com">twitter</a></li>
+        <ul>
+         <!--script src='/js/0-js.js'></script-->
+        <script src='/js/cart.js'></script>
+        <script src='/js/submit.js'></script>
+        <script src='/js/entry.js'></script>
+</body>

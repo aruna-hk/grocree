@@ -1,40 +1,714 @@
 
-[2024-06-28 16:06:20 +0300] [9587] [INFO] Handling signal: term
-[2024-06-28 16:06:20 +0300] [9592] [INFO] Worker exiting (pid: 9592)
-[2024-06-28 16:06:20 +0300] [9591] [INFO] Worker exiting (pid: 9591)
-[2024-06-28 16:06:20 +0300] [9590] [INFO] Worker exiting (pid: 9590)
-[2024-06-28 16:06:21 +0300] [9587] [INFO] Shutting down: Master
-[2024-06-28 16:06:21 +0300] [10310] [INFO] Starting gunicorn 20.1.0
-[2024-06-28 16:06:21 +0300] [10310] [INFO] Listening at: http://127.0.0.1:8000 (10310)
-[2024-06-28 16:06:21 +0300] [10310] [INFO] Using worker: eventlet
-[2024-06-28 16:06:21 +0300] [10312] [INFO] Booting worker with pid: 10312
-[2024-06-28 16:06:22 +0300] [10313] [INFO] Booting worker with pid: 10313
-[2024-06-28 16:06:22 +0300] [10314] [INFO] Booting worker with pid: 10314
-[2024-06-28 16:36:42 +0300] [10310] [INFO] Handling signal: term
-[2024-06-28 16:36:43 +0300] [10313] [INFO] Worker exiting (pid: 10313)
-[2024-06-28 16:36:43 +0300] [10314] [INFO] Worker exiting (pid: 10314)
-[2024-06-28 16:36:43 +0300] [10312] [INFO] Worker exiting (pid: 10312)
-[2024-06-28 16:36:44 +0300] [10310] [INFO] Shutting down: Master
-[2024-06-28 16:39:07 +0300] [2571] [INFO] Starting gunicorn 20.1.0
-[2024-06-28 16:39:07 +0300] [2571] [INFO] Listening at: http://127.0.0.1:8000 (2571)
-[2024-06-28 16:39:07 +0300] [2571] [INFO] Using worker: eventlet
-[2024-06-28 16:39:07 +0300] [2917] [INFO] Booting worker with pid: 2917
-[2024-06-28 16:39:07 +0300] [2918] [INFO] Booting worker with pid: 2918
-[2024-06-28 16:39:07 +0300] [2919] [INFO] Booting worker with pid: 2919
-[2024-06-28 17:15:25 +0300] [2571] [INFO] Handling signal: term
-[2024-06-28 17:15:24 +0300] [2919] [INFO] Worker exiting (pid: 2919)
-[2024-06-28 17:15:24 +0300] [2917] [INFO] Worker exiting (pid: 2917)
-[2024-06-28 17:15:24 +0300] [2918] [INFO] Worker exiting (pid: 2918)
-[2024-06-28 17:15:35 +0300] [2571] [INFO] Shutting down: Master
-[2024-06-28 17:18:02 +0300] [2569] [INFO] Starting gunicorn 20.1.0
-[2024-06-28 17:18:02 +0300] [2569] [INFO] Listening at: http://127.0.0.1:8000 (2569)
-[2024-06-28 17:18:02 +0300] [2569] [INFO] Using worker: eventlet
-[2024-06-28 17:18:02 +0300] [2911] [INFO] Booting worker with pid: 2911
-[2024-06-28 17:18:02 +0300] [2912] [INFO] Booting worker with pid: 2912
-[2024-06-28 17:18:02 +0300] [2913] [INFO] Booting worker with pid: 2913
-[2024-06-28 17:29:32 +0300] [2576] [INFO] Starting gunicorn 20.1.0
-[2024-06-28 17:29:32 +0300] [2576] [INFO] Listening at: http://127.0.0.1:8000 (2576)
-[2024-06-28 17:29:32 +0300] [2576] [INFO] Using worker: eventlet
-[2024-06-28 17:29:32 +0300] [2909] [INFO] Booting worker with pid: 2909
-[2024-06-28 17:29:32 +0300] [2910] [INFO] Booting worker with pid: 2910
-[2024-06-28 17:29:32 +0300] [2911] [INFO] Booting worker with pid: 2911
+[2024-06-29 15:39:08 +0300] [6166] [INFO] Handling signal: term
+[2024-06-29 15:39:08 +0300] [6169] [INFO] Worker exiting (pid: 6169)
+[2024-06-29 15:39:09 +0300] [6168] [INFO] Worker exiting (pid: 6168)
+[2024-06-29 15:39:09 +0300] [6170] [INFO] Worker exiting (pid: 6170)
+[2024-06-29 15:39:09 +0300] [6166] [INFO] Shutting down: Master
+[2024-06-29 15:39:10 +0300] [6198] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 15:39:10 +0300] [6198] [INFO] Listening at: http://127.0.0.1:8000 (6198)
+[2024-06-29 15:39:10 +0300] [6198] [INFO] Using worker: eventlet
+[2024-06-29 15:39:10 +0300] [6200] [INFO] Booting worker with pid: 6200
+[2024-06-29 15:39:10 +0300] [6201] [INFO] Booting worker with pid: 6201
+[2024-06-29 15:39:10 +0300] [6202] [INFO] Booting worker with pid: 6202
+[2024-06-29 15:54:47 +0300] [6198] [INFO] Handling signal: term
+[2024-06-29 15:54:47 +0300] [6200] [INFO] Worker exiting (pid: 6200)
+[2024-06-29 15:54:47 +0300] [6201] [INFO] Worker exiting (pid: 6201)
+[2024-06-29 15:54:47 +0300] [6202] [INFO] Worker exiting (pid: 6202)
+[2024-06-29 15:54:48 +0300] [6198] [INFO] Shutting down: Master
+[2024-06-29 15:54:49 +0300] [6828] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 15:54:49 +0300] [6828] [INFO] Listening at: http://127.0.0.1:8000 (6828)
+[2024-06-29 15:54:49 +0300] [6828] [INFO] Using worker: eventlet
+[2024-06-29 15:54:49 +0300] [6833] [INFO] Booting worker with pid: 6833
+[2024-06-29 15:54:49 +0300] [6834] [INFO] Booting worker with pid: 6834
+[2024-06-29 15:54:49 +0300] [6835] [INFO] Booting worker with pid: 6835
+[2024-06-29 15:57:48 +0300] [6828] [INFO] Handling signal: term
+[2024-06-29 15:57:48 +0300] [6835] [INFO] Worker exiting (pid: 6835)
+[2024-06-29 15:57:48 +0300] [6833] [INFO] Worker exiting (pid: 6833)
+[2024-06-29 15:57:49 +0300] [6834] [INFO] Worker exiting (pid: 6834)
+[2024-06-29 15:57:49 +0300] [6828] [INFO] Shutting down: Master
+[2024-06-29 15:57:50 +0300] [6882] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 15:57:50 +0300] [6882] [INFO] Listening at: http://127.0.0.1:8000 (6882)
+[2024-06-29 15:57:50 +0300] [6882] [INFO] Using worker: eventlet
+[2024-06-29 15:57:50 +0300] [6885] [INFO] Booting worker with pid: 6885
+[2024-06-29 15:57:50 +0300] [6886] [INFO] Booting worker with pid: 6886
+[2024-06-29 15:57:50 +0300] [6887] [INFO] Booting worker with pid: 6887
+[2024-06-29 16:39:19 +0300] [6882] [INFO] Handling signal: term
+[2024-06-29 16:39:20 +0300] [6885] [INFO] Worker exiting (pid: 6885)
+[2024-06-29 16:39:20 +0300] [6887] [INFO] Worker exiting (pid: 6887)
+[2024-06-29 16:39:20 +0300] [6886] [INFO] Worker exiting (pid: 6886)
+[2024-06-29 16:39:20 +0300] [6882] [INFO] Shutting down: Master
+[2024-06-29 16:39:21 +0300] [7530] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 16:39:21 +0300] [7530] [INFO] Listening at: http://127.0.0.1:8000 (7530)
+[2024-06-29 16:39:21 +0300] [7530] [INFO] Using worker: eventlet
+[2024-06-29 16:39:21 +0300] [7533] [INFO] Booting worker with pid: 7533
+[2024-06-29 16:39:21 +0300] [7534] [INFO] Booting worker with pid: 7534
+[2024-06-29 16:39:21 +0300] [7535] [INFO] Booting worker with pid: 7535
+[2024-06-29 16:39:40 +0300] [7530] [INFO] Handling signal: term
+[2024-06-29 16:39:40 +0300] [7533] [INFO] Worker exiting (pid: 7533)
+[2024-06-29 16:39:41 +0300] [7534] [INFO] Worker exiting (pid: 7534)
+[2024-06-29 16:39:41 +0300] [7535] [INFO] Worker exiting (pid: 7535)
+[2024-06-29 16:39:41 +0300] [7530] [INFO] Shutting down: Master
+[2024-06-29 16:42:14 +0300] [2549] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 16:42:14 +0300] [2549] [INFO] Listening at: http://127.0.0.1:8000 (2549)
+[2024-06-29 16:42:14 +0300] [2549] [INFO] Using worker: eventlet
+[2024-06-29 16:42:14 +0300] [2903] [INFO] Booting worker with pid: 2903
+[2024-06-29 16:42:14 +0300] [2904] [INFO] Booting worker with pid: 2904
+[2024-06-29 16:42:14 +0300] [2905] [INFO] Booting worker with pid: 2905
+[2024-06-29 16:56:17 +0300] [2549] [INFO] Handling signal: term
+[2024-06-29 16:56:18 +0300] [2905] [INFO] Worker exiting (pid: 2905)
+[2024-06-29 16:56:18 +0300] [2903] [INFO] Worker exiting (pid: 2903)
+[2024-06-29 16:56:18 +0300] [2904] [INFO] Worker exiting (pid: 2904)
+[2024-06-29 16:56:18 +0300] [2549] [INFO] Shutting down: Master
+[2024-06-29 16:56:19 +0300] [6426] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 16:56:19 +0300] [6426] [INFO] Listening at: http://127.0.0.1:8000 (6426)
+[2024-06-29 16:56:19 +0300] [6426] [INFO] Using worker: eventlet
+[2024-06-29 16:56:19 +0300] [6428] [INFO] Booting worker with pid: 6428
+[2024-06-29 16:56:19 +0300] [6429] [INFO] Booting worker with pid: 6429
+[2024-06-29 16:56:19 +0300] [6430] [INFO] Booting worker with pid: 6430
+[2024-06-29 17:04:37 +0300] [6426] [INFO] Handling signal: term
+[2024-06-29 17:04:37 +0300] [6428] [INFO] Worker exiting (pid: 6428)
+[2024-06-29 17:04:38 +0300] [6429] [INFO] Worker exiting (pid: 6429)
+[2024-06-29 17:04:38 +0300] [6430] [INFO] Worker exiting (pid: 6430)
+[2024-06-29 17:04:38 +0300] [6426] [INFO] Shutting down: Master
+[2024-06-29 17:07:23 +0300] [2564] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:07:24 +0300] [2564] [INFO] Listening at: http://127.0.0.1:8000 (2564)
+[2024-06-29 17:07:24 +0300] [2564] [INFO] Using worker: eventlet
+[2024-06-29 17:07:24 +0300] [2926] [INFO] Booting worker with pid: 2926
+[2024-06-29 17:07:24 +0300] [2927] [INFO] Booting worker with pid: 2927
+[2024-06-29 17:07:24 +0300] [2928] [INFO] Booting worker with pid: 2928
+[2024-06-29 17:21:49 +0300] [2564] [INFO] Handling signal: term
+[2024-06-29 17:21:50 +0300] [2926] [INFO] Worker exiting (pid: 2926)
+[2024-06-29 17:21:50 +0300] [2927] [INFO] Worker exiting (pid: 2927)
+[2024-06-29 17:21:50 +0300] [2928] [INFO] Worker exiting (pid: 2928)
+[2024-06-29 17:21:50 +0300] [2564] [INFO] Shutting down: Master
+[2024-06-29 17:21:51 +0300] [6974] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:21:51 +0300] [6974] [INFO] Listening at: http://127.0.0.1:8000 (6974)
+[2024-06-29 17:21:51 +0300] [6974] [INFO] Using worker: eventlet
+[2024-06-29 17:21:51 +0300] [6977] [INFO] Booting worker with pid: 6977
+[2024-06-29 17:21:51 +0300] [6978] [INFO] Booting worker with pid: 6978
+[2024-06-29 17:21:51 +0300] [6979] [INFO] Booting worker with pid: 6979
+[2024-06-29 17:28:41 +0300] [6974] [INFO] Handling signal: term
+[2024-06-29 17:28:41 +0300] [6977] [INFO] Worker exiting (pid: 6977)
+[2024-06-29 17:28:41 +0300] [6979] [INFO] Worker exiting (pid: 6979)
+[2024-06-29 17:28:41 +0300] [6978] [INFO] Worker exiting (pid: 6978)
+[2024-06-29 17:28:42 +0300] [6974] [INFO] Shutting down: Master
+[2024-06-29 17:28:43 +0300] [7152] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:28:43 +0300] [7152] [INFO] Listening at: http://127.0.0.1:8000 (7152)
+[2024-06-29 17:28:43 +0300] [7152] [INFO] Using worker: eventlet
+[2024-06-29 17:28:43 +0300] [7154] [INFO] Booting worker with pid: 7154
+[2024-06-29 17:28:43 +0300] [7155] [INFO] Booting worker with pid: 7155
+[2024-06-29 17:28:43 +0300] [7156] [INFO] Booting worker with pid: 7156
+[2024-06-29 17:31:10 +0300] [7152] [INFO] Handling signal: term
+[2024-06-29 17:31:11 +0300] [7156] [INFO] Worker exiting (pid: 7156)
+[2024-06-29 17:31:11 +0300] [7155] [INFO] Worker exiting (pid: 7155)
+[2024-06-29 17:31:11 +0300] [7154] [INFO] Worker exiting (pid: 7154)
+[2024-06-29 17:31:11 +0300] [7152] [INFO] Shutting down: Master
+[2024-06-29 17:31:12 +0300] [7386] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:31:12 +0300] [7386] [INFO] Listening at: http://127.0.0.1:8000 (7386)
+[2024-06-29 17:31:12 +0300] [7386] [INFO] Using worker: eventlet
+[2024-06-29 17:31:12 +0300] [7389] [INFO] Booting worker with pid: 7389
+[2024-06-29 17:31:12 +0300] [7390] [INFO] Booting worker with pid: 7390
+[2024-06-29 17:31:12 +0300] [7391] [INFO] Booting worker with pid: 7391
+[2024-06-29 17:38:14 +0300] [7386] [INFO] Handling signal: term
+[2024-06-29 17:38:14 +0300] [7390] [INFO] Worker exiting (pid: 7390)
+[2024-06-29 17:38:15 +0300] [7391] [INFO] Worker exiting (pid: 7391)
+[2024-06-29 17:38:15 +0300] [7389] [INFO] Worker exiting (pid: 7389)
+[2024-06-29 17:38:15 +0300] [7386] [INFO] Shutting down: Master
+[2024-06-29 17:38:16 +0300] [7601] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:38:16 +0300] [7601] [INFO] Listening at: http://127.0.0.1:8000 (7601)
+[2024-06-29 17:38:16 +0300] [7601] [INFO] Using worker: eventlet
+[2024-06-29 17:38:16 +0300] [7603] [INFO] Booting worker with pid: 7603
+[2024-06-29 17:38:16 +0300] [7604] [INFO] Booting worker with pid: 7604
+[2024-06-29 17:38:16 +0300] [7605] [INFO] Booting worker with pid: 7605
+[2024-06-29 17:55:40 +0300] [7601] [INFO] Handling signal: term
+[2024-06-29 17:55:41 +0300] [7603] [INFO] Worker exiting (pid: 7603)
+[2024-06-29 17:55:41 +0300] [7604] [INFO] Worker exiting (pid: 7604)
+[2024-06-29 17:55:41 +0300] [7605] [INFO] Worker exiting (pid: 7605)
+[2024-06-29 17:55:41 +0300] [7601] [INFO] Shutting down: Master
+[2024-06-29 17:55:46 +0300] [8327] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:55:46 +0300] [8327] [INFO] Listening at: http://127.0.0.1:8000 (8327)
+[2024-06-29 17:55:46 +0300] [8327] [INFO] Using worker: eventlet
+[2024-06-29 17:55:47 +0300] [8328] [INFO] Booting worker with pid: 8328
+[2024-06-29 17:55:47 +0300] [8329] [INFO] Booting worker with pid: 8329
+[2024-06-29 17:55:47 +0300] [8330] [INFO] Booting worker with pid: 8330
+[2024-06-29 17:57:43 +0300] [8327] [INFO] Handling signal: term
+[2024-06-29 17:57:44 +0300] [8330] [INFO] Worker exiting (pid: 8330)
+[2024-06-29 17:57:44 +0300] [8329] [INFO] Worker exiting (pid: 8329)
+[2024-06-29 17:57:44 +0300] [8328] [INFO] Worker exiting (pid: 8328)
+[2024-06-29 17:57:44 +0300] [8327] [INFO] Shutting down: Master
+[2024-06-29 17:57:46 +0300] [8375] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 17:57:46 +0300] [8375] [INFO] Listening at: http://127.0.0.1:8000 (8375)
+[2024-06-29 17:57:46 +0300] [8375] [INFO] Using worker: eventlet
+[2024-06-29 17:57:46 +0300] [8377] [INFO] Booting worker with pid: 8377
+[2024-06-29 17:57:46 +0300] [8378] [INFO] Booting worker with pid: 8378
+[2024-06-29 17:57:46 +0300] [8379] [INFO] Booting worker with pid: 8379
+[2024-06-29 18:10:13 +0300] [8375] [INFO] Handling signal: term
+[2024-06-29 18:10:13 +0300] [8378] [INFO] Worker exiting (pid: 8378)
+[2024-06-29 18:10:13 +0300] [8377] [INFO] Worker exiting (pid: 8377)
+[2024-06-29 18:10:13 +0300] [8379] [INFO] Worker exiting (pid: 8379)
+[2024-06-29 18:10:13 +0300] [8375] [INFO] Shutting down: Master
+[2024-06-29 18:10:19 +0300] [8750] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:10:19 +0300] [8750] [INFO] Listening at: http://127.0.0.1:8000 (8750)
+[2024-06-29 18:10:19 +0300] [8750] [INFO] Using worker: eventlet
+[2024-06-29 18:10:19 +0300] [8758] [INFO] Booting worker with pid: 8758
+[2024-06-29 18:10:19 +0300] [8759] [INFO] Booting worker with pid: 8759
+[2024-06-29 18:10:19 +0300] [8760] [INFO] Booting worker with pid: 8760
+[2024-06-29 18:11:43 +0300] [8750] [INFO] Handling signal: term
+[2024-06-29 18:11:43 +0300] [8758] [INFO] Worker exiting (pid: 8758)
+[2024-06-29 18:11:43 +0300] [8759] [INFO] Worker exiting (pid: 8759)
+[2024-06-29 18:11:43 +0300] [8760] [INFO] Worker exiting (pid: 8760)
+[2024-06-29 18:11:43 +0300] [8750] [INFO] Shutting down: Master
+[2024-06-29 18:11:44 +0300] [8791] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:11:44 +0300] [8791] [INFO] Listening at: http://127.0.0.1:8000 (8791)
+[2024-06-29 18:11:44 +0300] [8791] [INFO] Using worker: eventlet
+[2024-06-29 18:11:44 +0300] [8794] [INFO] Booting worker with pid: 8794
+[2024-06-29 18:11:44 +0300] [8795] [INFO] Booting worker with pid: 8795
+[2024-06-29 18:11:44 +0300] [8796] [INFO] Booting worker with pid: 8796
+[2024-06-29 18:24:17 +0300] [8791] [INFO] Handling signal: term
+[2024-06-29 18:24:17 +0300] [8796] [INFO] Worker exiting (pid: 8796)
+[2024-06-29 18:24:17 +0300] [8794] [INFO] Worker exiting (pid: 8794)
+[2024-06-29 18:24:18 +0300] [8795] [INFO] Worker exiting (pid: 8795)
+[2024-06-29 18:24:18 +0300] [8791] [INFO] Shutting down: Master
+[2024-06-29 18:24:19 +0300] [9217] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:24:19 +0300] [9217] [INFO] Listening at: http://127.0.0.1:8000 (9217)
+[2024-06-29 18:24:19 +0300] [9217] [INFO] Using worker: eventlet
+[2024-06-29 18:24:19 +0300] [9220] [INFO] Booting worker with pid: 9220
+[2024-06-29 18:24:19 +0300] [9221] [INFO] Booting worker with pid: 9221
+[2024-06-29 18:24:19 +0300] [9222] [INFO] Booting worker with pid: 9222
+[2024-06-29 18:31:08 +0300] [9217] [INFO] Handling signal: term
+[2024-06-29 18:31:08 +0300] [9220] [INFO] Worker exiting (pid: 9220)
+[2024-06-29 18:31:09 +0300] [9222] [INFO] Worker exiting (pid: 9222)
+[2024-06-29 18:31:09 +0300] [9221] [INFO] Worker exiting (pid: 9221)
+[2024-06-29 18:31:09 +0300] [9217] [INFO] Shutting down: Master
+[2024-06-29 18:31:10 +0300] [9601] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:31:10 +0300] [9601] [INFO] Listening at: http://127.0.0.1:8000 (9601)
+[2024-06-29 18:31:10 +0300] [9601] [INFO] Using worker: eventlet
+[2024-06-29 18:31:10 +0300] [9603] [INFO] Booting worker with pid: 9603
+[2024-06-29 18:31:10 +0300] [9604] [INFO] Booting worker with pid: 9604
+[2024-06-29 18:31:10 +0300] [9605] [INFO] Booting worker with pid: 9605
+[2024-06-29 18:32:11 +0300] [9601] [INFO] Handling signal: term
+[2024-06-29 18:32:11 +0300] [9605] [INFO] Worker exiting (pid: 9605)
+[2024-06-29 18:32:12 +0300] [9603] [INFO] Worker exiting (pid: 9603)
+[2024-06-29 18:32:12 +0300] [9604] [INFO] Worker exiting (pid: 9604)
+[2024-06-29 18:32:13 +0300] [9601] [INFO] Shutting down: Master
+[2024-06-29 18:32:14 +0300] [9645] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:32:14 +0300] [9645] [INFO] Listening at: http://127.0.0.1:8000 (9645)
+[2024-06-29 18:32:14 +0300] [9645] [INFO] Using worker: eventlet
+[2024-06-29 18:32:14 +0300] [9648] [INFO] Booting worker with pid: 9648
+[2024-06-29 18:32:14 +0300] [9649] [INFO] Booting worker with pid: 9649
+[2024-06-29 18:32:14 +0300] [9650] [INFO] Booting worker with pid: 9650
+[2024-06-29 18:47:50 +0300] [2573] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 18:47:50 +0300] [2573] [INFO] Listening at: http://127.0.0.1:8000 (2573)
+[2024-06-29 18:47:50 +0300] [2573] [INFO] Using worker: eventlet
+[2024-06-29 18:47:50 +0300] [2910] [INFO] Booting worker with pid: 2910
+[2024-06-29 18:47:50 +0300] [2911] [INFO] Booting worker with pid: 2911
+[2024-06-29 18:47:50 +0300] [2912] [INFO] Booting worker with pid: 2912
+[2024-06-29 20:22:26 +0300] [2579] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 20:22:26 +0300] [2579] [INFO] Listening at: http://127.0.0.1:8000 (2579)
+[2024-06-29 20:22:26 +0300] [2579] [INFO] Using worker: eventlet
+[2024-06-29 20:22:26 +0300] [2912] [INFO] Booting worker with pid: 2912
+[2024-06-29 20:22:26 +0300] [2913] [INFO] Booting worker with pid: 2913
+[2024-06-29 20:22:26 +0300] [2914] [INFO] Booting worker with pid: 2914
+[2024-06-29 20:49:04 +0300] [2579] [INFO] Handling signal: term
+[2024-06-29 20:49:04 +0300] [2913] [INFO] Worker exiting (pid: 2913)
+[2024-06-29 20:49:04 +0300] [2914] [INFO] Worker exiting (pid: 2914)
+[2024-06-29 20:49:04 +0300] [2912] [INFO] Worker exiting (pid: 2912)
+[2024-06-29 20:49:04 +0300] [2579] [INFO] Shutting down: Master
+[2024-06-29 20:49:05 +0300] [7090] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 20:49:05 +0300] [7090] [INFO] Listening at: http://127.0.0.1:8000 (7090)
+[2024-06-29 20:49:05 +0300] [7090] [INFO] Using worker: eventlet
+[2024-06-29 20:49:05 +0300] [7092] [INFO] Booting worker with pid: 7092
+[2024-06-29 20:49:05 +0300] [7093] [INFO] Booting worker with pid: 7093
+[2024-06-29 20:49:05 +0300] [7094] [INFO] Booting worker with pid: 7094
+[2024-06-29 20:54:19 +0300] [7090] [INFO] Handling signal: term
+[2024-06-29 20:54:19 +0300] [7092] [INFO] Worker exiting (pid: 7092)
+[2024-06-29 20:54:19 +0300] [7093] [INFO] Worker exiting (pid: 7093)
+[2024-06-29 20:54:20 +0300] [7094] [INFO] Worker exiting (pid: 7094)
+[2024-06-29 20:54:20 +0300] [7090] [INFO] Shutting down: Master
+[2024-06-29 20:54:21 +0300] [7314] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 20:54:21 +0300] [7314] [INFO] Listening at: http://127.0.0.1:8000 (7314)
+[2024-06-29 20:54:21 +0300] [7314] [INFO] Using worker: eventlet
+[2024-06-29 20:54:21 +0300] [7316] [INFO] Booting worker with pid: 7316
+[2024-06-29 20:54:21 +0300] [7317] [INFO] Booting worker with pid: 7317
+[2024-06-29 20:54:21 +0300] [7318] [INFO] Booting worker with pid: 7318
+[2024-06-29 20:57:13 +0300] [7314] [INFO] Handling signal: term
+[2024-06-29 20:57:13 +0300] [7317] [INFO] Worker exiting (pid: 7317)
+[2024-06-29 20:57:14 +0300] [7318] [INFO] Worker exiting (pid: 7318)
+[2024-06-29 20:57:14 +0300] [7316] [INFO] Worker exiting (pid: 7316)
+[2024-06-29 20:57:14 +0300] [7314] [INFO] Shutting down: Master
+[2024-06-29 20:57:15 +0300] [7447] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 20:57:15 +0300] [7447] [INFO] Listening at: http://127.0.0.1:8000 (7447)
+[2024-06-29 20:57:15 +0300] [7447] [INFO] Using worker: eventlet
+[2024-06-29 20:57:15 +0300] [7448] [INFO] Booting worker with pid: 7448
+[2024-06-29 20:57:15 +0300] [7449] [INFO] Booting worker with pid: 7449
+[2024-06-29 20:57:15 +0300] [7451] [INFO] Booting worker with pid: 7451
+[2024-06-29 21:09:36 +0300] [7447] [INFO] Handling signal: term
+[2024-06-29 21:09:36 +0300] [7449] [INFO] Worker exiting (pid: 7449)
+[2024-06-29 21:09:37 +0300] [7451] [INFO] Worker exiting (pid: 7451)
+[2024-06-29 21:09:37 +0300] [7448] [INFO] Worker exiting (pid: 7448)
+[2024-06-29 21:09:37 +0300] [7447] [INFO] Shutting down: Master
+[2024-06-29 21:09:38 +0300] [7915] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:09:38 +0300] [7915] [INFO] Listening at: http://127.0.0.1:8000 (7915)
+[2024-06-29 21:09:38 +0300] [7915] [INFO] Using worker: eventlet
+[2024-06-29 21:09:38 +0300] [7921] [INFO] Booting worker with pid: 7921
+[2024-06-29 21:09:38 +0300] [7922] [INFO] Booting worker with pid: 7922
+[2024-06-29 21:09:38 +0300] [7923] [INFO] Booting worker with pid: 7923
+[2024-06-29 21:17:36 +0300] [7915] [INFO] Handling signal: term
+[2024-06-29 21:17:36 +0300] [7921] [INFO] Worker exiting (pid: 7921)
+[2024-06-29 21:17:37 +0300] [7922] [INFO] Worker exiting (pid: 7922)
+[2024-06-29 21:17:37 +0300] [7923] [INFO] Worker exiting (pid: 7923)
+[2024-06-29 21:17:37 +0300] [7915] [INFO] Shutting down: Master
+[2024-06-29 21:17:38 +0300] [8345] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:17:38 +0300] [8345] [INFO] Listening at: http://127.0.0.1:8000 (8345)
+[2024-06-29 21:17:38 +0300] [8345] [INFO] Using worker: eventlet
+[2024-06-29 21:17:38 +0300] [8351] [INFO] Booting worker with pid: 8351
+[2024-06-29 21:17:38 +0300] [8352] [INFO] Booting worker with pid: 8352
+[2024-06-29 21:17:38 +0300] [8353] [INFO] Booting worker with pid: 8353
+[2024-06-29 21:21:38 +0300] [8345] [INFO] Handling signal: term
+[2024-06-29 21:21:38 +0300] [8351] [INFO] Worker exiting (pid: 8351)
+[2024-06-29 21:21:38 +0300] [8353] [INFO] Worker exiting (pid: 8353)
+[2024-06-29 21:21:38 +0300] [8352] [INFO] Worker exiting (pid: 8352)
+[2024-06-29 21:21:39 +0300] [8345] [INFO] Shutting down: Master
+[2024-06-29 21:21:39 +0300] [8796] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:21:39 +0300] [8796] [INFO] Listening at: http://127.0.0.1:8000 (8796)
+[2024-06-29 21:21:39 +0300] [8796] [INFO] Using worker: eventlet
+[2024-06-29 21:21:39 +0300] [8799] [INFO] Booting worker with pid: 8799
+[2024-06-29 21:21:40 +0300] [8800] [INFO] Booting worker with pid: 8800
+[2024-06-29 21:21:40 +0300] [8801] [INFO] Booting worker with pid: 8801
+[2024-06-29 21:22:41 +0300] [8796] [INFO] Handling signal: term
+[2024-06-29 21:22:41 +0300] [8800] [INFO] Worker exiting (pid: 8800)
+[2024-06-29 21:22:42 +0300] [8799] [INFO] Worker exiting (pid: 8799)
+[2024-06-29 21:22:42 +0300] [8801] [INFO] Worker exiting (pid: 8801)
+[2024-06-29 21:22:42 +0300] [8796] [INFO] Shutting down: Master
+[2024-06-29 21:22:43 +0300] [8838] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:22:43 +0300] [8838] [INFO] Listening at: http://127.0.0.1:8000 (8838)
+[2024-06-29 21:22:43 +0300] [8838] [INFO] Using worker: eventlet
+[2024-06-29 21:22:43 +0300] [8839] [INFO] Booting worker with pid: 8839
+[2024-06-29 21:22:43 +0300] [8840] [INFO] Booting worker with pid: 8840
+[2024-06-29 21:22:44 +0300] [8841] [INFO] Booting worker with pid: 8841
+[2024-06-29 21:23:41 +0300] [8838] [INFO] Handling signal: term
+[2024-06-29 21:23:41 +0300] [8840] [INFO] Worker exiting (pid: 8840)
+[2024-06-29 21:23:42 +0300] [8841] [INFO] Worker exiting (pid: 8841)
+[2024-06-29 21:23:42 +0300] [8839] [INFO] Worker exiting (pid: 8839)
+[2024-06-29 21:23:43 +0300] [8838] [INFO] Shutting down: Master
+[2024-06-29 21:23:44 +0300] [8886] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:23:44 +0300] [8886] [INFO] Listening at: http://127.0.0.1:8000 (8886)
+[2024-06-29 21:23:44 +0300] [8886] [INFO] Using worker: eventlet
+[2024-06-29 21:23:44 +0300] [8887] [INFO] Booting worker with pid: 8887
+[2024-06-29 21:23:44 +0300] [8888] [INFO] Booting worker with pid: 8888
+[2024-06-29 21:23:44 +0300] [8889] [INFO] Booting worker with pid: 8889
+[2024-06-29 21:48:32 +0300] [8886] [INFO] Handling signal: term
+[2024-06-29 21:48:33 +0300] [8887] [INFO] Worker exiting (pid: 8887)
+[2024-06-29 21:48:33 +0300] [8889] [INFO] Worker exiting (pid: 8889)
+[2024-06-29 21:48:33 +0300] [8888] [INFO] Worker exiting (pid: 8888)
+[2024-06-29 21:48:33 +0300] [8886] [INFO] Shutting down: Master
+[2024-06-29 21:48:34 +0300] [10076] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:48:34 +0300] [10076] [INFO] Listening at: http://127.0.0.1:8000 (10076)
+[2024-06-29 21:48:34 +0300] [10076] [INFO] Using worker: eventlet
+[2024-06-29 21:48:34 +0300] [10078] [INFO] Booting worker with pid: 10078
+[2024-06-29 21:48:34 +0300] [10079] [INFO] Booting worker with pid: 10079
+[2024-06-29 21:48:34 +0300] [10080] [INFO] Booting worker with pid: 10080
+[2024-06-29 21:49:12 +0300] [10076] [INFO] Handling signal: term
+[2024-06-29 21:49:12 +0300] [10080] [INFO] Worker exiting (pid: 10080)
+[2024-06-29 21:49:13 +0300] [10079] [INFO] Worker exiting (pid: 10079)
+[2024-06-29 21:49:13 +0300] [10078] [INFO] Worker exiting (pid: 10078)
+[2024-06-29 21:49:13 +0300] [10076] [INFO] Shutting down: Master
+[2024-06-29 21:49:14 +0300] [10114] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 21:49:14 +0300] [10114] [INFO] Listening at: http://127.0.0.1:8000 (10114)
+[2024-06-29 21:49:14 +0300] [10114] [INFO] Using worker: eventlet
+[2024-06-29 21:49:14 +0300] [10118] [INFO] Booting worker with pid: 10118
+[2024-06-29 21:49:14 +0300] [10119] [INFO] Booting worker with pid: 10119
+[2024-06-29 21:49:14 +0300] [10121] [INFO] Booting worker with pid: 10121
+[2024-06-29 22:00:56 +0300] [10114] [INFO] Handling signal: term
+[2024-06-29 22:00:57 +0300] [10118] [INFO] Worker exiting (pid: 10118)
+[2024-06-29 22:00:57 +0300] [10121] [INFO] Worker exiting (pid: 10121)
+[2024-06-29 22:00:57 +0300] [10119] [INFO] Worker exiting (pid: 10119)
+[2024-06-29 22:00:57 +0300] [10114] [INFO] Shutting down: Master
+[2024-06-29 22:00:58 +0300] [10558] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 22:00:58 +0300] [10558] [INFO] Listening at: http://127.0.0.1:8000 (10558)
+[2024-06-29 22:00:58 +0300] [10558] [INFO] Using worker: eventlet
+[2024-06-29 22:00:58 +0300] [10561] [INFO] Booting worker with pid: 10561
+[2024-06-29 22:00:58 +0300] [10562] [INFO] Booting worker with pid: 10562
+[2024-06-29 22:00:58 +0300] [10563] [INFO] Booting worker with pid: 10563
+[2024-06-29 22:52:54 +0300] [10558] [INFO] Handling signal: term
+[2024-06-29 22:52:54 +0300] [10561] [INFO] Worker exiting (pid: 10561)
+[2024-06-29 22:52:54 +0300] [10563] [INFO] Worker exiting (pid: 10563)
+[2024-06-29 22:52:54 +0300] [10562] [INFO] Worker exiting (pid: 10562)
+[2024-06-29 22:52:55 +0300] [10558] [INFO] Shutting down: Master
+[2024-06-29 22:53:01 +0300] [12745] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 22:53:01 +0300] [12745] [INFO] Listening at: http://127.0.0.1:8000 (12745)
+[2024-06-29 22:53:01 +0300] [12745] [INFO] Using worker: eventlet
+[2024-06-29 22:53:01 +0300] [12749] [INFO] Booting worker with pid: 12749
+[2024-06-29 22:53:01 +0300] [12750] [INFO] Booting worker with pid: 12750
+[2024-06-29 22:53:01 +0300] [12751] [INFO] Booting worker with pid: 12751
+[2024-06-29 22:55:50 +0300] [12745] [INFO] Handling signal: term
+[2024-06-29 22:55:50 +0300] [12750] [INFO] Worker exiting (pid: 12750)
+[2024-06-29 22:55:50 +0300] [12751] [INFO] Worker exiting (pid: 12751)
+[2024-06-29 22:55:50 +0300] [12749] [INFO] Worker exiting (pid: 12749)
+[2024-06-29 22:55:51 +0300] [12745] [INFO] Shutting down: Master
+[2024-06-29 22:55:52 +0300] [12918] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 22:55:52 +0300] [12918] [INFO] Listening at: http://127.0.0.1:8000 (12918)
+[2024-06-29 22:55:52 +0300] [12918] [INFO] Using worker: eventlet
+[2024-06-29 22:55:52 +0300] [12922] [INFO] Booting worker with pid: 12922
+[2024-06-29 22:55:52 +0300] [12923] [INFO] Booting worker with pid: 12923
+[2024-06-29 22:55:52 +0300] [12924] [INFO] Booting worker with pid: 12924
+[2024-06-29 23:01:56 +0300] [12918] [INFO] Handling signal: term
+[2024-06-29 23:01:57 +0300] [12924] [INFO] Worker exiting (pid: 12924)
+[2024-06-29 23:01:57 +0300] [12922] [INFO] Worker exiting (pid: 12922)
+[2024-06-29 23:01:57 +0300] [12923] [INFO] Worker exiting (pid: 12923)
+[2024-06-29 23:01:58 +0300] [12918] [INFO] Shutting down: Master
+[2024-06-29 23:02:01 +0300] [13181] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:02:01 +0300] [13181] [INFO] Listening at: http://127.0.0.1:8000 (13181)
+[2024-06-29 23:02:01 +0300] [13181] [INFO] Using worker: eventlet
+[2024-06-29 23:02:01 +0300] [13203] [INFO] Booting worker with pid: 13203
+[2024-06-29 23:02:01 +0300] [13204] [INFO] Booting worker with pid: 13204
+[2024-06-29 23:02:01 +0300] [13205] [INFO] Booting worker with pid: 13205
+[2024-06-29 23:07:28 +0300] [13181] [INFO] Handling signal: term
+[2024-06-29 23:07:28 +0300] [13203] [INFO] Worker exiting (pid: 13203)
+[2024-06-29 23:07:28 +0300] [13205] [INFO] Worker exiting (pid: 13205)
+[2024-06-29 23:07:29 +0300] [13204] [INFO] Worker exiting (pid: 13204)
+[2024-06-29 23:07:29 +0300] [13181] [INFO] Shutting down: Master
+[2024-06-29 23:07:32 +0300] [13423] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:07:32 +0300] [13423] [INFO] Listening at: http://127.0.0.1:8000 (13423)
+[2024-06-29 23:07:32 +0300] [13423] [INFO] Using worker: eventlet
+[2024-06-29 23:07:32 +0300] [13446] [INFO] Booting worker with pid: 13446
+[2024-06-29 23:07:32 +0300] [13447] [INFO] Booting worker with pid: 13447
+[2024-06-29 23:07:33 +0300] [13448] [INFO] Booting worker with pid: 13448
+[2024-06-29 23:08:39 +0300] [13423] [INFO] Handling signal: term
+[2024-06-29 23:08:40 +0300] [13448] [INFO] Worker exiting (pid: 13448)
+[2024-06-29 23:08:40 +0300] [13446] [INFO] Worker exiting (pid: 13446)
+[2024-06-29 23:08:40 +0300] [13447] [INFO] Worker exiting (pid: 13447)
+[2024-06-29 23:08:41 +0300] [13423] [INFO] Shutting down: Master
+[2024-06-29 23:08:42 +0300] [13529] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:08:42 +0300] [13529] [INFO] Listening at: http://127.0.0.1:8000 (13529)
+[2024-06-29 23:08:42 +0300] [13529] [INFO] Using worker: eventlet
+[2024-06-29 23:08:42 +0300] [13530] [INFO] Booting worker with pid: 13530
+[2024-06-29 23:08:42 +0300] [13531] [INFO] Booting worker with pid: 13531
+[2024-06-29 23:08:42 +0300] [13532] [INFO] Booting worker with pid: 13532
+[2024-06-29 23:13:32 +0300] [13529] [INFO] Handling signal: term
+[2024-06-29 23:13:33 +0300] [13530] [INFO] Worker exiting (pid: 13530)
+[2024-06-29 23:13:33 +0300] [13532] [INFO] Worker exiting (pid: 13532)
+[2024-06-29 23:13:33 +0300] [13531] [INFO] Worker exiting (pid: 13531)
+[2024-06-29 23:13:33 +0300] [13529] [INFO] Shutting down: Master
+[2024-06-29 23:13:34 +0300] [13834] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:13:34 +0300] [13834] [INFO] Listening at: http://127.0.0.1:8000 (13834)
+[2024-06-29 23:13:34 +0300] [13834] [INFO] Using worker: eventlet
+[2024-06-29 23:13:34 +0300] [13836] [INFO] Booting worker with pid: 13836
+[2024-06-29 23:13:34 +0300] [13837] [INFO] Booting worker with pid: 13837
+[2024-06-29 23:13:34 +0300] [13838] [INFO] Booting worker with pid: 13838
+[2024-06-29 23:14:44 +0300] [13834] [INFO] Handling signal: term
+[2024-06-29 23:14:44 +0300] [13837] [INFO] Worker exiting (pid: 13837)
+[2024-06-29 23:14:45 +0300] [13836] [INFO] Worker exiting (pid: 13836)
+[2024-06-29 23:14:45 +0300] [13838] [INFO] Worker exiting (pid: 13838)
+[2024-06-29 23:14:45 +0300] [13834] [INFO] Shutting down: Master
+[2024-06-29 23:14:46 +0300] [13922] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:14:46 +0300] [13922] [INFO] Listening at: http://127.0.0.1:8000 (13922)
+[2024-06-29 23:14:46 +0300] [13922] [INFO] Using worker: eventlet
+[2024-06-29 23:14:46 +0300] [13925] [INFO] Booting worker with pid: 13925
+[2024-06-29 23:14:46 +0300] [13926] [INFO] Booting worker with pid: 13926
+[2024-06-29 23:14:46 +0300] [13927] [INFO] Booting worker with pid: 13927
+[2024-06-29 23:16:06 +0300] [13922] [INFO] Handling signal: term
+[2024-06-29 23:16:06 +0300] [13927] [INFO] Worker exiting (pid: 13927)
+[2024-06-29 23:16:07 +0300] [13925] [INFO] Worker exiting (pid: 13925)
+[2024-06-29 23:16:07 +0300] [13926] [INFO] Worker exiting (pid: 13926)
+[2024-06-29 23:16:07 +0300] [13922] [INFO] Shutting down: Master
+[2024-06-29 23:16:08 +0300] [14027] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:16:08 +0300] [14027] [INFO] Listening at: http://127.0.0.1:8000 (14027)
+[2024-06-29 23:16:08 +0300] [14027] [INFO] Using worker: eventlet
+[2024-06-29 23:16:08 +0300] [14028] [INFO] Booting worker with pid: 14028
+[2024-06-29 23:16:08 +0300] [14029] [INFO] Booting worker with pid: 14029
+[2024-06-29 23:16:08 +0300] [14030] [INFO] Booting worker with pid: 14030
+[2024-06-29 23:27:09 +0300] [14027] [INFO] Handling signal: term
+[2024-06-29 23:27:10 +0300] [14029] [INFO] Worker exiting (pid: 14029)
+[2024-06-29 23:27:10 +0300] [14030] [INFO] Worker exiting (pid: 14030)
+[2024-06-29 23:27:10 +0300] [14028] [INFO] Worker exiting (pid: 14028)
+[2024-06-29 23:27:10 +0300] [14027] [INFO] Shutting down: Master
+[2024-06-29 23:27:11 +0300] [14399] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:27:11 +0300] [14399] [INFO] Listening at: http://127.0.0.1:8000 (14399)
+[2024-06-29 23:27:11 +0300] [14399] [INFO] Using worker: eventlet
+[2024-06-29 23:27:11 +0300] [14401] [INFO] Booting worker with pid: 14401
+[2024-06-29 23:27:11 +0300] [14402] [INFO] Booting worker with pid: 14402
+[2024-06-29 23:27:11 +0300] [14403] [INFO] Booting worker with pid: 14403
+[2024-06-29 23:37:18 +0300] [14399] [INFO] Handling signal: term
+[2024-06-29 23:37:19 +0300] [14403] [INFO] Worker exiting (pid: 14403)
+[2024-06-29 23:37:19 +0300] [14402] [INFO] Worker exiting (pid: 14402)
+[2024-06-29 23:37:19 +0300] [14401] [INFO] Worker exiting (pid: 14401)
+[2024-06-29 23:37:20 +0300] [14399] [INFO] Shutting down: Master
+[2024-06-29 23:37:22 +0300] [14948] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:37:22 +0300] [14948] [INFO] Listening at: http://127.0.0.1:8000 (14948)
+[2024-06-29 23:37:22 +0300] [14948] [INFO] Using worker: eventlet
+[2024-06-29 23:37:22 +0300] [14953] [INFO] Booting worker with pid: 14953
+[2024-06-29 23:37:22 +0300] [14954] [INFO] Booting worker with pid: 14954
+[2024-06-29 23:37:22 +0300] [14955] [INFO] Booting worker with pid: 14955
+[2024-06-29 23:39:41 +0300] [14948] [INFO] Handling signal: term
+[2024-06-29 23:39:41 +0300] [14953] [INFO] Worker exiting (pid: 14953)
+[2024-06-29 23:39:41 +0300] [14954] [INFO] Worker exiting (pid: 14954)
+[2024-06-29 23:39:41 +0300] [14955] [INFO] Worker exiting (pid: 14955)
+[2024-06-29 23:39:42 +0300] [14948] [INFO] Shutting down: Master
+[2024-06-29 23:39:43 +0300] [15077] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:39:43 +0300] [15077] [INFO] Listening at: http://127.0.0.1:8000 (15077)
+[2024-06-29 23:39:43 +0300] [15077] [INFO] Using worker: eventlet
+[2024-06-29 23:39:43 +0300] [15079] [INFO] Booting worker with pid: 15079
+[2024-06-29 23:39:43 +0300] [15080] [INFO] Booting worker with pid: 15080
+[2024-06-29 23:39:43 +0300] [15081] [INFO] Booting worker with pid: 15081
+[2024-06-29 23:42:00 +0300] [15077] [INFO] Handling signal: term
+[2024-06-29 23:42:00 +0300] [15079] [INFO] Worker exiting (pid: 15079)
+[2024-06-29 23:42:00 +0300] [15081] [INFO] Worker exiting (pid: 15081)
+[2024-06-29 23:42:00 +0300] [15080] [INFO] Worker exiting (pid: 15080)
+[2024-06-29 23:42:01 +0300] [15077] [INFO] Shutting down: Master
+[2024-06-29 23:42:03 +0300] [15161] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:42:03 +0300] [15161] [INFO] Listening at: http://127.0.0.1:8000 (15161)
+[2024-06-29 23:42:03 +0300] [15161] [INFO] Using worker: eventlet
+[2024-06-29 23:42:03 +0300] [15180] [INFO] Booting worker with pid: 15180
+[2024-06-29 23:42:03 +0300] [15181] [INFO] Booting worker with pid: 15181
+[2024-06-29 23:42:03 +0300] [15182] [INFO] Booting worker with pid: 15182
+[2024-06-29 23:44:40 +0300] [15161] [INFO] Handling signal: term
+[2024-06-29 23:44:40 +0300] [15181] [INFO] Worker exiting (pid: 15181)
+[2024-06-29 23:44:41 +0300] [15182] [INFO] Worker exiting (pid: 15182)
+[2024-06-29 23:44:41 +0300] [15180] [INFO] Worker exiting (pid: 15180)
+[2024-06-29 23:44:41 +0300] [15161] [INFO] Shutting down: Master
+[2024-06-29 23:44:42 +0300] [15293] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:44:42 +0300] [15293] [INFO] Listening at: http://127.0.0.1:8000 (15293)
+[2024-06-29 23:44:42 +0300] [15293] [INFO] Using worker: eventlet
+[2024-06-29 23:44:42 +0300] [15294] [INFO] Booting worker with pid: 15294
+[2024-06-29 23:44:42 +0300] [15295] [INFO] Booting worker with pid: 15295
+[2024-06-29 23:44:42 +0300] [15296] [INFO] Booting worker with pid: 15296
+[2024-06-29 23:45:24 +0300] [15293] [INFO] Handling signal: term
+[2024-06-29 23:45:24 +0300] [15294] [INFO] Worker exiting (pid: 15294)
+[2024-06-29 23:45:24 +0300] [15296] [INFO] Worker exiting (pid: 15296)
+[2024-06-29 23:45:25 +0300] [15295] [INFO] Worker exiting (pid: 15295)
+[2024-06-29 23:45:25 +0300] [15293] [INFO] Shutting down: Master
+[2024-06-29 23:45:26 +0300] [15326] [INFO] Starting gunicorn 20.1.0
+[2024-06-29 23:45:26 +0300] [15326] [INFO] Listening at: http://127.0.0.1:8000 (15326)
+[2024-06-29 23:45:26 +0300] [15326] [INFO] Using worker: eventlet
+[2024-06-29 23:45:26 +0300] [15327] [INFO] Booting worker with pid: 15327
+[2024-06-29 23:45:26 +0300] [15328] [INFO] Booting worker with pid: 15328
+[2024-06-29 23:45:26 +0300] [15329] [INFO] Booting worker with pid: 15329
+[2024-06-30 09:29:36 +0300] [2576] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 09:29:37 +0300] [2576] [INFO] Listening at: http://127.0.0.1:8000 (2576)
+[2024-06-30 09:29:37 +0300] [2576] [INFO] Using worker: eventlet
+[2024-06-30 09:29:37 +0300] [2912] [INFO] Booting worker with pid: 2912
+[2024-06-30 09:29:37 +0300] [2913] [INFO] Booting worker with pid: 2913
+[2024-06-30 09:29:37 +0300] [2914] [INFO] Booting worker with pid: 2914
+[2024-06-30 10:20:13 +0300] [2573] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 10:20:14 +0300] [2573] [INFO] Listening at: http://127.0.0.1:8000 (2573)
+[2024-06-30 10:20:14 +0300] [2573] [INFO] Using worker: eventlet
+[2024-06-30 10:20:14 +0300] [2866] [INFO] Booting worker with pid: 2866
+[2024-06-30 10:20:14 +0300] [2867] [INFO] Booting worker with pid: 2867
+[2024-06-30 10:20:14 +0300] [2868] [INFO] Booting worker with pid: 2868
+[2024-06-30 10:20:44 +0300] [2573] [CRITICAL] WORKER TIMEOUT (pid:2866)
+[2024-06-30 10:20:44 +0300] [2573] [CRITICAL] WORKER TIMEOUT (pid:2867)
+[2024-06-30 10:20:44 +0300] [2573] [CRITICAL] WORKER TIMEOUT (pid:2868)
+[2024-06-30 10:20:44 +0300] [2868] [INFO] Worker exiting (pid: 2868)
+[2024-06-30 10:20:44 +0300] [2866] [INFO] Worker exiting (pid: 2866)
+[2024-06-30 10:20:44 +0300] [2867] [INFO] Worker exiting (pid: 2867)
+[2024-06-30 10:20:44 +0300] [3095] [INFO] Booting worker with pid: 3095
+[2024-06-30 10:20:44 +0300] [2573] [WARNING] Worker with pid 2867 was terminated due to signal 9
+[2024-06-30 10:20:44 +0300] [2573] [WARNING] Worker with pid 2866 was terminated due to signal 9
+[2024-06-30 10:20:44 +0300] [3096] [INFO] Booting worker with pid: 3096
+[2024-06-30 10:20:44 +0300] [3097] [INFO] Booting worker with pid: 3097
+[2024-06-30 10:26:25 +0300] [2573] [INFO] Handling signal: term
+[2024-06-30 10:26:25 +0300] [3097] [INFO] Worker exiting (pid: 3097)
+[2024-06-30 10:26:25 +0300] [3095] [INFO] Worker exiting (pid: 3095)
+[2024-06-30 10:26:25 +0300] [3096] [INFO] Worker exiting (pid: 3096)
+[2024-06-30 10:26:25 +0300] [2573] [INFO] Shutting down: Master
+[2024-06-30 10:26:26 +0300] [6350] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 10:26:26 +0300] [6350] [INFO] Listening at: http://127.0.0.1:8000 (6350)
+[2024-06-30 10:26:26 +0300] [6350] [INFO] Using worker: eventlet
+[2024-06-30 10:26:26 +0300] [6352] [INFO] Booting worker with pid: 6352
+[2024-06-30 10:26:26 +0300] [6353] [INFO] Booting worker with pid: 6353
+[2024-06-30 10:26:26 +0300] [6354] [INFO] Booting worker with pid: 6354
+[2024-06-30 10:46:26 +0300] [6350] [INFO] Handling signal: term
+[2024-06-30 10:46:26 +0300] [6353] [INFO] Worker exiting (pid: 6353)
+[2024-06-30 10:46:26 +0300] [6354] [INFO] Worker exiting (pid: 6354)
+[2024-06-30 10:46:27 +0300] [6352] [INFO] Worker exiting (pid: 6352)
+[2024-06-30 10:46:27 +0300] [6350] [INFO] Shutting down: Master
+[2024-06-30 10:46:28 +0300] [7153] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 10:46:28 +0300] [7153] [INFO] Listening at: http://127.0.0.1:8000 (7153)
+[2024-06-30 10:46:28 +0300] [7153] [INFO] Using worker: eventlet
+[2024-06-30 10:46:28 +0300] [7155] [INFO] Booting worker with pid: 7155
+[2024-06-30 10:46:28 +0300] [7156] [INFO] Booting worker with pid: 7156
+[2024-06-30 10:46:28 +0300] [7157] [INFO] Booting worker with pid: 7157
+[2024-06-30 11:04:25 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:7157)
+[2024-06-30 11:04:33 +0300] [7153] [WARNING] Worker with pid 7157 was terminated due to signal 9
+[2024-06-30 11:04:44 +0300] [8894] [INFO] Booting worker with pid: 8894
+[2024-06-30 11:05:08 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:8894)
+[2024-06-30 11:05:09 +0300] [7153] [WARNING] Worker with pid 8894 was terminated due to signal 9
+[2024-06-30 11:05:09 +0300] [8918] [INFO] Booting worker with pid: 8918
+[2024-06-30 11:05:38 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:7156)
+[2024-06-30 11:05:39 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:8918)
+[2024-06-30 11:05:39 +0300] [7153] [WARNING] Worker with pid 7156 was terminated due to signal 9
+[2024-06-30 11:05:39 +0300] [7153] [WARNING] Worker with pid 8918 was terminated due to signal 9
+[2024-06-30 11:05:39 +0300] [8939] [INFO] Booting worker with pid: 8939
+[2024-06-30 11:05:39 +0300] [8940] [INFO] Booting worker with pid: 8940
+[2024-06-30 11:06:02 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:7155)
+[2024-06-30 11:06:03 +0300] [7153] [WARNING] Worker with pid 7155 was terminated due to signal 9
+[2024-06-30 11:06:03 +0300] [8943] [INFO] Booting worker with pid: 8943
+[2024-06-30 11:06:09 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:8939)
+[2024-06-30 11:06:09 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:8940)
+[2024-06-30 11:06:10 +0300] [7153] [WARNING] Worker with pid 8940 was terminated due to signal 9
+[2024-06-30 11:06:10 +0300] [7153] [WARNING] Worker with pid 8939 was terminated due to signal 9
+[2024-06-30 11:06:10 +0300] [8952] [INFO] Booting worker with pid: 8952
+[2024-06-30 11:06:10 +0300] [8953] [INFO] Booting worker with pid: 8953
+[2024-06-30 11:06:33 +0300] [7153] [CRITICAL] WORKER TIMEOUT (pid:8943)
+[2024-06-30 11:06:33 +0300] [7153] [WARNING] Worker with pid 8943 was terminated due to signal 6
+[2024-06-30 11:06:34 +0300] [8988] [INFO] Booting worker with pid: 8988
+[2024-06-30 11:06:40 +0300] [7153] [INFO] Handling signal: term
+[2024-06-30 11:07:06 +0300] [8988] [INFO] Worker exiting (pid: 8988)
+[2024-06-30 11:07:06 +0300] [8952] [ERROR] Socket error processing request.
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/gunicorn/workers/base_async.py", line 65, in handle
+    util.reraise(*sys.exc_info())
+  File "/usr/lib/python3/dist-packages/gunicorn/util.py", line 651, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/gunicorn/workers/base_async.py", line 38, in handle
+    listener_name = listener.getsockname()
+                    ^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 9] Bad file descriptor
+[2024-06-30 11:07:06 +0300] [8952] [INFO] Worker exiting (pid: 8952)
+[2024-06-30 11:07:06 +0300] [8953] [INFO] Worker exiting (pid: 8953)
+[2024-06-30 11:07:07 +0300] [7153] [INFO] Shutting down: Master
+[2024-06-30 11:07:12 +0300] [9306] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 11:07:12 +0300] [9306] [INFO] Listening at: http://127.0.0.1:8000 (9306)
+[2024-06-30 11:07:12 +0300] [9306] [INFO] Using worker: eventlet
+[2024-06-30 11:07:12 +0300] [9309] [INFO] Booting worker with pid: 9309
+[2024-06-30 11:07:12 +0300] [9310] [INFO] Booting worker with pid: 9310
+[2024-06-30 11:07:12 +0300] [9311] [INFO] Booting worker with pid: 9311
+[2024-06-30 11:10:10 +0300] [9306] [INFO] Handling signal: term
+[2024-06-30 11:10:11 +0300] [9309] [INFO] Worker exiting (pid: 9309)
+[2024-06-30 11:10:11 +0300] [9311] [INFO] Worker exiting (pid: 9311)
+[2024-06-30 11:10:11 +0300] [9310] [INFO] Worker exiting (pid: 9310)
+[2024-06-30 11:10:11 +0300] [9306] [INFO] Shutting down: Master
+[2024-06-30 11:10:12 +0300] [9421] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 11:10:12 +0300] [9421] [INFO] Listening at: http://127.0.0.1:8000 (9421)
+[2024-06-30 11:10:12 +0300] [9421] [INFO] Using worker: eventlet
+[2024-06-30 11:10:12 +0300] [9423] [INFO] Booting worker with pid: 9423
+[2024-06-30 11:10:12 +0300] [9424] [INFO] Booting worker with pid: 9424
+[2024-06-30 11:10:12 +0300] [9425] [INFO] Booting worker with pid: 9425
+[2024-06-30 11:14:32 +0300] [9421] [INFO] Handling signal: term
+[2024-06-30 11:14:32 +0300] [9423] [INFO] Worker exiting (pid: 9423)
+[2024-06-30 11:14:32 +0300] [9425] [INFO] Worker exiting (pid: 9425)
+[2024-06-30 11:14:32 +0300] [9424] [INFO] Worker exiting (pid: 9424)
+[2024-06-30 11:14:33 +0300] [9421] [INFO] Shutting down: Master
+[2024-06-30 11:14:34 +0300] [9562] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 11:14:34 +0300] [9562] [INFO] Listening at: http://127.0.0.1:8000 (9562)
+[2024-06-30 11:14:34 +0300] [9562] [INFO] Using worker: eventlet
+[2024-06-30 11:14:34 +0300] [9564] [INFO] Booting worker with pid: 9564
+[2024-06-30 11:14:34 +0300] [9565] [INFO] Booting worker with pid: 9565
+[2024-06-30 11:14:34 +0300] [9566] [INFO] Booting worker with pid: 9566
+[2024-06-30 11:31:38 +0300] [9562] [INFO] Handling signal: term
+[2024-06-30 11:31:39 +0300] [9565] [INFO] Worker exiting (pid: 9565)
+[2024-06-30 11:31:39 +0300] [9566] [INFO] Worker exiting (pid: 9566)
+[2024-06-30 11:31:39 +0300] [9564] [INFO] Worker exiting (pid: 9564)
+[2024-06-30 11:31:40 +0300] [9562] [INFO] Shutting down: Master
+[2024-06-30 11:31:41 +0300] [10436] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 11:31:41 +0300] [10436] [INFO] Listening at: http://127.0.0.1:8000 (10436)
+[2024-06-30 11:31:41 +0300] [10436] [INFO] Using worker: eventlet
+[2024-06-30 11:31:41 +0300] [10439] [INFO] Booting worker with pid: 10439
+[2024-06-30 11:31:41 +0300] [10440] [INFO] Booting worker with pid: 10440
+[2024-06-30 11:31:41 +0300] [10441] [INFO] Booting worker with pid: 10441
+[2024-06-30 11:31:42 +0300] [10436] [INFO] Handling signal: term
+[2024-06-30 11:31:43 +0300] [10440] [INFO] Worker exiting (pid: 10440)
+[2024-06-30 11:31:43 +0300] [10439] [INFO] Worker exiting (pid: 10439)
+[2024-06-30 11:31:43 +0300] [10441] [INFO] Worker exiting (pid: 10441)
+[2024-06-30 11:31:44 +0300] [10436] [INFO] Shutting down: Master
+[2024-06-30 11:31:45 +0300] [10449] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 11:31:45 +0300] [10449] [INFO] Listening at: http://127.0.0.1:8000 (10449)
+[2024-06-30 11:31:45 +0300] [10449] [INFO] Using worker: eventlet
+[2024-06-30 11:31:45 +0300] [10451] [INFO] Booting worker with pid: 10451
+[2024-06-30 11:31:45 +0300] [10452] [INFO] Booting worker with pid: 10452
+[2024-06-30 11:31:45 +0300] [10453] [INFO] Booting worker with pid: 10453
+[2024-06-30 12:26:32 +0300] [2576] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 12:26:32 +0300] [2576] [INFO] Listening at: http://127.0.0.1:8000 (2576)
+[2024-06-30 12:26:32 +0300] [2576] [INFO] Using worker: eventlet
+[2024-06-30 12:26:32 +0300] [2907] [INFO] Booting worker with pid: 2907
+[2024-06-30 12:26:32 +0300] [2908] [INFO] Booting worker with pid: 2908
+[2024-06-30 12:26:33 +0300] [2909] [INFO] Booting worker with pid: 2909
+[2024-06-30 13:37:40 +0300] [2576] [INFO] Handling signal: term
+[2024-06-30 13:37:40 +0300] [2908] [INFO] Worker exiting (pid: 2908)
+[2024-06-30 13:37:40 +0300] [2907] [INFO] Worker exiting (pid: 2907)
+[2024-06-30 13:37:40 +0300] [2909] [INFO] Worker exiting (pid: 2909)
+[2024-06-30 13:37:41 +0300] [2576] [INFO] Shutting down: Master
+[2024-06-30 13:37:42 +0300] [8039] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 13:37:42 +0300] [8039] [INFO] Listening at: http://127.0.0.1:8000 (8039)
+[2024-06-30 13:37:42 +0300] [8039] [INFO] Using worker: eventlet
+[2024-06-30 13:37:42 +0300] [8042] [INFO] Booting worker with pid: 8042
+[2024-06-30 13:37:42 +0300] [8043] [INFO] Booting worker with pid: 8043
+[2024-06-30 13:37:42 +0300] [8044] [INFO] Booting worker with pid: 8044
+[2024-06-30 16:33:57 +0300] [2574] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 16:33:57 +0300] [2574] [INFO] Listening at: http://127.0.0.1:8000 (2574)
+[2024-06-30 16:33:57 +0300] [2574] [INFO] Using worker: eventlet
+[2024-06-30 16:33:57 +0300] [2865] [INFO] Booting worker with pid: 2865
+[2024-06-30 16:33:57 +0300] [2866] [INFO] Booting worker with pid: 2866
+[2024-06-30 16:33:57 +0300] [2867] [INFO] Booting worker with pid: 2867
+[2024-06-30 16:34:27 +0300] [2574] [CRITICAL] WORKER TIMEOUT (pid:2865)
+[2024-06-30 16:34:27 +0300] [2574] [CRITICAL] WORKER TIMEOUT (pid:2866)
+[2024-06-30 16:34:27 +0300] [2574] [CRITICAL] WORKER TIMEOUT (pid:2867)
+[2024-06-30 16:34:28 +0300] [2867] [INFO] Worker exiting (pid: 2867)
+[2024-06-30 16:34:28 +0300] [2865] [INFO] Worker exiting (pid: 2865)
+[2024-06-30 16:34:28 +0300] [2866] [INFO] Worker exiting (pid: 2866)
+[2024-06-30 16:34:28 +0300] [3087] [INFO] Booting worker with pid: 3087
+[2024-06-30 16:34:28 +0300] [2574] [WARNING] Worker with pid 2865 was terminated due to signal 9
+[2024-06-30 16:34:28 +0300] [2574] [WARNING] Worker with pid 2866 was terminated due to signal 9
+[2024-06-30 16:34:28 +0300] [3088] [INFO] Booting worker with pid: 3088
+[2024-06-30 16:34:28 +0300] [3089] [INFO] Booting worker with pid: 3089
+[2024-06-30 16:59:45 +0300] [2574] [INFO] Handling signal: term
+[2024-06-30 16:59:45 +0300] [3089] [INFO] Worker exiting (pid: 3089)
+[2024-06-30 16:59:45 +0300] [3087] [INFO] Worker exiting (pid: 3087)
+[2024-06-30 16:59:46 +0300] [3088] [INFO] Worker exiting (pid: 3088)
+[2024-06-30 16:59:46 +0300] [2574] [INFO] Shutting down: Master
+[2024-06-30 16:59:47 +0300] [6625] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 16:59:47 +0300] [6625] [INFO] Listening at: http://127.0.0.1:8000 (6625)
+[2024-06-30 16:59:47 +0300] [6625] [INFO] Using worker: eventlet
+[2024-06-30 16:59:47 +0300] [6626] [INFO] Booting worker with pid: 6626
+[2024-06-30 16:59:47 +0300] [6627] [INFO] Booting worker with pid: 6627
+[2024-06-30 16:59:47 +0300] [6628] [INFO] Booting worker with pid: 6628
+[2024-06-30 17:00:59 +0300] [6625] [INFO] Handling signal: term
+[2024-06-30 17:01:00 +0300] [6626] [INFO] Worker exiting (pid: 6626)
+[2024-06-30 17:01:00 +0300] [6628] [INFO] Worker exiting (pid: 6628)
+[2024-06-30 17:01:00 +0300] [6627] [INFO] Worker exiting (pid: 6627)
+[2024-06-30 17:01:00 +0300] [6625] [INFO] Shutting down: Master
+[2024-06-30 17:01:01 +0300] [6680] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 17:01:01 +0300] [6680] [INFO] Listening at: http://127.0.0.1:8000 (6680)
+[2024-06-30 17:01:01 +0300] [6680] [INFO] Using worker: eventlet
+[2024-06-30 17:01:01 +0300] [6682] [INFO] Booting worker with pid: 6682
+[2024-06-30 17:01:01 +0300] [6683] [INFO] Booting worker with pid: 6683
+[2024-06-30 17:01:01 +0300] [6684] [INFO] Booting worker with pid: 6684
+[2024-06-30 17:03:12 +0300] [6680] [INFO] Handling signal: term
+[2024-06-30 17:03:12 +0300] [6682] [INFO] Worker exiting (pid: 6682)
+[2024-06-30 17:03:12 +0300] [6684] [INFO] Worker exiting (pid: 6684)
+[2024-06-30 17:03:12 +0300] [6683] [INFO] Worker exiting (pid: 6683)
+[2024-06-30 17:03:13 +0300] [6680] [INFO] Shutting down: Master
+[2024-06-30 17:03:14 +0300] [6763] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 17:03:14 +0300] [6763] [INFO] Listening at: http://127.0.0.1:8000 (6763)
+[2024-06-30 17:03:14 +0300] [6763] [INFO] Using worker: eventlet
+[2024-06-30 17:03:14 +0300] [6764] [INFO] Booting worker with pid: 6764
+[2024-06-30 17:03:14 +0300] [6765] [INFO] Booting worker with pid: 6765
+[2024-06-30 17:03:14 +0300] [6766] [INFO] Booting worker with pid: 6766
+[2024-06-30 20:39:04 +0300] [2559] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 20:39:04 +0300] [2559] [INFO] Listening at: http://127.0.0.1:8000 (2559)
+[2024-06-30 20:39:04 +0300] [2559] [INFO] Using worker: eventlet
+[2024-06-30 20:39:04 +0300] [2859] [INFO] Booting worker with pid: 2859
+[2024-06-30 20:39:04 +0300] [2860] [INFO] Booting worker with pid: 2860
+[2024-06-30 20:39:04 +0300] [2861] [INFO] Booting worker with pid: 2861
+[2024-06-30 20:39:34 +0300] [2559] [CRITICAL] WORKER TIMEOUT (pid:2859)
+[2024-06-30 20:39:34 +0300] [2559] [CRITICAL] WORKER TIMEOUT (pid:2860)
+[2024-06-30 20:39:34 +0300] [2559] [CRITICAL] WORKER TIMEOUT (pid:2861)
+[2024-06-30 20:39:34 +0300] [2859] [INFO] Worker exiting (pid: 2859)
+[2024-06-30 20:39:34 +0300] [2861] [INFO] Worker exiting (pid: 2861)
+[2024-06-30 20:39:34 +0300] [2860] [INFO] Worker exiting (pid: 2860)
+[2024-06-30 20:39:35 +0300] [3088] [INFO] Booting worker with pid: 3088
+[2024-06-30 20:39:35 +0300] [2559] [WARNING] Worker with pid 2860 was terminated due to signal 9
+[2024-06-30 20:39:35 +0300] [3089] [INFO] Booting worker with pid: 3089
+[2024-06-30 20:39:35 +0300] [3090] [INFO] Booting worker with pid: 3090
+[2024-06-30 23:07:24 +0300] [2559] [INFO] Handling signal: term
+[2024-06-30 23:07:24 +0300] [3088] [INFO] Worker exiting (pid: 3088)
+[2024-06-30 23:07:24 +0300] [3090] [INFO] Worker exiting (pid: 3090)
+[2024-06-30 23:07:24 +0300] [3089] [INFO] Worker exiting (pid: 3089)
+[2024-06-30 23:07:25 +0300] [2559] [INFO] Shutting down: Master
+[2024-06-30 23:07:27 +0300] [10323] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 23:07:27 +0300] [10323] [INFO] Listening at: http://127.0.0.1:8000 (10323)
+[2024-06-30 23:07:27 +0300] [10323] [INFO] Using worker: eventlet
+[2024-06-30 23:07:27 +0300] [10326] [INFO] Booting worker with pid: 10326
+[2024-06-30 23:07:27 +0300] [10327] [INFO] Booting worker with pid: 10327
+[2024-06-30 23:07:27 +0300] [10328] [INFO] Booting worker with pid: 10328

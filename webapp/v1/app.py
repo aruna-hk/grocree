@@ -263,59 +263,6 @@ def orders(user_id):
 def track_order(user_id, order_id):
     return "live location tracking"
 
-#return dictionary listings
-def _listings(results):
-    #keys = ['groceryId', 'name', 'description', 'category','name_1',
-    #        'areaName', 'stock', 'price']
-    listings = []
-    for entry in results:
-        _listing = {}
-        _listing['groceryId'] = entry.id
-        _listing['name'] = entry.name
-        _listing['description'] = entry.description
-        _listing['category'] = entry.category
-        _listing['storeName'] = entry.name_1
-        _listing['areaName'] = entry.areaName
-        _listing['stock'] = entry.stock
-        _listing['price'] = entry.price
-        listings.append(_listing)
-
-    return listings
-#home/customer landing page tailor
-@app.route("/home/customers/<user_id>", strict_slashes=False)
-def home(user_id=None):
-    listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
-                        Grocery.description, Store.name, Store.areaName, \
-                        Inventory.stock, Inventory.price).join(Grocery).join(Store)
-    if user_id:
-        customer_location_stmt = select(Customer.latitude, Customer.longitude)\
-                             .where(Customer.id == user_id)
-        #get customer location
-        _location = storage.query(customer_location_stmt).first()
-        if _location:
-            latitude, longitude = _location
-        else:
-            return jsonify(_listings(storage.query(listings_stmt).fetchall()))    
-        #get close store
-        #for tailoring groceries at close store to customer
-        close_stores = allocate_store(latitude, longitude)
-        listings = []
-        #update listing statement
-        #for every close store
-        for store in close_stores:
-            __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
-            listings = listings + __listings
-    else:
-        #just home
-        listings = storage.query(listings_stmt).fetchall()
-
-    return jsonify(_listings(listings))
-
-#home not logged in
-@app.route("/home", strict_slashes=False)
-@app.route("/home/customers", strict_slashes=False)
-def home_1():
-    return home()
 
 #if product exist
 def if_exist(name):
@@ -403,6 +350,62 @@ def add_product(store_id):
 
     return  jsonify(_items)
 
+#return dictionary listings
+def _listings(results):
+    #keys = ['groceryId', 'name', 'description', 'category','name_1',
+    #        'areaName', 'stock', 'price']
+    listings = []
+    for entry in results:
+        _listing = {}
+        _listing['id'] = entry.id
+        _listing['name'] = entry.name
+        _listing['description'] = entry.description
+        _listing['category'] = entry.category
+        _listing['img'] = entry.imgURL
+    #    _listing['storeName'] = entry.name_1
+    #    _listing['areaName'] = entry.areaName
+        _listing['store'] = entry.id_1
+        _listing['stock'] = entry.stock
+        _listing['price'] = entry.price
+        listings.append(_listing)
+
+    return listings
+#home/customer landing page tailor
+@app.route("/home/customers/<user_id>", strict_slashes=False)
+def home(user_id=None):
+    listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
+                        Grocery.description,Grocery.imgURL, Store.id,\
+                        Inventory.stock, Inventory.price).join(Grocery).join(Store)
+    if user_id:
+        customer_location_stmt = select(Customer.latitude, Customer.longitude)\
+                             .where(Customer.id == user_id)
+        #get customer location
+        _location = storage.query(customer_location_stmt).first()
+        if _location:
+            latitude, longitude = _location
+        else:
+            __items = _listings(storage.query(listings_stmt).fetchall())
+            return render_template("index.html", items=__items)
+        #get close store
+        #for tailoring groceries at close store to customer
+        close_stores = allocate_store(latitude, longitude)
+        listings = []
+        #update listing statement
+        #for every close store
+        for store in close_stores:
+            __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
+            listings = listings + __listings
+    else:
+        #just home
+        listings = storage.query(listings_stmt).fetchall()
+    __items = _listings(listings)
+    return render_template("index.html", items=__items)
+
+#home not logged in
+@app.route("/home", strict_slashes=False)
+@app.route("/home/customers", strict_slashes=False)
+def home_1():
+    return home()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
