@@ -26,3 +26,4 @@ class Delivery(Base, base):
     phone = Column(String(18), nullable=False, unique=True)
     latitude = Column(Numeric(8, 3))
     longitude = Column(Numeric(8, 3))
+    imgURL = Column(String(60))

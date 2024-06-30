@@ -7,6 +7,12 @@ document.querySelector("#completePurchase").addEventListener("click", ()=>{
    document.querySelector('#totalItems').innerHTML = String(0);
    document.querySelector(".Xcart").style.display = 'none';
    cart = {}
+   let __entries__ = document.querySelectorAll(".XitemEntry")
+   for (__entry__ of __entries__) {
+     document.querySelector(".Xitems").removeChild(__entry__);
+   }
+   document.querySelector(".Xitems").append(Empty)
    alert("order placed");
+   document.querySelector("#totalcost").textContent = '0';
  }
 });

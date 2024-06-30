@@ -95,6 +95,7 @@ for i in range(0, 500):
     _delivery_person['phone'] = '07{}'.format(i) + str(randrange(600000,1000000))
     _delivery_person['latitude'] = float(randrange(-90, 91))
     _delivery_person['longitude'] = float(randrange(-180, 181))
+    _delivery_person['imgURL'] = "/icon/user.png"
     new = Delivery(**_delivery_person)
     delivery_personel.append(new)
     storage.new(new)
@@ -106,56 +107,55 @@ customers = []
 users = [
          {'name':'kiptoo haron', 'username':'hk', 'password':'Aa48904890plmn$',
            'email':'kiptooharon.hk@gmail.com', 'phone':'0714261231', 'latitude': 0.0,
-           'longitude':45},
+           'longitude':45, 'imgURL': "/icons/user.png"},
          {'name':'varun', 'username':'vrn', 'password':'Aa48904890plmn$',
            'email':'varun.hk@gmail.com', 'phone':'01015621067', 'latitude': 0.0,
-           'longitude':45},
+           'longitude':45, 'imgURL': "/icons/user.png"},
          {'name':'jacinta', 'username':'jass', 'password':'Aa48904890plmn$',
            'email':'jass@gmail.com', 'phone':'714261231', 'latitude': -55,
-           'longitude':90},
+           'longitude':90, 'imgURL':"/icons/user.png"},
          {'name':'bill', 'username':'billy', 'password':'Aa48904890plmn$',
            'email':'bill@gmail.com', 'phone':'14261231', 'latitude': -55,
-           'longitude':90},
+           'longitude':90, 'imgURL':"/icons/user.png"},
          {'name':'delores', 'username':'delores', 'password':'Aa48904890plmn$',
            'email':'delores@gmail.com', 'phone':'4261231', 'latitude': 0.0,
-           'longitude':30},
+           'longitude':30, 'imgURL':"/icons/user.png"},
          {'name':'robot', 'username':'mrrobot', 'password':'Aa48904890plmn$',
            'email':'robot@gmail.com', 'phone':'261231', 'latitude': 0.0,
-           'longitude':30},
+           'longitude':30, 'imgURL':"/icons/user.png"},
          {'name':'dom', 'username':'dom', 'password':'Aa48904890plmn$',
            'email':'dom@gmail.com', 'phone':'61231', 'latitude': 60,
-           'longitude':-135},
+           'longitude':-135, 'imgURL':"/icons/user.png"},
          {'name':'tyrell', 'username':'wellick', 'password':'Aa48904890plmn$',
            'email':'wellick@gmail.com', 'phone':'231', 'latitude': 60,
-           'longitude':-135},
+           'longitude':-135, 'imgURL':"/icons/user.png"},
          {'name':'White Rose', 'username':'wR', 'password':'Aa48904890plmn$',
            'email':'wr@gmail.com', 'phone':'31', 'latitude': 60,
-           'longitude':-135},
+           'longitude':-135, 'imgURL':"/icons/user.png"},
          {'name':'angela', 'username':'moss', 'password':'Aa48904890plmn$',
            'email':'angela@gmail.com', 'phone':'0714261', 'latitude': 30,
-           'longitude':-150},
+           'longitude':-150, 'imgURL':"/icons/user.png"},
          {'name':'tallman', 'username':'richard', 'password':'Aa48904890plmn$',
            'email':'richartallman@gmail.com', 'phone':'0714', 'latitude': 30,
-           'longitude':-150},
+           'longitude':-150, 'imgURL':"/icons/user.png"},
          {'name':'alex', 'username':'gencoing', 'password':'Aa48904890plmn$',
            'email':'alex@gmail.com', 'phone':'07142461231', 'latitude': 30,
-           'longitude':-150},
+           'longitude':-150, 'imgURL':"/icons/user.png"},
          {'name':'darleen', 'username':'mrrbt', 'password':'Aa48904890plmn$',
            'email':'darleen@gmail.com', 'phone':'071424612301', 'latitude': 0,
-           'longitude':0},
+           'longitude':0, 'imgURL':"/icons/user.png"},
          {'name':'cisco', 'username':'csco', 'password':'Aa48904890plmn$',
            'email':'cisco@gmail.com', 'phone':'0731', 'latitude': 0,
-           'longitude':-0},
+           'longitude':-0, 'imgURL':"/icons/user.png"},
          {'name':'jared', 'username':'jrd', 'password':'Aa48904890plmn$',
            'email':'jared@gmail.com', 'phone':'00011', 'latitude': 20,
-           'longitude':90},
+           'longitude':90, 'imgURL':"/icons/user.png"},
          {'name':'mitch', 'username':'mtch', 'password':'Aa48904890plmn$',
            'email':'mitch@gmail.com', 'phone':'0002', 'latitude': -30,
-           'longitude':60},
+           'longitude':60, 'imgURL':"/icons/user.png"},
          {'name':'recude', 'username':'koko', 'password':'Aa48904890plmn$',
            'email':'koko@gmail.com', 'phone':'0003', 'latitude': 0.0,
-           'longitude':0.0}
-
+           'longitude':0.0, 'imgURL':"/icons/user.png"}
         ]
 for item in  users:
     new_user = Customer(**item)
@@ -172,6 +172,7 @@ for i in range(0, 2000):
     _customer['phone'] = '07{}'.format(i) + str(randrange(600000,1000000))
     _customer['latitude'] = float(randrange(-90, 91))
     _customer['longitude'] = float(randrange(-180, 181))
+    _customer['imgURL'] = "/icons/user.png"
     new = Customer(**_customer)
     customers.append(new)
     storage.new(new)

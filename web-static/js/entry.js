@@ -51,6 +51,7 @@ minus.addEventListener('click', ()=>{
 //bottom left entries
 
 let container = document.querySelector(".Xitems");
+let Empty = container.lastElementChild
 
 
 plus.addEventListener('click', ()=> {
@@ -75,4 +76,7 @@ plus.addEventListener('click', ()=> {
    }
  container.insertBefore(_entry, container.children[0]);
  document.querySelector("#totalcost").textContent = String(Number(document.querySelector("#totalcost").textContent) + Number(__price));
+ if (container.lastElementChild.firstElementChild.textContent == '-') {
+   container.removeChild(container.lastElementChild);
+ }
 }); 
