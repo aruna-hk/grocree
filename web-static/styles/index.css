@@ -1,3 +1,7 @@
+.add_minus_cart .count {
+  font-weight: bold;
+  color: green;
+}
 .add_minus_cart {
   position: absolute;
   min-width: 150px;
