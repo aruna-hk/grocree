@@ -1,16 +1,76 @@
+.add_minus_cart {
+  position: absolute;
+  min-width: 150px;
+}
+.add_minus_cart .minus:hover {
+  border: solid 1px green;
+}
+.add_minus_cart .plus:hover {
+  border: solid fuchsia 1px;
+}
+.Xcart {
+ background: lightgreen;
+}
+.add_minus_cart{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ height: 35px;
+ max-width: 100px;
+ border: solid 1px green;
+}
+.add_minus_cart div {
+  text-align: center;
+  align-content: center;
+}
+.add_minus_cart .minus {
+  background: fuchsia;
+}
+.add_minus_cart .plus{
+ background: green;
+}
+#bell {
+  max-height: 30px;
+  max-width: 30px;
+  float: right;
+}
+.fm {
+  display: none;
+  list-style: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+input {
+  max-height :30px;
+  min-height: 30px;
+  min-width:70px;
+  border-radius:20px;
+  font-size: 12px;
+  margin: 0;
+}
+#notif{
+  text-align: right;
+  justify-content: top;
+  color: green;
+  font-size: 20px;
+}
+#bell:hover {
+  border: solid 1px green;
+}
 #ordertrack{
   display: flex;
   flex-flow: column wrap;
   position: fixed;
-  bottom: 0;
+  bottom: 5%;
   right:0;
 }
 #ordertrack div {
   flex:1 200px;
+  font-weight: bold;
 }
 #contacts {
   position: fixed;
-  bottom: 10%;
+  bottom: 0%;
   left: 0;
   width: 70px;
   height:75px;
@@ -18,48 +78,101 @@
   text-align: center;
   align-content: center;
   border-radius: 45%;
-  color: cadetblue;
+  color: green;
+  font-weight: bold;
 }
 #orders {
-  border: solid;
-  max-width: 100px;
+  position: relative;
+  display: flex;
+  border-top;
+  border-radius: 20px;
+  align-content: bottom;
+  text-align: right;
+  border-left;
+  border-bottom:;
+  max-height: 40px;
+  max-width: 40px;
+  min-width: 40px;
+  background-image: url("/icons/ordertrack.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: red;
 }
 #shoppingCart {
-  border: solid;
-  max-width: 100px;
-  flex: 1, 100px;
+  border-top:
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  border-left;
+  border-bottom;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 40px;
+  text-align: right;
+  background-image: url("/icons/cart.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#shoppingCart div, #orders div {
+  position: absolute;
+  top:0;
+  right:90%;
+  min-width: 20px;
+}
+
+#orders:hover, #shoppingCart:hover {
+  border: solid 2px green;
+  border-radius: 6%;
+}
+#contacts:hover {
+  background: lightgreen;
 }
 #SearchBar {
   display: grid;
   text-align: center;
-  grid-template-columns: 3fr 1fr;
   height: 70%;
   margin: 0 10% 0 10%;
-  border: solid green;
   border-radius: 1%;
 }
 #USER {
-   border:1px;
-  border-radius: 50%;
+  border-radius: 10%;
   height: 100%;
-  text-align: center;
+  text-align: right;
   align-content: center;
+  align-items: center;
+}
+#USER img {
+  max-height: 40px;
+  max-width: 40px;
+  float: right;
+}
+#USER img:hover {
+  border:solid green 1px;
+  border-radius: 5%;
 }
 .searchbutton {
   background: red; 
 }
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   box-sizing: border-box;
   margin: 0;
+  align-items: center;
+  align-content: center;
+  justify-content: normal;
+  grid-gap: 0px;
 }
 .homebar {
   box-sizing: border-box;
-  height: 70px;
-  border:solid green 1px;
+  min-height: 45px;
+  border-bottom:solid green 1px;
+  border-top:solid green 1px;
+  border-radius: 4px;
   display: grid;
-  grid-template-columns: 4fr 1.5fr;
+  grid-template-columns: 3fr 1fr 1.5fr;
   align-items: center;
   justify-content: space-around;
   padding:0px;
@@ -69,36 +182,61 @@ main {
     border: solid black 1px;
     border-radius:40%;
 }
-figure {
-  flex: 1 400px;
-  margin: inherit;
-  box-sizing: inherit;
-}
 .desc {
-  display: flex;
+  display: grid;
+  text-align: center;
   flex-flow: row wrap;
   margin: inherit;
   box-sizing: border-box;
-}.desc > div {
-  border: solid 1px;
+  grid-template-columns: 3.5fr 2fr;
+  border-top: solid 2px green;
+  border-radius:5%;
+}
+.desc > div{
   flex: 1;
   margin: inherit;
 }
 .groceryItem {
-  border: solid 1px fuchsia;
+  flex: 1 400px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit;
+  border: solid 1px gray;
+  border-radius: 4%;
+  max-width: 400px;
+  overflow: hidden;
+  max-height: 350px;
+  margin-left0px;
+  margin-right0px;
+  
+}
+.groceryItem:hover {
+  background: white;
+  border: solid green;
+  border-radius: 5%;
 }
 figure > img {
   display: block;
   margin: 0 auto;
-  background: green;
+  width: 95%;
+  min-height: 240px;
 }
 .PriceTag {
   align-content: center;
   text-align: center;
+  border-left: solid 2px green;
 }
 .PriceTag div {
- text-align: center;
+  text-align: center;
+  align-content: center;
   font-weight: bold;
+  border: solid;
+  max-width: 80px;
+  min-height: 80%;
+  margin: 0 auto;
+  font-size: 130%;
+  border-radius: 40%;
+  margin: 2px;
 }
 dl, dt {
   margin:0
@@ -108,5 +246,51 @@ dd {
   margin-bottom: 0px;
 }
 .name {
-  margin: 0;
+  margin: 0 auto;
+}
+.Xremove {
+   color: red;
+}
+.Xdesc {
+   background: green;
+   max-height: 20px;
+   display: grid;
+   grid-template-columns: 4fr 1fr 2fr;
+   align-items: center;
+   text-align: center;
+}
+.Xcart{
+  display: none;
+  border: solid 1px;
+  width: -moz-available;
+  max-width: 500px;
+  min-width: 300px;
+  position: fixed;
+  bottom:0;
+  right: 0;
+  text-align: center;
+}
+.XitemEntry {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr 0.5fr;
+  border-top:solid 1px;
+  border-left: solid 1px;
+  text-align: center;
+  min-height: 40px;
+  max-height: 50px;
+  align-content: center;
+
+}
+.XitemEntry img {
+  display: block;
+  max-height: 40px;
+  width: -moz-available;
+  
+}
+.XcartFooter {
+  border-top: solid 1px;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  text-align: center;
+  align-content: center;
 }
