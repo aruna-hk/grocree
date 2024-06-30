@@ -376,16 +376,25 @@ def home(user_id=None):
     listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
                         Grocery.description,Grocery.imgURL, Store.id,\
                         Inventory.stock, Inventory.price).join(Grocery).join(Store)
+    profile = "/icons/user.png"
     if user_id:
+        username = 'Nobody';
+        stmt = select(Customer.username, Customer.imgURL).where(Customer.id == user_id)
+        try:
+            result = storage.query(stmt).first()
+            username = result[0];#maycause typeerror
+            profile = result[1];#maycause typeerror
+        except TypeError:
+            user_id = '';
         customer_location_stmt = select(Customer.latitude, Customer.longitude)\
                              .where(Customer.id == user_id)
         #get customer location
-        _location = storage.query(customer_location_stmt).first()
-        if _location:
-            latitude, longitude = _location
-        else:
+        location = storage.query(customer_location_stmt).first()
+        if location is None:
             __items = _listings(storage.query(listings_stmt).fetchall())
-            return render_template("index.html", items=__items)
+            return render_template("index.html",profile=profile, user=user_id, username=username, items=__items)
+
+        latitude, longitude = location
         #get close store
         #for tailoring groceries at close store to customer
         close_stores = allocate_store(latitude, longitude)
@@ -395,11 +404,12 @@ def home(user_id=None):
         for store in close_stores:
             __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
             listings = listings + __listings
-    else:
-        #just home
-        listings = storage.query(listings_stmt).fetchall()
+        __items = _listings(storage.query(listings_stmt).fetchall())
+        return render_template("index.html",profile=profile, user=user_id, username=username, items=__items)
+    #just home
+    listings = storage.query(listings_stmt).fetchall()
     __items = _listings(listings)
-    return render_template("index.html", items=__items)
+    return render_template("index.html", user='', profile=profile, username='Nobody', items=__items)
 
 #home not logged in
 @app.route("/home", strict_slashes=False)
