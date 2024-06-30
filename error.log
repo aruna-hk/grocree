@@ -712,3 +712,14 @@ OSError: [Errno 9] Bad file descriptor
 [2024-06-30 23:07:27 +0300] [10326] [INFO] Booting worker with pid: 10326
 [2024-06-30 23:07:27 +0300] [10327] [INFO] Booting worker with pid: 10327
 [2024-06-30 23:07:27 +0300] [10328] [INFO] Booting worker with pid: 10328
+[2024-06-30 23:27:36 +0300] [10323] [INFO] Handling signal: term
+[2024-06-30 23:27:37 +0300] [10327] [INFO] Worker exiting (pid: 10327)
+[2024-06-30 23:27:37 +0300] [10328] [INFO] Worker exiting (pid: 10328)
+[2024-06-30 23:27:37 +0300] [10326] [INFO] Worker exiting (pid: 10326)
+[2024-06-30 23:27:37 +0300] [10323] [INFO] Shutting down: Master
+[2024-06-30 23:27:40 +0300] [11036] [INFO] Starting gunicorn 20.1.0
+[2024-06-30 23:27:40 +0300] [11036] [INFO] Listening at: http://127.0.0.1:8000 (11036)
+[2024-06-30 23:27:40 +0300] [11036] [INFO] Using worker: eventlet
+[2024-06-30 23:27:40 +0300] [11039] [INFO] Booting worker with pid: 11039
+[2024-06-30 23:27:40 +0300] [11040] [INFO] Booting worker with pid: 11040
+[2024-06-30 23:27:40 +0300] [11041] [INFO] Booting worker with pid: 11041

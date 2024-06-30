@@ -1,3 +1,4 @@
-*.log
+access.log
+error.log
 *.pyc
 *.pid
