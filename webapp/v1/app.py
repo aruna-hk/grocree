@@ -6,8 +6,10 @@ from flask import render_template
 from sqlalchemy import select, update, and_, or_, join
 from sqlalchemy.sql import func
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 #before request
 #radius
 @app.before_request
