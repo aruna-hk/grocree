@@ -1,3 +1,6 @@
+#username:hover {
+ border: green 1px solid; 
+}
 #USER {
  color: green;
  font-weight:bold;
@@ -109,8 +112,6 @@ input {
   color: red;
 }
 #shoppingCart {
-  border-top:
-  border-radius: 20px;
   position: relative;
   display: flex;
   border-left;
@@ -174,6 +175,17 @@ main {
   justify-content: normal;
   grid-gap: 0px;
 }
+@media (min-width: 1000px)
+{
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 0px;
+    margin: 0 0;
+  }
+  .groceryItem {
+    max-width: -moz-available;
+  }
+}
 .homebar {
   box-sizing: border-box;
   min-height: 45px;
@@ -212,9 +224,7 @@ main {
   box-sizing: inherit;
   border: solid 1px gray;
   border-radius: 4%;
-  max-width: 400px;
   overflow: hidden;
-  max-height: 350px;
   margin-left0px;
   margin-right0px;
   
@@ -303,3 +313,4 @@ dd {
   text-align: center;
   align-content: center;
 }
+

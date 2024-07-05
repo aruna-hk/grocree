@@ -14,10 +14,12 @@
                 <img id="bell" src="/icons/bell.png" alt="bell">
                 4   
             </div>
-            <div id="USER">
-                <img src="/icons/user.png" id="{{user}}" alt="users profile">
-                {{username}}
-            </div>
+             <div id="USER">
+                 <a>
+                     <img src={{profile}} id="{{user}}" alt="users profile">
+                 </a>
+                  <a id=username>{{username}}</a>
+             </div>
         </div>
        <main>
            {% for item in items %}
@@ -66,7 +68,7 @@
          </div>
 
         <ul class="fm">
-            <li> <a href="maito:kiptooharon.hk@gmail.com">Email</a></li>
+            <li> <a href="maito:grocree.@gmail.com">Email</a></li>
             <li> <a href="https://github.com/aruna-hk">Github</a></li>
             <li> <a href="https://linkedn.com">linkdn</a></li>
             <li> <a href="https://twitter.com">twitter</a></li>
@@ -75,4 +77,5 @@
         <script src='/js/cart.js'></script>
         <script src='/js/entry.js'></script>
         <script src='/js/submit.js'></script>
+        <script src='/js/login.js'></script>
 </body>

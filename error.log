@@ -1,12 +1,7 @@
 
-[2024-07-03 10:50:54 +0300] [11050] [INFO] Handling signal: term
-[2024-07-03 10:50:54 +0300] [11054] [INFO] Worker exiting (pid: 11054)
-[2024-07-03 10:50:54 +0300] [11053] [INFO] Worker exiting (pid: 11053)
-[2024-07-03 10:50:54 +0300] [11055] [INFO] Worker exiting (pid: 11055)
-[2024-07-03 10:50:54 +0300] [11050] [INFO] Shutting down: Master
-[2024-07-03 10:50:55 +0300] [11094] [INFO] Starting gunicorn 20.1.0
-[2024-07-03 10:50:55 +0300] [11094] [INFO] Listening at: http://127.0.0.1:8000 (11094)
-[2024-07-03 10:50:55 +0300] [11094] [INFO] Using worker: eventlet
-[2024-07-03 10:50:55 +0300] [11096] [INFO] Booting worker with pid: 11096
-[2024-07-03 10:50:55 +0300] [11097] [INFO] Booting worker with pid: 11097
-[2024-07-03 10:50:55 +0300] [11098] [INFO] Booting worker with pid: 11098
+[2024-07-05 11:07:44 +0300] [2548] [INFO] Starting gunicorn 20.1.0
+[2024-07-05 11:07:45 +0300] [2548] [INFO] Listening at: http://127.0.0.1:8000 (2548)
+[2024-07-05 11:07:45 +0300] [2548] [INFO] Using worker: eventlet
+[2024-07-05 11:07:45 +0300] [2862] [INFO] Booting worker with pid: 2862
+[2024-07-05 11:07:45 +0300] [2863] [INFO] Booting worker with pid: 2863
+[2024-07-05 11:07:45 +0300] [2864] [INFO] Booting worker with pid: 2864

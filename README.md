@@ -3,7 +3,7 @@
 Distributed online grocery Stores where buyers and delivery personnel are
 placed relative to stores to ensure tailored listings based on location and
 preference as well as to ensure faster delivery by pinging closest delivery
-personel wheneve there is an order
+personel whenever there is an order
 
 
 File summary

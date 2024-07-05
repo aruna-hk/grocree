@@ -379,8 +379,8 @@ def home(user_id=None):
                         Grocery.description,Grocery.imgURL, Store.id,\
                         Inventory.stock, Inventory.price).join(Grocery).join(Store)
     profile = "/icons/user.png"
+    username = 'login/register';
     if user_id:
-        username = 'Nobody';
         stmt = select(Customer.username, Customer.imgURL).where(Customer.id == user_id)
         try:
             result = storage.query(stmt).first()
@@ -394,7 +394,9 @@ def home(user_id=None):
         location = storage.query(customer_location_stmt).first()
         if location is None:
             __items = _listings(storage.query(listings_stmt).fetchall())
-            return render_template("index.html",profile=profile, user=user_id, username=username, items=__items)
+            if request.headers['Accept'] == 'application/json':
+                return __items
+            return render_template("index.html",user=user_id, profile=profile, username=username, items=__items)
 
         latitude, longitude = location
         #get close store
@@ -407,11 +409,15 @@ def home(user_id=None):
             __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
             listings = listings + __listings
         __items = _listings(storage.query(listings_stmt).fetchall())
+        if request.headers['Accept'] == 'application/json':
+            return __items
         return render_template("index.html",profile=profile, user=user_id, username=username, items=__items)
     #just home
     listings = storage.query(listings_stmt).fetchall()
     __items = _listings(listings)
-    return render_template("index.html", user='', profile=profile, username='Nobody', items=__items)
+    if request.headers['Accept'] == 'application/json':
+        return __items
+    return render_template("index.html", user=user_id, profile=profile, username=username, items=__items)
 
 #home not logged in
 @app.route("/home", strict_slashes=False)
