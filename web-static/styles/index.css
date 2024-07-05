@@ -3,12 +3,16 @@
 }
 #USER {
  color: green;
- font-weight:bold;
  font-style:italic;
 }
 .add_minus_cart .count {
   font-weight: bold;
   color: green;
+}
+#logo {
+  color: green;
+  font-style: oblique;
+  font-weight: bold;
 }
 .add_minus_cart {
   position: absolute;
@@ -55,7 +59,7 @@
 input {
   max-height :30px;
   min-height: 30px;
-  min-width:70px;
+  width: 100%;
   border-radius:20px;
   font-size: 12px;
   margin: 0;
@@ -158,6 +162,16 @@ input {
   max-width: 40px;
   float: right;
 }
+@media (max-width:450px) {
+  #USER img {
+    max-height: 30px;
+  }
+}
+@media (max-width:400px) {
+  #USER img {
+    max-height: 20px;
+  }
+}
 #USER img:hover {
   border:solid green 1px;
   border-radius: 5%;
@@ -188,20 +202,20 @@ main {
 }
 .homebar {
   box-sizing: border-box;
-  min-height: 45px;
   border-bottom:solid green 1px;
   border-top:solid green 1px;
   border-radius: 4px;
   display: grid;
-  grid-template-columns: 3fr 1fr 1.5fr;
-  align-items: center;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
   justify-content: space-around;
+  align-items: center;
   padding:0px;
-  margin: 0 auto;
+  margin: auto 0;
 }
 .searchbar {
     border: solid black 1px;
     border-radius:40%;
+    margin-top: 0px;
 }
 .desc {
   display: grid;
@@ -313,4 +327,3 @@ dd {
   text-align: center;
   align-content: center;
 }
-
