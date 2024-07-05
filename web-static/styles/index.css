@@ -153,6 +153,18 @@ input {
 #USER {
   border-radius: 10%;
   height: 100%;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+}
+#USER img {
+  max-height: 40px;
+  max-width: 40px;
+}
+@media (min-width:700px){
+#USER {
+  border-radius: 10%;
+  height: 100%;
   text-align: right;
   align-content: center;
   align-items: center;
@@ -161,6 +173,21 @@ input {
   max-height: 40px;
   max-width: 40px;
   float: right;
+}
+}
+@media (max-width:700px){
+#USER {
+  border-radius: 10%;
+  height: 100%;
+  text-align: center;
+  align-content: center;
+  align-items: center
+}
+#USER img {
+  max-height: 25px;
+  max-width: 25px;
+  float: right;
+}
 }
 @media (max-width:450px) {
   #USER img {
@@ -177,7 +204,7 @@ input {
   border-radius: 5%;
 }
 .searchbutton {
-  background: red; 
+  background: red;
 }
 main {
   display: grid;
@@ -241,7 +268,7 @@ main {
   overflow: hidden;
   margin-left0px;
   margin-right0px;
-  
+
 }
 .groceryItem:hover {
   background: white;
@@ -318,7 +345,7 @@ dd {
   display: block;
   max-height: 40px;
   width: -moz-available;
-  
+
 }
 .XcartFooter {
   border-top: solid 1px;

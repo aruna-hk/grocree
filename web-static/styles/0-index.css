@@ -56,7 +56,7 @@
   font-weight: bold;
   font-style: italic;
 }
-#look1 >#phone {
+#look1 >#phone,#look2>#phone {
   min-width: 300px;
   margin: auto
 }
@@ -109,7 +109,7 @@ nav {
   height: 70px;
   border: solid fuchsia;
 }
-img {
+#devops img, main img {
   margin: 0 auto;
   height: 150px;
   border-radius: 20px;
@@ -264,14 +264,15 @@ input {
 #USER {
   border-radius: 10%;
   height: 100%;
-  text-align: right;
+  align-items: ceter;
+  justify-content: center;
+  text-align: center;
   align-content: center;
-  align-items: center;
 }
-#USER img {
-  max-height: 40px;
-  max-width: 40px;
-  float: right;
+#USER > img {
+  max-height: 20px;
+  max-width: 20px;
+  margin: 0 45%;
 }
 .searchbutton {
   background: red; 
@@ -283,7 +284,7 @@ input {
   border-top:solid green 1px;
   border-radius: 4px;
   display: grid;
-  grid-template-columns: 3fr 1fr 1.5fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
   align-items: center;
   justify-content: space-around;
   padding:0px;
