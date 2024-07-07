@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 from flask import Flask, g, request, abort, jsonify
+from flask import session, redirect, make_response
+from flask import url_for
 from models import Customer, Order, Orderline, Grocery
 from models import storage, Delivery, Store, Inventory
 from flask import render_template
@@ -7,9 +9,12 @@ from sqlalchemy import select, update, and_, or_, join
 from sqlalchemy.sql import func
 import json
 from flask_cors import CORS
+from math import sqrt
+from decimal import Decimal
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='*')
+app.secret_key = "protect_cookies"
 #before request
 #radius
 @app.before_request
@@ -167,23 +172,23 @@ def allocate_store(latitude, longitude):
 
 #get delivery guy
 def get_delivery(store_id):
-    g.radius = 10
+    g.radius = g.radius / 2
     latitude_longitude = select(Store.latitude, Store.longitude).where(Store.id == store_id)
     latitude, longitude = storage.query(latitude_longitude).first()
 
     stmt = select(Delivery.id).where(
                    and_(
-                     Delivery.latitude <= latitude + g.radius,
-                     Delivery.latitude >= latitude - g.radius)).where(
+                     Delivery.latitude <= latitude + Decimal(g.radius),
+                     Delivery.latitude >= latitude - Decimal(g.radius))).where(
                    and_(
-                     Delivery.longitude <= longitude + g.radius,
-                     Delivery.longitude >= longitude - g.radius))
+                     Delivery.longitude <= longitude + Decimal(g.radius),
+                     Delivery.longitude >= longitude - Decimal(g.radius)))
     #notify close delivery guys
     #get feedback update who picked the order
     #return deliveryguy id
     delivery_person = storage.query(stmt).fetchall()
     if len(delivery_person) == 0:
-        g.radius = g.radius + g.radius
+        g.radius = g.radius + (g.radius / 2)
         delivery_person = get_delivery(store_id)
     return delivery_person[0]
 
@@ -202,8 +207,14 @@ def _close(latitude, longitude):
                     )
     result_proxy = storage.query(stmt)
     #notify the store of order
-    store = result_proxy.first()
-    return store[0]
+    result = result_proxy.fetchall()
+    if len(result) == 0:
+       g.radius = g.radius + (g.radius / 2)
+       result =  _close(latitude, longitude)
+    elif len(result) > 2:
+        g.radius = int(g.radius - sqrt(g.radius))
+        result =  _close(latitude, longitude)
+    return result[0].id
 
 #place order
 @app.route("/users/customers/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
@@ -216,48 +227,28 @@ def orders(user_id):
         return jsonify(results)
 
     __order = request.get_json()
-    if __order is None:
-        abort(400, "invalid Order request")
-    try:
-        order_info = {}
-        order_info['customerId'] = user_id
-        #get customer location and choose close store
-        stmt = select(Customer.latitude, Customer.longitude)
-        stmt = stmt.where(Customer.id == user_id)
-        result_proxy = storage.query(stmt)
-        latitude, longitude = result_proxy.first()
-        #return list of close store
-        #look for nearest -- contact --store to centralize
-        #at close store -- dispatch store
-        store_id = _close(latitude, longitude)
-        order_info['storeId'] = store_id 
-        #get delivery guys close to the store
-        delivery = get_delivery(store_id).id
-        order_info['deliveryPersonId'] = delivery
-        order_info['orderStatus'] = "pending"
-        #create order now
-        an_order = Order(**order_info)
-        #add order to session
-        storage.new(an_order)
-        #create orderLine items from cart
-        for key, value in __order.items():
-            _items = {}
-            for _key, _value in value.items():
-                _items["groceryId"] = _key
-                _items['quantity'] = _value
-            _entry = Orderline(orderId=an_order.id, storeId=key, **_items)
+    #get the closest store to dispatch product
+    #cart items from diffrent close stores - centralise in closest and dispatch
+    #store aim at ensuring same products -- all stores --cut costs
+    #useful in bringin goods to buyers
+    latitude, longitude = storage.query(select(Customer.latitude, Customer.longitude)\
+                         .where(Customer.id == user_id)).first()
+    #get closest store / inform to collect
+    store_id = _close(latitude, longitude)
+    delivery = get_delivery(store_id).id
+    an_order = Order(customerId=user_id, storeId=store_id, deliveryPersonId=delivery, orderStatus="pending")
+    storage.new(an_order)
+    storage.save()
+    for key, value in __order.items():
+        if key.split('$')[1] == store_id:
+            _entry = Orderline(orderId=an_order.id, storeId=store_id, groceryId=key.split('$')[0], quantity=value)
             storage.new(_entry)
-            storage.save()
-        #save orderLine products-orderid association
-        try:
-            storage.save()
-        except IntegrityError as e:
-           abort(400, "integrity Error")
-        return jsonify({200: "order created successfully"})
+        else:
+            _entry = Orderline(orderId=an_order.id, storeId=key.split('$')[1], groceryId=key.split('$')[0], quantity=value)
+            storage.new(_entry)
+    storage.save()
 
-    except KeyError as e:
-        #incase order with invalid user/no user id
-        abort(400, "invalid Order request")
+    return make_response(jsonify("CREATED"), 201)
 
 #track order
 @app.route("/users/customers/<user_id>/orders/<order_id>",\
@@ -381,40 +372,36 @@ def home(user_id=None):
     profile = "/icons/user.png"
     username = 'login/register';
     if user_id:
-        stmt = select(Customer.username, Customer.imgURL).where(Customer.id == user_id)
-        try:
-            result = storage.query(stmt).first()
-            username = result[0];#maycause typeerror
-            profile = result[1];#maycause typeerror
-        except TypeError:
-            user_id = '';
-        customer_location_stmt = select(Customer.latitude, Customer.longitude)\
-                             .where(Customer.id == user_id)
-        #get customer location
-        location = storage.query(customer_location_stmt).first()
-        if location is None:
-            __items = _listings(storage.query(listings_stmt).fetchall())
-            if request.headers['Accept'] == 'application/json':
-                return __items
-            return render_template("index.html",user=user_id, profile=profile, username=username, items=__items)
+        #if user_id return json data
+        stmt = select(Customer.username, Customer.imgURL, Customer.latitude, Customer.longitude).where(Customer.id == user_id)
+        json_data = {}
+        user = {}
+        result = storage.query(stmt).first()
+        user['name'] = result[0]
+        user['image'] = result[1]
+        user['id'] = user_id
+        json_data['user'] = user
 
-        latitude, longitude = location
-        #get close store
-        #for tailoring groceries at close store to customer
-        close_stores = allocate_store(latitude, longitude)
-        listings = []
-        #update listing statement
+        close_stores = allocate_store(result[2], result[3])
+        if len(close_stores) == 0:
+            #best selling / non parishables
+            _items = _listings(storage.query(listings_stmt).fetchall())
+            json_data['items'] = _items
+            return jsonify(json_data)
         #for every close store
+        listings = []
+        #narrow down the radius closest come'f first in listings
         for store in close_stores:
             __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
             listings = listings + __listings
-        __items = _listings(storage.query(listings_stmt).fetchall())
-        if request.headers['Accept'] == 'application/json':
-            return __items
-        return render_template("index.html",profile=profile, user=user_id, username=username, items=__items)
+        _items = _listings(storage.query(listings_stmt).fetchall())
+        json_data['items'] = _items
+        return jsonify(json_data)
+
     #just home
     listings = storage.query(listings_stmt).fetchall()
     __items = _listings(listings)
+    #if accept is json return json else html
     if request.headers['Accept'] == 'application/json':
         return __items
     return render_template("index.html", user=user_id, profile=profile, username=username, items=__items)
@@ -424,6 +411,23 @@ def home(user_id=None):
 @app.route("/home/customers", strict_slashes=False)
 def home_1():
     return home()
+#login page
+@app.route("/login", methods=["GET"], strict_slashes=False)
+def login():
+   stmt = select(Customer.password, Customer.imgURL, Customer.id)\
+            .where(Customer.username == request.args.get('username'))
+   _auth = storage.query(stmt).first()
+   if _auth:
+      if _auth[0] == request.args.get("password"):
+          _user = {}
+          _user['imgURL'] = _auth[1]
+          _user['username'] = request.args.get("username")
+          url = url_for('home', user_id=_auth[2])
+          url = "http://localhost" + url
+          return redirect(url)
+      else:
+          abort(401, "unauthorized")
+   return abort(404, "not found")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
