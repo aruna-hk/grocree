@@ -248,7 +248,7 @@ def orders(user_id):
             storage.new(_entry)
     storage.save()
 
-    return make_response(jsonify("CREATED"), 201)
+    return make_response(jsonify("Order created"), 201)
 
 #track order
 @app.route("/users/customers/<user_id>/orders/<order_id>",\
