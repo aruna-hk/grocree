@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="author" content="kiptoo haron">
+        <meta name="desciption" content="grocree.com">
+        <link rel="stylesheet" href="/styles/index.css">
+        <link rel="stylesheet" href="/styles/login.css">
+    </head>
+    <body>
+      <div class="login">
+        <form id="logform">
+            <div id="inptfields">
+             <label for="usernme">Username: </label>
+             <input type="text" id="usernme" placeholder="username">
+             <label for="password">Password: </label>
+             <input type="password" id="password">
+           </div>
+         <div id="submitregister">
+            <div id="forget">
+             Reset passwd?
+           </div>
+           <input type="button" value="REGISTER" id="register">
+          or
+          <input type="button" value="LOGIN" id="login">
+        </div>
+       </form>
+     </div>
+       <div class="homebar">
+            <div id="logo">
+            GROCREE   
+            </div>
+            <input type="text" placeholder="Search">
+            <div id="notif">
+                <img id="bell" src="/icons/bell.png" alt="bell">
+                4   
+            </div>
+            <div id="USER">
+                <a>
+                    <img src="/icons/user.png" id="None" alt="users profile">
+                </a>
+                <a id="username">{{username}}</a>
+           </div>
+        </div>
+       <main>
+           {% for item in items %}
+               <figure class="groceryItem" id={{item.id}} str={{item.store}}>
+                   <img alt="groceryImg" src="{{item.img}}">
+                   <figcaption class="desc">
+                       <div class="description">
+                           <div class="name">{{item.name}}</div>
+                           <div class="category">{{item.category}}</div>
+                           <div class="p_description">{{item.description}}</div>
+                       </div>
+                       <div class="PriceTag"><div>{{item.price}}</div></div>
+                   </figcaption>
+               </figure>
+
+           {% endfor %}
+        </main>
+        <address id="contacts">GET IN TOUCH</address>
+        <div id="ordertrack">
+            <div id="shoppingCart">
+                <div id="totalItems">0</div>
+            </div>
+            <div id="orders">
+                <div id='pendingOrders'>0</div>
+            </div>
+        </div>
+        <div class="Xcart">
+            <div class="Xdesc">
+                    <div>Item</div>
+                    <div>price</div>
+                    <div>Total</div>
+             </div>
+             <div class="Xitems">
+                 <div class="XitemEntry">
+                    <div class="Xname">-</div>
+                    <div class="Xquantity">-</div>
+                    <div class="Xamount">-</div>
+                    <div class="Xremove">X</div>
+                  </div>
+              </div>
+              <div class="XcartFooter">
+                    <div> Total </div>
+                    <div id="totalcost">0</div>
+              </div>
+              <button id="completePurchase">SUBMIT</button>
+         </div>
+
+        <ul class="fm">
+            <li> <a href="maito:grocree.@gmail.com">Email</a></li>
+            <li> <a href="https://github.com/aruna-hk">Github</a></li>
+            <li> <a href="https://linkedn.com">linkdn</a></li>
+            <li> <a href="https://twitter.com">twitter</a></li>
+        <ul>
+         <!--script src='/js/0-js.js'></script-->
+        <script src='/js/cart.js'></script>
+        <script src='/js/submit.js'></script>
+        <script src='/js/entr.js'></script>
+        <script src='/js/login.js'></script>
+</body>
