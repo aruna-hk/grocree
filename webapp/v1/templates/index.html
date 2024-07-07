@@ -6,8 +6,27 @@
         <meta name="author" content="kiptoo haron">
         <meta name="desciption" content="grocree.com">
         <link rel="stylesheet" href="/styles/index.css">
+        <link rel="stylesheet" href="/styles/login.css">
     </head>
     <body>
+      <div class="login">
+        <form id="logform">
+            <div id="inptfields">
+             <label for="usernme">Username: </label>
+             <input type="text" id="usernme" placeholder="username">
+             <label for="password">Password: </label>
+             <input type="password" id="password">
+           </div>
+         <div id="submitregister">
+            <div id="forget">
+             Reset passwd?
+           </div>
+           <input type="button" value="REGISTER" id="register">
+          or
+          <input type="button" value="LOGIN" id="login">
+        </div>
+       </form>
+     </div>
        <div class="homebar">
             <div id="logo">
             GROCREE   
@@ -22,11 +41,11 @@
                     <img src="/icons/user.png" id="None" alt="users profile">
                 </a>
                 <a id="username">{{username}}</a>
-             </div>
+           </div>
         </div>
        <main>
            {% for item in items %}
-               <figure class="groceryItem" id={{item.id}}>
+               <figure class="groceryItem" id={{item.id}} str={{item.store}}>
                    <img alt="groceryImg" src="{{item.img}}">
                    <figcaption class="desc">
                        <div class="description">
@@ -78,7 +97,7 @@
         <ul>
          <!--script src='/js/0-js.js'></script-->
         <script src='/js/cart.js'></script>
-        <script src='/js/entry.js'></script>
         <script src='/js/submit.js'></script>
+        <script src='/js/entr.js'></script>
         <script src='/js/login.js'></script>
 </body>
