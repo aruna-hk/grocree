@@ -1,0 +1,65 @@
+.logerror{
+ color: red;
+}
+#logform {
+  background: lightgreen;
+  border-radius: 10px;
+}
+#logform input {
+  border-radius: 0;
+  font-size: 100%;
+}
+.login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  visibility: hidden;
+}
+form {
+  display: grid;
+  border: solid 1px;
+  width: 80%;
+  max-width: 450px;
+  margin:0 auto;
+  align-items: cente;
+  justify-content: center;
+  padding: 4%;
+}
+#forget {
+  margin: auto auto;
+  color: green;
+}
+#inptfields {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  text-align: center;
+}
+#login {
+  width: 25%;
+  max-height: 60px;
+}
+#register {
+  width: 25%;
+
+}
+#password {
+  max-height: 50px
+}
+#usernme {
+  max-height: 50px;
+}
+input {
+  text-align: center;
+  min-height: 40px;
+}
+#submitregister {
+  display: flex;
+  justify-content: right;
+  max-height: 45px;
+}

@@ -7,6 +7,33 @@
   border: solid grey 10px;
   padding: 10px;
   border-radius: 6px;
+  font-size: 1.5vw;
+}
+#lenovex230 .Xcart {
+  display: none;
+}
+@media (max-width:600px){
+  #lenovex230 {
+    max-height: 350px;
+  }
+  #lenovex230 .groceryItem {
+    max-height: 150px;
+  }
+  #lenovex230 img {
+    max-height: 100px;
+  }
+  #lenovex230 >.homebar input{
+    max-height: 10px;
+  } 
+  #lenovex230 > .homebar #bell {
+    height: 20px;
+  }
+  #lenovex230 >.homebar #USER img {
+    height: 20px;
+  }
+  #lenovex230 >.homebar input {
+    display: inline-block;
+  }
 }
 #lenovex230 >.Xcart {
   display: none;
