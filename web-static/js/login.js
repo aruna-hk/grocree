@@ -47,10 +47,10 @@ async function loginRequest(username, password) {
     document.querySelector("#USER img").id=_json.user.id
     document.querySelector("#USER >#username").textContent = _json.user.name
     let _counter = 0
-    for (entry of _json.items) {
+    for (Entry of _json.items) {
       if (_counter >= document.querySelector("main").children) {
          let product = document.querySelector("figure").clone()
-         product.id = entry.id
+         product.id = Entry.id
          product.append(document.querySelector("figure > img").clone())
          product.append(document.querySelector("figure > figcaption").clone())
          product.lastElementChild.append(document.querySelector("figcaption > .description").clone())
@@ -58,21 +58,21 @@ async function loginRequest(username, password) {
          product.lastElementChild.firstElementChild.appendChild(document.querySelector("figcaption > .category"))
          product.lastElementChild.firstElementChild.appendChild(document.querySelector("figcaption > .category"))
          product.lastElementChild.append(document.querySelector("figcaption > .PriceTag").clone())
-         product.firstElementChild.src=entry.img
-         product.lastElementChild.firstElementChild.firstElementChild.textContent = entry.name
-         product.lastElementChild.firstElementChild.lastElementChild.textContent = entry.category
-         product.lastElementChild.firstElementChild.lastElementChild.textContent = entry.description
-         product.lastElementChild.lastElementChild.firstElementChild.textContent=entry.price
+         product.firstElementChild.src=Entry.img
+         product.lastElementChild.firstElementChild.firstElementChild.textContent = Entry.name
+         product.lastElementChild.firstElementChild.lastElementChild.textContent = Entry.category
+         product.lastElementChild.firstElementChild.lastElementChild.textContent = Entry.description
+         product.lastElementChild.lastElementChild.firstElementChild.textContent=Entry.price
          document.querySelector("main").insertBefore(product, document.querySelector("main").firstElementChild)
 
          } else {
           let product = document.querySelector("main").lastElementChild
 
-          product.firstElementChild.src=entry.img
-          product.lastElementChild.firstElementChild.firstElementChild.textContent = entry.name
-          product.lastElementChild.firstElementChild.lastElementChild.textContent = entry.category
-          product.lastElementChild.firstElementChild.lastElementChild.textContent = entry.description
-          product.lastElementChild.lastElementChild.firstElementChild.textContent=entry.price
+          product.firstElementChild.src=Entry.img
+          product.lastElementChild.firstElementChild.firstElementChild.textContent = Entry.name
+          product.lastElementChild.firstElementChild.lastElementChild.textContent = Entry.category
+          product.lastElementChild.firstElementChild.lastElementChild.textContent = Entry.description
+          product.lastElementChild.lastElementChild.firstElementChild.textContent=Entry.price
           document.querySelector("main").removeChild(document.querySelector("main").lastElementChild)
           document.querySelector("main").insertBefore(product, document.querySelector("main").firstElementChild)
          }
@@ -119,3 +119,5 @@ document.querySelector('#password').addEventListener('keydown', ()=> {
    //pass
   }
 });
+
+reload()

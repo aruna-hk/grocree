@@ -1,7 +1,7 @@
 //cart
 var cart = {}
 //add or minus menu
-let entry = document.createElement('div')
+const entry = document.createElement('div')
 entry.className = "add_minus_cart"
 let minus = document.createElement('div')
 minus.className= 'minus'
@@ -16,38 +16,27 @@ entry.appendChild(minus)
 entry.appendChild(count)
 entry.appendChild(plus)
 
-//items
-let items = document.querySelectorAll('.groceryItem')
-//add event listener to items
-
-for (let i = 0; i < items.length; i++){
-  items[i].addEventListener("click", ()=> {
-  if (items[i].children.length == 2) {
-      items[i].insertBefore(entry, items[i].children[1]);
-      count.innerHTML = '0';
-  }
-  if (items[i].id in cart) {
-      count.innerHTML = String(cart[items[i].id]);}
-  });
-}
 
 plus.addEventListener('click', ()=>{
-  if (plus.parentElement.parentElement.id in cart) {
-   cart[plus.parentElement.parentElement.id] = cart[plus.parentElement.parentElement.id] + 1;
-   count.innerHTML = String(cart[plus.parentElement.parentElement.id]);
+  let __key = plus.parentElement.parentElement.id + "$" + plus.parentElement.parentElement.attributes.getNamedItem('str').textContent
+  if (__key in cart) {
+   cart[__key] = cart[__key] + 1;
+   count.innerHTML = String(cart[__key]);
   } else {
-   cart[plus.parentElement.parentElement.id] = 1;
-   count.innerHTML = String(cart[plus.parentElement.parentElement.id]);}
+   cart[__key] = 1;
+   count.innerHTML = String(cart[__key]);}
   document.querySelector('#totalItems').innerHTML = String(Number(document.querySelector('#totalItems').innerHTML) + 1);
 });
 
-    
 minus.addEventListener('click', ()=>{
- if (minus.parentElement.parentElement.id in cart) {
-   cart[minus.parentElement.parentElement.id] = cart[minus.parentElement.parentElement.id] - 1;
-   count.innerHTML = String(cart[minus.parentElement.parentElement.id]);
+  let __key = plus.parentElement.parentElement.id + "$" + plus.parentElement.parentElement.attributes.getNamedItem('str').textContent
+ if (__key in cart) {
+   cart[__key] = cart[__key] - 1;
+   count.innerHTML = String(cart[_key]);
    document.querySelector('#totalItems').innerHTML = String(Number(document.querySelector('#totalItems').innerHTML) - 1);
   }});
+
+   
 //bottom left entries
 
 let container = document.querySelector(".Xitems");
@@ -69,7 +58,7 @@ plus.addEventListener('click', ()=> {
   let _entries_ = document.querySelectorAll(".XitemEntry");
   for (_entry_ of _entries_) {
         if (_entry_.firstElementChild.textContent == __name) {
-         _entry_.children[2].textContent = String(Number(__price) * Number(cart[plus.parentElement.parentElement.id]));
+         _entry_.children[2].textContent = String(Number(__price) * Number(cart[plus.parentElement.parentElement.id + "$" + plus.parentElement.parentElement.attributes.getNamedItem("str").textContent]));
         document.querySelector("#totalcost").textContent = String(Number(document.querySelector("#totalcost").textContent) + Number(__price));
         return;
       }
@@ -80,3 +69,27 @@ plus.addEventListener('click', ()=> {
    container.removeChild(container.lastElementChild);
  }
 }); 
+
+const reload = ()=>{
+//items
+ let item = document.querySelectorAll('.groceryItem')
+ //add event listener to items
+ for (let i = 0; i < item.length; i++){
+  item[i].addEventListener("click", ()=> {
+   let _prevparent = item[i].id + "$" + item[i].attributes.getNamedItem('str').textContent
+   if (entry.parentElement != null) {
+     entry.parentElement.removeChild(entry)
+     item[i].insertBefore(entry, item[i].children[1])
+    } else {
+    item[i].insertBefore(entry, item[i].children[1])
+   }
+   if (_prevparent in cart) {
+    count.innerHTML = String(cart[_prevparent])
+   } else {
+    count.innerHTML = "0"
+   }
+ });
+}
+}
+
+reload()
