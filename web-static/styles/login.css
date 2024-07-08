@@ -4,6 +4,9 @@
   text-align: right;
   color: green;
 }
+#cancel button {
+  color: tomato;
+}
 .logerror{
  color: red;
 }
