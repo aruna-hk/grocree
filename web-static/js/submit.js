@@ -24,7 +24,7 @@ document.querySelector("#completePurchase").addEventListener("click", ()=>{
    //clear cart
    cart = {}
    document.querySelector(".Xitems").append(Empty)
-   alert("order placed");
    document.querySelector("#totalcost").textContent = '0';
+   document.querySelector(".Xitems").display = 'none'
  }
 });

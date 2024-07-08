@@ -29,7 +29,7 @@ async function loginRequest(username, password) {
     const response = await fetch(Url);
     if (!response.ok) {
       if (response.status == 404) {
-         usernameError.textContent = "Invalid user"
+         usernameError.textContent = "Not found, Invalid username"
          document.querySelector("#logform").insertBefore(usernameError, document.querySelector("#logform").children[1])
          try {
           document.querySelector("#logform").removeChild(passwordError)
@@ -37,7 +37,7 @@ async function loginRequest(username, password) {
            //pass
          }
       } else {
-         passwordError.textContent = "Wrong password"
+         passwordError.textContent = "Unauthorized, password Error"
          document.querySelector("#logform").insertBefore(passwordError, document.querySelector("#logform").children[1])
       }
       throw new Error(`Response status: ${response.status}`);
@@ -46,6 +46,7 @@ async function loginRequest(username, password) {
     document.querySelector("#USER img").src=_json.user.image
     document.querySelector("#USER img").id=_json.user.id
     document.querySelector("#USER >#username").textContent = _json.user.name
+    document.querySelector("#cancel > div").click()
     let _counter = 0
     for (Entry of _json.items) {
       if (_counter >= document.querySelector("main").children) {
@@ -78,7 +79,6 @@ async function loginRequest(username, password) {
          }
         _counter = _counter + 1
        }
-       document.querySelector("body > .login").style.visibility = "hidden";
   } catch (error) {
     console.error(error.message);
   }
