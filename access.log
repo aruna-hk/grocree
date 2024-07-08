@@ -1,9 +1,0 @@
-
-127.0.0.1 - - [04/Jul/2024:23:42:39 +0300] "GET /home HTTP/1.0" 200 14426 "http://localhost/index.html" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
-127.0.0.1 - - [04/Jul/2024:23:48:00 +0300] "GET /home HTTP/1.0" 200 14426 "-" "curl/8.5.0"
-127.0.0.1 - - [04/Jul/2024:23:48:25 +0300] "GET /home/customers HTTP/1.0" 200 14426 "-" "curl/8.5.0"
-127.0.0.1 - - [04/Jul/2024:23:58:33 +0300] "GET /home/customers HTTP/1.0" 200 14426 "http://localhost/home" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
-127.0.0.1 - - [05/Jul/2024:11:09:36 +0300] "GET /home HTTP/1.0" 200 14426 "http://localhost/index.html" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
-127.0.0.1 - - [05/Jul/2024:11:39:13 +0300] "GET /fetchhome.js HTTP/1.0" 404 207 "http://localhost/index.html" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
-127.0.0.1 - - [05/Jul/2024:11:42:19 +0300] "GET /fetchhome.js HTTP/1.0" 404 207 "http://localhost/index.html" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"
-127.0.0.1 - - [05/Jul/2024:11:42:37 +0300] "GET /home HTTP/1.0" 200 14426 "http://localhost/index.html" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0"

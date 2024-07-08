@@ -22,7 +22,7 @@ class Storage:
     def __init__(self):
         """create db engine """
 
-        print("---------------------------------")
+        print("----------Setting Up database connection-----------------------")
         user = getenv("DB_USER")
         if user is None:
             user = "grocree"
@@ -44,7 +44,7 @@ class Storage:
         #and session manager
         #call session manager to get session
     def reload(self):
-        print("---------engine------------------------")
+        print("-------------Setting up database engine--------------------")
         base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False) 
         self.__session = Session()
@@ -59,6 +59,8 @@ class Storage:
     def save(self):
         self.__session.commit()
 
+    def rollback(self):
+        self.__session.rollback()
     #database querying
     #storage.query(statement)
     #errors by calling function

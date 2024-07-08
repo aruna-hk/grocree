@@ -1,7 +1,0 @@
-
-[2024-07-05 11:07:44 +0300] [2548] [INFO] Starting gunicorn 20.1.0
-[2024-07-05 11:07:45 +0300] [2548] [INFO] Listening at: http://127.0.0.1:8000 (2548)
-[2024-07-05 11:07:45 +0300] [2548] [INFO] Using worker: eventlet
-[2024-07-05 11:07:45 +0300] [2862] [INFO] Booting worker with pid: 2862
-[2024-07-05 11:07:45 +0300] [2863] [INFO] Booting worker with pid: 2863
-[2024-07-05 11:07:45 +0300] [2864] [INFO] Booting worker with pid: 2864

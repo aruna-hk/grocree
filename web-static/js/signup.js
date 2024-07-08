@@ -1,3 +1,7 @@
+document.querySelector("#ccancel").addEventListener('click', ()=>{
+ document.querySelector("#signup").style.visibility = "hidden";
+});
+
 function removeError(elem) {
  if (elem.nextElementSibling != null) {
   if (elem.nextElementSibling.className == "signUpError") {

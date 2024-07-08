@@ -18,6 +18,12 @@
   background: green;
   margin;
 }
+#createAc #ccancel {
+  margin: 5px;
+  color: red;
+  border-radius: 100px;
+  text-align: center;
+}
 .create {
   position: fixed;
   display: flex;
@@ -36,7 +42,8 @@
 }
 #createAc #inptfields input {
   background: lightgreen;
-  margin: 4px;
+  margin: 10px;
+  justify-self: center;
   border-radius: 25px;
   min-height: 45px;
   min-width: 360px;

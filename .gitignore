@@ -2,3 +2,4 @@ access.log
 error.log
 *.pyc
 *.pid
+*.tar
