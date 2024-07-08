@@ -7,6 +7,7 @@
         <meta name="desciption" content="grocree.com">
         <link rel="stylesheet" href="/styles/index.css">
         <link rel="stylesheet" href="/styles/login.css">
+        <link rel="stylesheet" href="/styles/signup.css">
     </head>
     <body>
       <div class="login">
@@ -25,6 +26,7 @@
           or
           <input type="button" value="LOGIN" id="login">
         </div>
+        <div id=cancel><div>&lt;&lt; back</div></div>
        </form>
      </div>
        <div class="homebar">
@@ -59,6 +61,20 @@
 
            {% endfor %}
         </main>
+        <div class="create" id="signup">
+            <form id="createAc" submit="http://localhost" method="post">
+                <div id="inptfields">
+                  <input type="text" placeholder="name" name="name" id="rname">
+                  <input name="phone" type="text" placeholder="phone" id="rphone">
+                  <input type="text" placeholder="email" name="email" id="remail">
+                  <input type="text" placeholder="username" name="username" id="rusername">
+                  <input type="password" placeholder="password" name="password" id="rpassword">
+                </div>
+                <div class="cregister">
+                  <button type="button" value="REGISTER" id="cregister">REGiSTER</button>
+                </div>
+            </form>
+        </div>
         <address id="contacts">GET IN TOUCH</address>
         <div id="ordertrack">
             <div id="shoppingCart">
@@ -100,4 +116,6 @@
         <script src='/js/submit.js'></script>
         <script src='/js/entry.js'></script>
         <script src='/js/login.js'></script>
+        <script src='/js/closelogin.js'></script>
+        <script src='/js/signup.js'></script>
 </body>

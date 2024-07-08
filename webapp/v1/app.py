@@ -11,10 +11,11 @@ import json
 from flask_cors import CORS
 from math import sqrt
 from decimal import Decimal
+from sqlalchemy.exc import IntegrityError, PendingRollbackError
 
 app = Flask(__name__)
 CORS(app, origins='*')
-app.secret_key = "protect_cookies"
+#app.secret_key = "protect_cookies"
 #before request
 #radius
 @app.before_request
@@ -103,23 +104,17 @@ def delivery_update(delivery_person_id):
 def create_ac():
     if request.method == 'POST':
         user = request.get_json()
-        keys = user.keys()
-        if 'name' not in keys:
-            abort(400, "name missing")
-        if 'username' not in keys:
-            abort(400, "username missing")
-        if 'password' not in keys:
-            abort(400, "password missing")
-        if 'email' not in keys:
-            abort(400, "email missing")
-        if 'phone' not in keys:
-            abort(400, "phone missing")
-        if 'latitude' not in keys or 'longitude' not in keys:
-            abort(400, "lacation information missing")
         customer = Customer(**user)
         storage.new(customer)
-        storage.save()
-        return jsonify({201: "account created"})
+        try:
+            storage.save()
+        except IntegrityError as e:
+            column = e.orig.__repr__().replace('"', " ").replace('\\', ' ').replace("'", " ")\
+                 .replace('(', ' ').replace(')', ' ')\
+                 .strip(' ').split(' ')[-1].split(".")[-1]
+            storage.rollback()
+            return make_response(column, 409)
+        return make_response("Created", 201)
     result_proxy = storage.query(select(Customer))
     rows = result_proxy.fetchall()
     result = [i._data[0].to_dict() for i in rows]
