@@ -1,0 +1,69 @@
+.signUpError {
+  color: red;
+}
+#createAc > #inptfields div {
+  text-align: left;
+  margin-left: 10px;
+}
+#signup {
+  visibility: hidden;
+}
+#createAc {
+  border: solid 1px;
+}
+#createAc #cregister{
+  min-height: 40px;
+  min-width: 100px;
+  border-radius: 15px;
+  background: green;
+  margin;
+}
+.create {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  margin: -border-box;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+#createAc #inptfields {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+#createAc #inptfields input {
+  background: lightgreen;
+  margin: 4px;
+  border-radius: 25px;
+  min-height: 45px;
+  min-width: 360px;
+  padding-left: 7%;
+}
+#createAc .cregister {
+  display: flex;
+  margin-top: 4px;
+  justify-content: right;
+}
+@media (max-width: 850px){
+  #createAc #inptfields >input {
+    min-width: 360px;
+  }
+}
+@media (max-width: 450px){
+  #createAc #inptfields >input {
+    min-width: 310px;
+  }
+}
+@media (max-width: 360px){
+  #createAc #inptfields >input {
+    min-width: 300px;
+  }
+}
+@media (max-width: 320px){
+  #createAc #inptfields >input {
+    min-width: 300px;
+  }
+}
