@@ -1,4 +1,6 @@
+const signupAPI = "http://localhost/users/delivery/"
 let new_user = {}
+
 document.querySelector("#ccancel").addEventListener('click', ()=>{
  document.querySelector("#signup").style.visibility = "hidden";
 });
@@ -16,14 +18,16 @@ document.querySelector("#rname").addEventListener('keydown', ()=> {
 document.querySelector("#rphone").addEventListener('keydown', ()=> {
   removeError(document.querySelector("#rphone"))
 });
-const signupAPI = "http://localhost/users/customers/"
+document.querySelector("#rnationalId").addEventListener('keydown', ()=> {
+  removeError(document.querySelector("#rnationalId"))
+});
+
 
 async function signUpRequest(user) {
  try {
-  let _signupresponse = await fetch(signupAPI, {"headers":headers, "method":"POST", "body":JSON.stringify(user)})
+  let _signupresponse = await fetch(signupAPI, {"headers":{"Content-Type":"application/json"}, "method":"POST", "body":JSON.stringify(user)})
   if (_signupresponse.ok == false) {
    let _errormsg = await _signupresponse.text()
-   alert(_errormsg)
    let _err = document.createElement('div')
    _err.className = "signUpError"
    _err.textContent = `${_errormsg} taken`
@@ -66,7 +70,6 @@ function fieldEmpty(name) {
     document.querySelector("#createAc > #inptfields").insertBefore(signupError, __nextElemSibling)
   }
  }
-//this is where users location is retrieved:
 function signUp(user) {
   const _options = {
    enableHighAccuracy: true,
@@ -96,6 +99,10 @@ document.querySelector("#cregister").addEventListener('click', ()=>{
  new_user['username'] = document.querySelector("#rusername").value
  if (new_user['username'] == '' && (document.querySelector("#rusername").nextElementSibling.className != "signUpError")) {
   fieldEmpty("#rusername")
+ }
+ new_user['nationalId'] = document.querySelector("#rnationalId").value
+ if (new_user['nationalId'] == '' && (document.querySelector("#rnationalId").nextElementSibling.className != "signUpError")) {
+  fieldEmpty("#rnationalId")
  }
  new_user['password'] = document.querySelector("#rpassword").value
  if (document.querySelector("#rpassword").nextElementSibling == null) {

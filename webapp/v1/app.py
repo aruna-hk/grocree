@@ -28,7 +28,6 @@ def before_request():
 def delivery():
     if request.method == 'POST':
         user = request.get_json()
-        print(user)
         #get gps location and update by fetch api to i.e openstreetmap
         #on clients side
         #for now -- randomize
@@ -452,20 +451,12 @@ def dlogin():
           _user = {}
           _user['imgURL'] = _auth[1]
           _user['username'] = request.args.get("username")
-          url = url_for('dhome', user_id=_auth[2])
-          url = "http://localhost" + url
-          return redirect(url)
+          _user['id'] = _auth[2]
+
+          return make_response(jsonify(_user), 200)
       else:
           abort(401, "unauthorized")
    return abort(404, "not found")
-
-
-#delivery personel home screen
-@app.route("/dhome/<user_id>", methods=["GET", "POST"])
-def dhome(user_id):
-    if request.method == "POST":
-        return "accept order"
-    return "rendering home page"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

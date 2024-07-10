@@ -82,5 +82,5 @@ worker_class                      = 'eventlet'
 #worker_exit                       = <WorkerExit.worker_exit()>
 #worker_int                        = <WorkerInt.worker_int()>
 worker_tmp_dir                    = None
-workers                           = 3
+workers                           = 1
 wsgi_app                          = "webapp.v1.app:app"
