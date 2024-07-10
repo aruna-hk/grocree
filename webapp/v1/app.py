@@ -234,6 +234,7 @@ def orders(user_id):
         results = [i._data[0].to_dict() for i in rows]
         return jsonify(results)
 
+    __info = {}
     __order = request.get_json()
     #get the closest store to dispatch product
     #cart items from diffrent close stores - centralise in closest and dispatch
@@ -255,8 +256,10 @@ def orders(user_id):
             _entry = Orderline(orderId=an_order.id, storeId=key.split('$')[1], groceryId=key.split('$')[0], quantity=value)
             storage.new(_entry)
     storage.save()
-
-    return make_response(jsonify(delivery.username), 201)
+    __info['DeliveryPerson'] = delivery.username
+    __info['Time'] = an_order.created_at.isoformat().split('.')[0]
+    __info['status'] = 'pending'
+    return make_response(jsonify(__info), 201)
 
 #track order
 @app.route("/users/customers/<user_id>/orders/<order_id>",\
