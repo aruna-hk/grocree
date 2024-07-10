@@ -1,3 +1,4 @@
+let new_user = {}
 document.querySelector("#ccancel").addEventListener('click', ()=>{
  document.querySelector("#signup").style.visibility = "hidden";
 });
@@ -18,7 +19,7 @@ document.querySelector("#rphone").addEventListener('keydown', ()=> {
 const signupAPI = "http://localhost/users/customers/"
 
 async function signUpRequest(user) {
- try{
+ try {
   let _signupresponse = await fetch(signupAPI, {"headers":headers, "method":"POST", "body":JSON.stringify(user)})
   if (_signupresponse.ok == false) {
    let _errormsg = await _signupresponse.text()
@@ -65,10 +66,20 @@ function fieldEmpty(name) {
     document.querySelector("#createAc > #inptfields").insertBefore(signupError, __nextElemSibling)
   }
  }
-
+function signUp(user) {
+  const _options = {
+   enableHighAccuracy: true,
+   timeout: 5000,
+   maximumAge: 0,
+  };
+  navigator.geolocation.getCurrentPosition(function(position){
+   user['latitude'] = position.coords.latitude
+   user['longitude'] = position.coords.longitude
+   signUpRequest(new_user)}, function(error) {
+   //pass
+   }, _options);
+}
 document.querySelector("#cregister").addEventListener('click', ()=>{
- let new_user = {}
-
  new_user['name'] = document.querySelector("#rname").value
  if (new_user['name']== '' && (document.querySelector("#rname").nextElementSibling.className != "signUpError")) {
   fieldEmpty("#rname")
@@ -93,6 +104,9 @@ document.querySelector("#cregister").addEventListener('click', ()=>{
  }
  if (document.querySelector(".signUpError") == null) {
    document.querySelector("#signup").style.visibility = "hidden";
-   signUpRequest(new_user)
+   signUp(new_user)
+   //Object.keys(new_user).forEach(key => {
+   //  delete new_user[key];
+  //});
 }
 });

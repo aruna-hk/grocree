@@ -1,0 +1,21 @@
+#phone iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  overflow: hidden;
+}
+@media (max-width:450px){
+  #computerlook iframe {
+    height: 250px
+  }
+}
+@media (max-width: 889px) {
+  #computerlook iframe {
+    height: 400px;
+  }
+}
+@media (min-width: 900px) {
+  #computerlook iframe {
+    height: 550px;
+  }
+}

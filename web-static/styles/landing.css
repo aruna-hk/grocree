@@ -1,0 +1,111 @@
+iframe {
+  border: solid 5px;
+  border-radius: 15px;
+  display: flex;
+}
+@media (max-width:600px){
+  #lenovex230 {
+    max-height: 350px;
+  }
+  nav {
+    font-size: 3.5vw;
+    text-align: center;
+  }
+}
+#computerlook{
+  align-items: center;
+  margin-top: 20px;
+}
+#phn {
+  color: green;
+}
+#cintro {
+  color: green;
+}
+#companyC {
+  text-align:center;
+  align-content: center;
+}
+#companyC >ul {
+  list-style: none;
+}
+#devops {
+  max-width:50%
+}
+#Developers {
+  border-top:solid 1px green;
+  border-bottom: solid 1px green;
+}
+#intro {
+  border-bottom: solid 1px;
+}
+#look1 { 
+  text-align: center;
+}
+#look2 {
+  text-align: center;
+}
+#comp {
+  text-align: center;
+  align-content: center;
+  color: green;
+  font-weight: bold;
+  font-style: italic;
+}
+#look1 >#phone,#look2>#phone {
+  min-width: 300px;
+  margin: auto;
+}
+#intro {
+  text-align: center;
+  min-height: 100px;
+  align-content: center;
+}
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  min-height: 50px;
+  max-height: 60px;
+  align-items: center;
+  border: solid green 1.5px;
+}
+#logo {
+  color: green;
+  font-size: 25px;
+  font-style: italic;
+}
+
+.row1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+}
+
+#devops img {
+  margin: 0 auto;
+  height: 150px;
+  border-radius: 20px;
+}
+#devops {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+#devops .description img {
+  float: left;
+  margin: 5px; 
+}
+.name {
+  font-style: italic;
+  color: green;
+}
+#devops > li {
+  border: solid 1px;
+  border-radius: 10px;
+}
+#computerlook{
+  text-align: center;
+}
+#cmp {
+  color: green;
+}

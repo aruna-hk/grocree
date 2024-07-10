@@ -1,0 +1,70 @@
+.delinstructions {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  justify-content: center;
+  justify-items: center;
+  min-height: 65px;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  border: solid green;
+}
+#map {
+  width: 90%;
+  margin: auto;
+  height: 70vh;
+  border: solid
+}
+.login {
+  z-index: 1000;
+}
+#logo {
+  font-weight: bold;
+  color: green;
+  font-style: italic;
+}
+#signup {
+  z-index: 1000;
+}
+@media (max-width: 500px) {
+  #USER img {
+    min-height: 30px;
+    max-height: 40px;
+    border:solid 1px;
+    border-radius: 20px;
+    float: right;
+  }
+  #USER {
+    text-align: right;
+    font-size: 3vw
+  }
+  #bell {
+    max-height: 20px
+  }
+}
+@media (min-width: 500px) {
+  #USER img {
+    min-height: 40px;
+    max-height: 40px;
+    border:solid 1px;
+    border-radius: 20px;
+    float: right;
+  }
+  #USER {
+    text-align: right;
+  }
+  #bell {
+    max-height: 25px
+  }
+}
+#USER:hover {
+  color: green;
+}
+#USER img:hover {
+  border: solid 2px;
+}

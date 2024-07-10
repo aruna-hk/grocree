@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="http://localhost/styles/delmap.css">
+        <link rel="stylesheet" href="http://localhost/styles/login.css">
+        <link rel="stylesheet" href="http://localhost/styles/signup.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    </head>
+    <body>
+        <div class="create" id="signup">
+            <form id="createAc" submit="http://localhost" method="post">
+                <div id="inptfields">
+                  <input type="text" placeholder="name" name="name" id="rname">
+                  <input type="text" placeholder="national id" name="nationalId" id="rnationalId">
+                  <input name="phone" type="text" placeholder="phone" id="rphone">
+                  <input type="text" placeholder="email" name="email" id="remail">
+                  <input type="text" placeholder="username" name="username" id="rusername">
+                  <input type="password" placeholder="password" name="password" id="rpassword">
+                </div>
+                <div class="cregister">
+                  <button type="button" value="REGISTER" id="ccancel">cancel</button>
+                  <button type="button" value="REGISTER" id="cregister">REGiSTER</button>
+                </div>
+            </form>
+        </div>
+        <div class="login">
+        <form id="logform">
+            <div id="inptfields">
+             <label for="usernme">Username: </label>
+             <input type="text" id="usernme" placeholder="username">
+             <label for="password">Password: </label>
+             <input type="password" id="password">
+           </div>
+         <div id="submitregister">
+            <div id="forget">
+             Reset passwd?
+           </div>
+           <input type="button" value="REGISTER" id="register">
+          or
+          <input type="button" value="LOGIN" id="login">
+        </div>
+        <div id="cancel"><div><button>&lt;&lt; back</button></div></div>
+       </form>
+       </div>
+        <nav class="homebar">
+            <div id="logo">
+            GROCREE   
+            </div>
+            
+            <div id="notif">
+                <img id="bell" src="http://localhost/icons/bell.png" alt="bell">
+            </div>
+            <div id="USER">
+                <a>
+                    <img src="http://localhost/icons/user.png" id="None" alt="users profile">
+                </a>
+                <a id="username">login/register</a>
+           </div>
+        </nav>
+        <div id="map"></div>
+        <div class=delinstructions>
+            <div id=apdistance>approx. Distance 5km</div>
+            <div id=aptime>approx. delivery time 10minx</div>
+            <div id=street>Street: west coast corner</div>
+            <div id=house>House: Apex court</div>
+        </div>
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="http://localhost/js/getlocation.js"></script>
+        <script src='http://localhost/js/login.js'></script>
+        <script src='http://localhost/js/exitlogin.js'></script>
+        <script src='http://localhost/js/signup.js'></script>
+        <script>
+            document.querySelector("#username").click()
+        </script>
+    </body>
+</html>
