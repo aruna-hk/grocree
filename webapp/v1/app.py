@@ -11,64 +11,63 @@ import json
 from flask_cors import CORS
 from math import sqrt
 from decimal import Decimal
+from random import randrange
 from sqlalchemy.exc import IntegrityError, PendingRollbackError
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 CORS(app, origins='*')
-#app.secret_key = "protect_cookies"
-#before request
-#radius
 @app.before_request
 def before_request():
+    #triangulation radius -- to be adjusted by endpoints if need be
     g.radius = 20
 
-#delivery reqistration and/or
-#get registered users
+#get registered users and/or
 #create delivery persons account
 @app.route("/users/delivery", methods=['POST', 'GET'], strict_slashes=False)
 def delivery():
     if request.method == 'POST':
-        user_info = request.get_json()
-        if not user_info:
-            abort(400, "Error invalid request")
-        keys = user_info.keys()
-        if "name" not in keys:
-            abort(400, "Specify name")
-        if "nationalId" not in keys:
-            abort(400, "national id required")
-        if "email" not in keys:
-            abort(400, "email missing")
-        if "phone" not in keys:
-            abort(400, "phone missing")
-        if "username" not in keys:
-            abort(400, "set username")
-        if "password" not in keys:
-            abort(400, "set password")
-        #get gps location and update
-        #right now required for testing
-        if "latitude" not in keys or "longitude" not in keys:
-            abort(400, "location needed")
-        _delivery_guy = Delivery(**user_info)
-        storage.new(_delivery_guy)
-        storage.save()
-        return jsonify({201:"account create"})
+        user = request.get_json()
+        print(user)
+        #get gps location and update by fetch api to i.e openstreetmap
+        #on clients side
+        #for now -- randomize
+        #user['latitude'] = float(randrange(-90, 90))
+        #user['longitude'] = float(randrange(-180, 180))
+
+        _delivery_personel = Delivery(**user)
+        storage.new(_delivery_personel)
+        try:
+            storage.save()
+        except IntegrityError as e:
+            #column violated
+            column = e.orig.__repr__().replace('"', " ").replace('\\', ' ').replace("'", " ")\
+                 .replace('(', ' ').replace(')', ' ')\
+                 .strip(' ').split(' ')[-1].split(".")[-1]
+            storage.rollback()
+            #conflict
+            return make_response(column, 409)
+        return make_response("created", 201)
+
     stmt = select(Delivery)
     result_proxy = storage.query(stmt)
     rows = result_proxy.fetchall()
+    #every row to dict
     result = [i._data[0].to_dict() for i in rows]
-    return jsonify(result)
+    return make_response(jsonify(result), 200)
 
 #update a/c and/or get account info
-#if GET -get user info with his/her orders
+#if GET -get allocated orders and status
 @app.route("/users/delivery/<delivery_person_id>/", \
            methods=['GET','PUT'], strict_slashes=False)
 def delivery_update(delivery_person_id):
     if request.method == 'PUT':
-        #dont updat name and id
+        #dont update name and id
+        skip_keys = ['name', 'nationalId']
+
         user_info = request.get_json()
         if user_info is None:
             abort(400, "Update error")
-        skip_keys = ['name', 'nationalId']
         for key in skip_keys:
             try:
                 user_info.pop(key)
@@ -81,21 +80,27 @@ def delivery_update(delivery_person_id):
             storage.save()
             return jsonify({200:"update sucessfull"})
         except IntegrityError as e:
-            abort(400, "phone, email or username exists")
-    #dict as key - delivery personel dictionary to list of order
+            #violated column
+            column = e.orig.__repr__().replace('"', " ").replace('\\', ' ').replace("'", " ")\
+                 .replace('(', ' ').replace(')', ' ')\
+                 .strip(' ').split(' ')[-1].split(".")[-1]
+            #conflict
+            return make_response(column, 409)
+
+    #get delivery person + his/her orders
     delivery_personel = select(Delivery)\
                          .where(Delivery.id == delivery_person_id)
     delivery_person = storage.query(delivery_personel).first()
     if delivery_person is None:
-        abort(400, "User Doesn't exist")
+        return make_response("not found", 404)
     delivery_person = delivery_person._data[0].to_dict()
+    delivery_person.pop("updated_at")
 
     stmt = select(Order).where(Order.deliveryPersonId == delivery_person_id)
     rows = storage.query(stmt).fetchall()
     results = [i._data[0].to_dict() for i in rows]
     delivery_person_orders = {"deliveryPerson":delivery_person, "order":results}
-    return jsonify(delivery_person_orders)
-
+    return make_response(jsonify(delivery_person_orders), 200)
 
 
 #create customer account and/or
@@ -104,6 +109,9 @@ def delivery_update(delivery_person_id):
 def create_ac():
     if request.method == 'POST':
         user = request.get_json()
+        #for now randomize -- - to use openstreetmap api to fetch users location
+        #user['latitude'] = float(randrange(-90, 90))
+        #user['longitude'] = float(randrange(-180, 180))
         customer = Customer(**user)
         storage.new(customer)
         try:
@@ -114,6 +122,11 @@ def create_ac():
                  .strip(' ').split(' ')[-1].split(".")[-1]
             storage.rollback()
             return make_response(column, 409)
+        except PendingRollbackError as e:
+            storage.rollback()
+            storage.new(customer)
+            storage.save()
+ 
         return make_response("Created", 201)
     result_proxy = storage.query(select(Customer))
     rows = result_proxy.fetchall()
@@ -171,7 +184,7 @@ def get_delivery(store_id):
     latitude_longitude = select(Store.latitude, Store.longitude).where(Store.id == store_id)
     latitude, longitude = storage.query(latitude_longitude).first()
 
-    stmt = select(Delivery.id).where(
+    stmt = select(Delivery.id, Delivery.username).where(
                    and_(
                      Delivery.latitude <= latitude + Decimal(g.radius),
                      Delivery.latitude >= latitude - Decimal(g.radius))).where(
@@ -230,8 +243,8 @@ def orders(user_id):
                          .where(Customer.id == user_id)).first()
     #get closest store / inform to collect
     store_id = _close(latitude, longitude)
-    delivery = get_delivery(store_id).id
-    an_order = Order(customerId=user_id, storeId=store_id, deliveryPersonId=delivery, orderStatus="pending")
+    delivery = get_delivery(store_id)
+    an_order = Order(customerId=user_id, storeId=store_id, deliveryPersonId=delivery.id, orderStatus="pending")
     storage.new(an_order)
     storage.save()
     for key, value in __order.items():
@@ -243,7 +256,7 @@ def orders(user_id):
             storage.new(_entry)
     storage.save()
 
-    return make_response(jsonify("Order created"), 201)
+    return make_response(jsonify(delivery.username), 201)
 
 #track order
 @app.route("/users/customers/<user_id>/orders/<order_id>",\
@@ -406,7 +419,7 @@ def home(user_id=None):
 @app.route("/home/customers", strict_slashes=False)
 def home_1():
     return home()
-#login page
+#customer login page
 @app.route("/login", methods=["GET"], strict_slashes=False)
 def login():
    stmt = select(Customer.password, Customer.imgURL, Customer.id)\
@@ -423,6 +436,33 @@ def login():
       else:
           abort(401, "unauthorized")
    return abort(404, "not found")
+
+
+#delivery personel login
+@app.route("/dlogin", methods=["GET"], strict_slashes=False)
+def dlogin():
+   stmt = select(Delivery.password, Delivery.imgURL, Delivery.id)\
+            .where(Delivery.username == request.args.get('username'))
+   _auth = storage.query(stmt).first()
+   if _auth:
+      if _auth[0] == request.args.get("password"):
+          _user = {}
+          _user['imgURL'] = _auth[1]
+          _user['username'] = request.args.get("username")
+          url = url_for('dhome', user_id=_auth[2])
+          url = "http://localhost" + url
+          return redirect(url)
+      else:
+          abort(401, "unauthorized")
+   return abort(404, "not found")
+
+
+#delivery personel home screen
+@app.route("/dhome/<user_id>", methods=["GET", "POST"])
+def dhome(user_id):
+    if request.method == "POST":
+        return "accept order"
+    return "rendering home page"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
