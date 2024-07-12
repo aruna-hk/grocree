@@ -45,7 +45,7 @@ personel whenever there is an order</p>
 incase of any error read error.log for gunicorn error/gateway error<br/>
 for nginx error read nginx log file
 
-<h3>Tes<h3>
+<h3>Test</h3>
 <br/>
 curl localhost/landing.html #landing page <br/>
 or go to browser and enter the url
