@@ -1,4 +1,4 @@
-                     <H1>GROCREE</H1>
+                     <h1>GROCREE</h1>
 
 <a href="http://54.173.110.95/landing.html">Deployed project</a>
 <br/>
@@ -9,7 +9,6 @@ preference as well as to ensure faster delivery by pinging closest delivery
 personel whenever there is an order</p>
 
 <br/>
-<em>File summary</em>
  <ul>
    <li>.log - access.log and error.log for gunicorn logging<li>
    <li>data.py - generating sample data -documented<li>
@@ -43,11 +42,11 @@ personel whenever there is an order</p>
     <li>sudo service nginx reload; #upnate config
  </ol>
 
-<em>incase of any error read error.log for gunicorn error/gateway error</em><br/>
-<em>for nginx error read nginx log file</em>
+incase of any error read error.log for gunicorn error/gateway error<br/>
+for nginx error read nginx log file
 
 <h3>Tes<h3>
-<em>#run to test</em><br/>
+<br/>
 curl localhost/landing.html #landing page <br/>
 or go to browser and enter the url
 
