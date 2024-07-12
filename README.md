@@ -10,18 +10,18 @@ personel whenever there is an order</p>
 
 <br/>
  <ul>
-   <li>.log - access.log and error.log for gunicorn logging<li>
-   <li>data.py - generating sample data -documented<li>
+   <li>.log - access.log and error.log for gunicorn logging</li>
+   <li>data.py - generating sample data -documented</li>
    <li>grocree.service - daemonise gunicorn WSGI</li>
-   <li>gunicorn.conf.py - WSGI configuration<li>
+   <li>gunicorn.conf.py - WSGI configuration</li>
    <li>.pid file - store WSGI master process ID - set to rm -rf run.pid at start</li>
    <li>nginx.cnf files - nginx web server location for proxying to Flask app server</li>
    <li>setup.sql - create database, database user and  permision grants</li>
-   <li>models - directory store application objects<li>
+   <li>models - directory store application objects</li>
    <li>web-static folder - store static resource html/css/js/images </li>
-   <li>webapp folder - Flask web application folder <li>
+   <li>webapp folder - Flask web application folder </li>
  </li>
-<h3>Installing and Running the Application</a>
+<h3>Installing and Running the Application</h3>
 
 #read install
  <ol>
