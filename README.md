@@ -1,12 +1,15 @@
-                     GROCREE
+                     <H1>GROCREE</H1>
 
-Distributed online grocery Stores where buyers and delivery personnel are
+<a href="http://54.173.110.95/landing.html">Deployed project</a>
+<br/>
+
+</p>Distributed online grocery Stores where buyers and delivery personnel are
 placed relative to stores to ensure tailored listings based on location and
 preference as well as to ensure faster delivery by pinging closest delivery
-personel whenever there is an order
+personel whenever there is an order</p>
 
-
-File summary
+<br>
+<em>File summary</em>
 
  .log file - access.log and error.log for gunicorn logging
  data.py - generating sample data -documented
@@ -19,11 +22,11 @@ File summary
  web-static folder - store static resource html/css/js/images 
  webapp folder - Flas web application folder 
 
-Running the Application
+<h3>Installing and Running the Application</a>
+
 #clone
-git clone https://github.com/aruna-hk/grocree;
-#creat WSGI interface
-sudo ln -s grocree.service /etc/systemd/system/grocree.service
+clone https://github.com/aruna-hk/grocree;
+sudo ln -s grocree.service /etc/systemd/system/grocree.service #to crete srvic file
 #edit nginx config file
 #add the following inside server block in /etc/nginx/sites-enabled/default
    #include /path/to/where/cloned/repo/is/nginx.conf
@@ -43,4 +46,4 @@ curl localhost/index.html #landing page
 or go to browser and enter the url
 
 
-<author><kiptooharon.hk@gmail.com>
+<a href=mailto:kiptooharon.hk@gmail.com>kiptooharon.hk@gmail.com</a>
