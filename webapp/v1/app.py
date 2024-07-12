@@ -433,7 +433,7 @@ def login():
           _user['imgURL'] = _auth[1]
           _user['username'] = request.args.get("username")
           url = url_for('home', user_id=_auth[2])
-          url = "http://localhost:5000" + url
+          url = "http://localhost" + url
           return redirect(url)
       else:
           abort(401, "unauthorized")
