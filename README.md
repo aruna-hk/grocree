@@ -25,12 +25,12 @@ personel whenever there is an order</p>
 
 #read install
  <ol>
-   <li>clone https://github.com/aruna-hk/grocree;<li>
+   <li>clone https://github.com/aruna-hk/grocree;</li>
    <li>sudo ln -s grocree.service /etc/systemd/system/grocree.service
-        ensure to edit paths #to crete servic file<li>
+        ensure to edit paths #to crete servic file</li>
     <li>edit nginx config file add the following inside server block in /etc/nginx/sites-enabled/default
-        include /path/to/where/cloned/repo/is/nginx.conf to include proxy pass block<li>
-    <li>edit gunicorn gunicorn.config.py file, set working directory as u wish
+        include /path/to/where/cloned/repo/is/nginx.conf to include proxy pass block</li>
+    <li>edit gunicorn gunicorn.config.py file, set working directory as u wish</li>
     <li>ensure sqlalchemy, flask-cors, flask, mysqldb are installed--al requirement in .txt file are met
     </li>
     <li>start the application
@@ -38,8 +38,8 @@ personel whenever there is an order</p>
         <li>sudo service grocree start;</li>
         <li>sudo systemctl grocree enable #enable autorestart on boot</li>
        </ol>
-    <li>
-    <li>sudo service nginx reload; #upnate config
+    </li>
+    <li>sudo service nginx reload; #upnate config</li>
  </ol>
 
 incase of any error read error.log for gunicorn error/gateway error<br/>
