@@ -1,4 +1,4 @@
-import eventlet
+#import eventlet
 #access_log_format                 = %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
 accesslog                          = "access.log"
 backlog                            = 2048
@@ -77,10 +77,11 @@ umask                             = 0
 user                              = 1000
 #when_ready                        = <WhenReady.when_ready()>
 #worker_abort                      = <WorkerAbort.worker_abort()>
-worker_class                      = 'eventlet'
+worker_class                      = 'gevent'
 #worker_connections                = 1000
 #worker_exit                       = <WorkerExit.worker_exit()>
 #worker_int                        = <WorkerInt.worker_int()>
 worker_tmp_dir                    = None
 workers                           = 1
+app                               = "webapp.v1.app:app"
 wsgi_app                          = "webapp.v1.app:app"

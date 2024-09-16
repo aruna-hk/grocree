@@ -37,7 +37,7 @@ class Storage:
             db = "grocree"
 
         
-        url = "mysql+mysqldb://{}:{}@{}/{}".format(user, password, host, db)
+        url = "mysql://{}:{}@{}/{}".format(user, password, host, db)
         self.__engine = create_engine(url)
 
         #create database representations 
