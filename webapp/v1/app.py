@@ -13,10 +13,13 @@ from math import sqrt
 from decimal import Decimal
 from random import randrange
 from sqlalchemy.exc import IntegrityError, PendingRollbackError
-from flask_socketio import SocketIO, emit
+from flask_httpauth import HTTPBasicAuth
+from redis import Redis
+#from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 CORS(app, origins='*')
+cache = Redis()
 @app.before_request
 def before_request():
     #triangulation radius -- to be adjusted by endpoints if need be
@@ -24,17 +27,26 @@ def before_request():
 
 #get registered users and/or
 #create delivery persons account
-@app.route("/users/delivery", methods=['POST', 'GET'], strict_slashes=False)
+@app.route("/delivery", methods=['POST', 'GET'], strict_slashes=False)
 def delivery():
+
     if request.method == 'POST':
-        user = request.get_json()
+        user = request.form.to_dict()
         #get gps location and update by fetch api to i.e openstreetmap
         #on clients side
         #for now -- randomize
-        #user['latitude'] = float(randrange(-90, 90))
-        #user['longitude'] = float(randrange(-180, 180))
+        latitude = user_info.get("latitude", None)
+        longitude = user_info.get("longitude", None)
 
+        _user_img_profile = request.files.get('profile')
+        _profile = "/home/hk/grocree/web-static/images/" + _user_img_profile.filename
+        _user_img_profile.save(_profile)
+        user['imgURL'] = _profile
         _delivery_personel = Delivery(**user)
+        try:
+            cache.geoadd("delivery", longitude, latitude, _delivery_personel.id)
+        except Exception:
+            pass
         storage.new(_delivery_personel)
         try:
             storage.save()
@@ -46,7 +58,7 @@ def delivery():
             storage.rollback()
             #conflict
             return make_response(column, 409)
-        return make_response("created", 201)
+        return make_response(jsonify({"id": _delivery_personel.id}), 201)
 
     stmt = select(Delivery)
     result_proxy = storage.query(stmt)
@@ -57,14 +69,26 @@ def delivery():
 
 #update a/c and/or get account info
 #if GET -get allocated orders and status
-@app.route("/users/delivery/<delivery_person_id>/", \
+@app.route("/delivery/<delivery_person_id>/", \
            methods=['GET','PUT'], strict_slashes=False)
 def delivery_update(delivery_person_id):
     if request.method == 'PUT':
         #dont update name and id
         skip_keys = ['name', 'nationalId']
 
-        user_info = request.get_json()
+        user_info = request.form.to_dict()
+        try:
+            latitude = user_info['latitude']
+            longitude = user_info['longitude']
+            cache.geoadd("delivery", longitude, latitude, delivery_person_id)
+        except Exception:
+            pass
+        try:
+            del user_info['latitude']
+            del user_info['longitude']
+        except KeyError:
+            pass
+        _profile = request.files.get("profile", None)
         if user_info is None:
             abort(400, "Update error")
         for key in skip_keys:
@@ -74,6 +98,10 @@ def delivery_update(delivery_person_id):
                 pass
         stmt = update(Delivery).values(user_info)\
                       .where(Delivery.id == delivery_person_id)
+        if _profile:
+            _img_url = '/home/hk/grocree/web-static/images/' + _profile.filename
+            _profile.save(_img_url)
+
         try:
             storage.query(stmt)
             storage.save()
@@ -104,29 +132,35 @@ def delivery_update(delivery_person_id):
 
 #create customer account and/or
 #view users
-@app.route("/users/customers", methods=['POST', 'GET'], strict_slashes=False)
+@app.route("/customers", methods=['POST', 'GET'], strict_slashes=False)
 def create_ac():
     if request.method == 'POST':
-        user = request.get_json()
-        #for now randomize -- - to use openstreetmap api to fetch users location
-        #user['latitude'] = float(randrange(-90, 90))
-        #user['longitude'] = float(randrange(-180, 180))
-        customer = Customer(**user)
-        storage.new(customer)
+        user = request.to_json()
+        latitude = user_info.get("latitude", None)
+        longitude = user_info.get("longitude", None)
+
+        _user_img_profile = request.files.get('profile', None)
+        if _user_img_profile:
+            _profile = "/home/hk/grocree/web-static/images/" + _user_img_profile.filename
+            _user_img_profile.save(_profile)
+            user['imgURL'] = _profile
+            _customer = Delivery(**user)
+            try:
+                cache.geoadd("customers", longitude, latitude, _delivery_personel.id)
+            except Exception:
+                pass
+        storage.new(_customer)
         try:
             storage.save()
         except IntegrityError as e:
+            #column violated
             column = e.orig.__repr__().replace('"', " ").replace('\\', ' ').replace("'", " ")\
                  .replace('(', ' ').replace(')', ' ')\
                  .strip(' ').split(' ')[-1].split(".")[-1]
             storage.rollback()
+            #conflict
             return make_response(column, 409)
-        except PendingRollbackError as e:
-            storage.rollback()
-            storage.new(customer)
-            storage.save()
- 
-        return make_response("Created", 201)
+        return make_response(jsonify({"id": _delivery_personel.id}), 201)
     result_proxy = storage.query(select(Customer))
     rows = result_proxy.fetchall()
     result = [i._data[0].to_dict() for i in rows]
@@ -134,7 +168,7 @@ def create_ac():
 
 
 #get or update user info
-@app.route("/users/customers/<user_id>", methods=["GET", 'PUT'], strict_slashes=False)
+@app.route("/customers/<user_id>", methods=["GET", 'PUT'], strict_slashes=False)
 def account_management(user_id):
     if request.method == 'GET':
         statement = select(Customer).where(Customer.id == user_id)
@@ -224,7 +258,7 @@ def _close(latitude, longitude):
     return result[0].id
 
 #place order
-@app.route("/users/customers/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
+@app.route("/customers/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
 def orders(user_id):
     if request.method == 'GET':
         stmt = select(Order).where(Order.customerId == user_id)
@@ -261,7 +295,7 @@ def orders(user_id):
     return make_response(jsonify(__info), 201)
 
 #track order
-@app.route("/users/customers/<user_id>/orders/<order_id>",\
+@app.route("/customers/<user_id>/orders/<order_id>",\
              methods=['GET'], strict_slashes=False)
 def track_order(user_id, order_id):
     return "live location tracking"
