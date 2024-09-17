@@ -16,20 +16,24 @@ document.querySelector("#rname").addEventListener('keydown', ()=> {
 document.querySelector("#rphone").addEventListener('keydown', ()=> {
   removeError(document.querySelector("#rphone"))
 });
-const signupAPI = "http://localhost/users/customers/"
+const signupAPI = "http://localhost/customers/"
 
 async function signUpRequest(user) {
  try {
+
+  console.log("*****************************************0")
+  console.log(headers)
   let _signupresponse = await fetch(signupAPI, {"headers":headers, "method":"POST", "body":JSON.stringify(user)})
   if (_signupresponse.ok == false) {
+   console.log("false")
    let _errormsg = await _signupresponse.text()
-   alert(_errormsg)
    let _err = document.createElement('div')
    _err.className = "signUpError"
    _err.textContent = `${_errormsg} taken`
    document.querySelector("#r" + _errormsg).parentElement.insertBefore(_err, document.querySelector("#r" + _errormsg).nextElementSibling)
    document.querySelector("#signup").style.visibility = "visible"
   }else{
+    console.log("*****************************************1")
     alert("signup sucessful proceed to login")
     document.querySelector("#signup").visibility = "hidden";
     document.querySelector(".login").style.visibility = "visible"
@@ -73,12 +77,7 @@ function signUp(user) {
    timeout: 5000,
    maximumAge: 0,
   };
-  navigator.geolocation.getCurrentPosition(function(position){
-   user['latitude'] = position.coords.latitude
-   user['longitude'] = position.coords.longitude
-   signUpRequest(new_user)}, function(error) {
-   //pass
-   }, _options);
+  signUpRequest(user)
 }
 document.querySelector("#cregister").addEventListener('click', ()=>{
  new_user['name'] = document.querySelector("#rname").value
@@ -103,11 +102,16 @@ document.querySelector("#cregister").addEventListener('click', ()=>{
    fieldEmpty("#rpassword")
   }
  }
+ console.log("*****####")
+ console.log(new_user)
  if (document.querySelector(".signUpError") == null) {
-   document.querySelector("#signup").style.visibility = "hidden";
+   console.log("----------------------------------------\n")
    signUp(new_user)
+   document.querySelector("#signup").style.visibility = "hidden";
    //Object.keys(new_user).forEach(key => {
    //  delete new_user[key];
   //});
-}
+ } else {
+   console.log(new_user)
+ }
 });

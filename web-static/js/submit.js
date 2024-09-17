@@ -1,4 +1,4 @@
-const orderApi = "http://localhost/users/customers/"
+const orderApi = "http://localhost/customers/"
 const headers = new Headers()
 headers.append("Content-Type", "application/json")
 

@@ -1,3 +1,9 @@
+.groceryItem >img {
+  width: auto;
+  height: auto;
+  max-height: 200px;
+  min-width: 300px;
+}
 .Track {
   position: fixed;
   bottom: 0;

@@ -16,10 +16,23 @@ from sqlalchemy.exc import IntegrityError, PendingRollbackError
 from flask_httpauth import HTTPBasicAuth
 from redis import Redis
 #from flask_socketio import SocketIO, emit
+from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 CORS(app, origins='*')
 cache = Redis()
+auth = HTTPBasicAuth()
+
+@auth.verify_password
+def verify_password(username, password):
+    passwd = cache.hget("users:customers", username)
+    print(passwd) 
+    if passwd:
+        if check_password_hash(passwd.decode(), password):
+            print("Auth success")
+            return username
+    return None
+
 @app.before_request
 def before_request():
     #triangulation radius -- to be adjusted by endpoints if need be
@@ -80,7 +93,6 @@ def delivery_update(delivery_person_id):
         try:
             latitude = user_info['latitude']
             longitude = user_info['longitude']
-            cache.geoadd("delivery", longitude, latitude, delivery_person_id)
         except Exception:
             pass
         try:
@@ -135,20 +147,25 @@ def delivery_update(delivery_person_id):
 @app.route("/customers", methods=['POST', 'GET'], strict_slashes=False)
 def create_ac():
     if request.method == 'POST':
-        user = request.to_json()
-        latitude = user_info.get("latitude", None)
-        longitude = user_info.get("longitude", None)
+        user = request.get_json()
+        latitude = user.get("latitude", 54.0)
+        longitude = user.get("longitude", 45.9)
+
+        user['password'] = generate_password_hash(user['password'])
+        user['latitude'] = latitude
+        user['longitude'] = longitude
 
         _user_img_profile = request.files.get('profile', None)
         if _user_img_profile:
-            _profile = "/home/hk/grocree/web-static/images/" + _user_img_profile.filename
-            _user_img_profile.save(_profile)
-            user['imgURL'] = _profile
-            _customer = Delivery(**user)
-            try:
-                cache.geoadd("customers", longitude, latitude, _delivery_personel.id)
-            except Exception:
-                pass
+            profile = "/home/hk/grocree/web-static/images/" + _user_img_profile.filename
+            _user_img_profile.save(profile)
+            user['imgURL'] = "/images/" + _user_img_profile.filename
+        try:
+            cache.geoadd("customers", float(longitude), float(latitude), _delivery_personel.id)
+        except Exception:
+            pass
+        _customer = Customer(**user)
+        cache.hset("users:customers", mapping={_customer.username:_customer.password}) 
         storage.new(_customer)
         try:
             storage.save()
@@ -160,7 +177,7 @@ def create_ac():
             storage.rollback()
             #conflict
             return make_response(column, 409)
-        return make_response(jsonify({"id": _delivery_personel.id}), 201)
+        return make_response(jsonify({"id": _customer.id}), 201)
     result_proxy = storage.query(select(Customer))
     rows = result_proxy.fetchall()
     result = [i._data[0].to_dict() for i in rows]
@@ -217,17 +234,13 @@ def get_delivery(store_id):
     latitude_longitude = select(Store.latitude, Store.longitude).where(Store.id == store_id)
     latitude, longitude = storage.query(latitude_longitude).first()
 
-    stmt = select(Delivery.id, Delivery.username).where(
-                   and_(
-                     Delivery.latitude <= latitude + Decimal(g.radius),
-                     Delivery.latitude >= latitude - Decimal(g.radius))).where(
-                   and_(
-                     Delivery.longitude <= longitude + Decimal(g.radius),
-                     Delivery.longitude >= longitude - Decimal(g.radius)))
+    print(latitude,"---", longitude)
+    delivery_person = cache.georadius("delivery", float(longitude), float(latitude), float(g.radius), unit="km")
+    delivery_person = ["61f62b4d-3711-40f7-9a05-d48aab6e06c0",]
     #notify close delivery guys
     #get feedback update who picked the order
     #return deliveryguy id
-    delivery_person = storage.query(stmt).fetchall()
+    #delivery_person = storage.query(stmt).fetchall()
     if len(delivery_person) == 0:
         g.radius = g.radius + (g.radius / 2)
         delivery_person = get_delivery(store_id)
@@ -238,27 +251,14 @@ def _close(latitude, longitude):
     #binary search--lll
     
     #half_radius = _radius / 2
-    stmt = select(Store.id).where(
-                 and_(
-                     latitude <= Store.latitude + g.radius,
-                     latitude >= Store.latitude - g.radius)).where(
-                 and_(
-                         longitude <= Store.longitude + g.radius,
-                         longitude >= Store.longitude - g.radius)
-                    )
-    result_proxy = storage.query(stmt)
-    #notify the store of order
-    result = result_proxy.fetchall()
-    if len(result) == 0:
-       g.radius = g.radius + (g.radius / 2)
-       result =  _close(latitude, longitude)
-    elif len(result) > 2:
-        g.radius = int(g.radius - sqrt(g.radius))
-        result =  _close(latitude, longitude)
-    return result[0].id
+    print("--------{}------------------{}---------=={}-".format(type(latitude), type(longitude), type(g.radius)))
+    from decimal import Decimal
+    store = cache.georadius("stores", float(longitude), float(latitude), float(g.radius), unit="km")
+    return "07b3f576-59ab-42f8-be3c-14665c25e0f3"
 
 #place order
 @app.route("/customers/<user_id>/orders", methods=['POST', 'GET'], strict_slashes=False)
+@auth.login_required
 def orders(user_id):
     if request.method == 'GET':
         stmt = select(Order).where(Order.customerId == user_id)
@@ -267,8 +267,6 @@ def orders(user_id):
         results = [i._data[0].to_dict() for i in rows]
         return jsonify(results)
 
-    __info = {}
-    __order = request.get_json()
     #get the closest store to dispatch product
     #cart items from diffrent close stores - centralise in closest and dispatch
     #store aim at ensuring same products -- all stores --cut costs
@@ -277,21 +275,23 @@ def orders(user_id):
                          .where(Customer.id == user_id)).first()
     #get closest store / inform to collect
     store_id = _close(latitude, longitude)
-    delivery = get_delivery(store_id)
-    an_order = Order(customerId=user_id, storeId=store_id, deliveryPersonId=delivery.id, orderStatus="pending")
+    delivery_close_to_store = get_delivery(store_id)
+    an_order = Order(customerId=user_id, storeId=store_id, deliveryPersonId=delivery_close_to_store, orderStatus="pending")
     storage.new(an_order)
     storage.save()
+    __order = request.form.to_dict()
+    print(__order)
     for key, value in __order.items():
-        if key.split('$')[1] == store_id:
-            _entry = Orderline(orderId=an_order.id, storeId=store_id, groceryId=key.split('$')[0], quantity=value)
-            storage.new(_entry)
-        else:
-            _entry = Orderline(orderId=an_order.id, storeId=key.split('$')[1], groceryId=key.split('$')[0], quantity=value)
-            storage.new(_entry)
+        product_store = key.split('$')
+        _entry = Orderline(orderId=an_order.id, storeId=product_store[1], groceryId=product_store[0], quantity=value)
+        storage.new(_entry)
     storage.save()
-    __info['DeliveryPerson'] = delivery.username
+    print("------")
+    __info = {}
+    __info['DeliveryPerson'] = delivery_close_to_store
     __info['Time'] = an_order.created_at.isoformat().split('.')[0]
     __info['status'] = 'pending'
+    print(__info)
     return make_response(jsonify(__info), 201)
 
 #track order
@@ -336,7 +336,8 @@ def inventory_update(store_id, product_id, stock=None, price=None):
     _new_entry = Inventory(storeId=store_id, groceryId=product_id, stock=stock, price=price)
     storage.new(_new_entry)
     storage.save()
-    return jsonify({200:"new inventory entry created"})
+    response = make_response("created", 201)
+    return response
 
 #auth needed, restrict to stores only access/seller
 #products update
@@ -345,7 +346,7 @@ def inventory_update(store_id, product_id, stock=None, price=None):
 @app.route("/stores/<store_id>/products/", methods=["PUT", "POST", "GET"],  strict_slashes=False)
 def add_product(store_id):
     if request.method != 'GET':
-        req = request.get_json()
+        req = request.form.to_dict()
         if not request:
             abort(400, "Products Creation/update Error")
 
@@ -366,6 +367,11 @@ def add_product(store_id):
             abort(400, "Inventory update Error")
         _stock = req.pop("stock")
         _price = req.pop("price")
+        _file = request.files.get("profile")
+        print(_file)
+        _filename = "/home/hk/grocree/web-static/images/" + _file.filename
+        _file.save(_filename)
+        req['imgURL'] = "/images/" + _file.filename
         _product = Grocery(**req)
         try:
             storage.new(_product)
@@ -413,6 +419,7 @@ def home(user_id=None):
     listings_stmt = select(Grocery.id, Grocery.name, Grocery.category,\
                         Grocery.description,Grocery.imgURL, Store.id,\
                         Inventory.stock, Inventory.price).join(Grocery).join(Store)
+    print(listings_stmt)
     profile = "/icons/user.png"
     username = 'login/register';
     if user_id:
@@ -426,7 +433,8 @@ def home(user_id=None):
         user['id'] = user_id
         json_data['user'] = user
 
-        close_stores = allocate_store(result[2], result[3])
+        #close_stores = allocate_store(result[2], result[3])
+        close_stores = ['ef9aac8f-5a9a-4866-bd11-36e593a35900',]
         if len(close_stores) == 0:
             #best selling / non parishables
             _items = _listings(storage.query(listings_stmt).fetchall())
@@ -436,7 +444,7 @@ def home(user_id=None):
         listings = []
         #narrow down the radius closest come'f first in listings
         for store in close_stores:
-            __listings = storage.query(listings_stmt.where(Store.id == store[0])).fetchall()
+            __listings = storage.query(listings_stmt.where(Store.id == store)).fetchall()
             listings = listings + __listings
         _items = _listings(storage.query(listings_stmt).fetchall())
         json_data['items'] = _items
@@ -460,13 +468,18 @@ def home_1():
 def login():
    stmt = select(Customer.password, Customer.imgURL, Customer.id)\
             .where(Customer.username == request.args.get('username'))
+   passwd = cache.hget("users:customers", request.args.get("username"))
+   passwd = passwd.decode()
+   print(passwd)
    _auth = storage.query(stmt).first()
-   if _auth:
-      if _auth[0] == request.args.get("password"):
+   if passwd:
+      if check_password_hash(passwd, request.args.get("password")):
+          print("-----------************88\n")
           _user = {}
           _user['imgURL'] = _auth[1]
           _user['username'] = request.args.get("username")
           url = url_for('home', user_id=_auth[2])
+          print(url)
           url = "http://localhost" + url
           return redirect(url)
       else:

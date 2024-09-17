@@ -47,6 +47,8 @@ async function loginRequest(username, password) {
     document.querySelector("#USER img").id=_json.user.id
     document.querySelector("#USER >#username").textContent = _json.user.name
     document.querySelector("#cancel > div").click()
+    _login_str = "Basic " + btoa(username + ":" + password)
+    headers.set("Authorization", _login_str)
     let _counter = 0
     for (Entry of _json.items) {
       if (_counter >= document.querySelector("main").children) {
