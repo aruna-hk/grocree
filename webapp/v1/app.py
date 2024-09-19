@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, g, request, abort, jsonify
+from flask import Flask, g, request, abort, jsonify, render_template
 from flask import session, redirect, make_response
 from flask import url_for
 from models import Customer, Order, Orderline, Grocery
@@ -37,7 +37,6 @@ def verify_password(username, password):
 def before_request():
     #triangulation radius -- to be adjusted by endpoints if need be
     g.radius = 20
-
 #get registered users and/or
 #create delivery persons account
 @app.route("/delivery", methods=['POST', 'GET'], strict_slashes=False)
@@ -299,6 +298,26 @@ def orders(user_id):
              methods=['GET'], strict_slashes=False)
 def track_order(user_id, order_id):
     return "live location tracking"
+
+@app.route("/landing.html", methods=['GET',])
+def landing():
+    stmt = select(Grocery.name, Grocery.imgURL,Grocery.description,  Grocery.category, Grocery.id)
+    print(stmt)
+    _items = storage.query(stmt).fetchall()
+    items = []
+    src = "http://localhost"
+    for item in _items:
+        __item = {}
+        __item['name'] = item[0]
+        __item['imgURL'] = src + item[1]
+        __item['description'] = item[2]
+        __item['category'] = item[3]
+        __item['id'] = item[4]
+        from random import randrange
+        __item['price'] = randrange(15, 300)
+        items.append(__item)
+    return render_template("landing.html", items=items)
+
 
 
 #if product exist

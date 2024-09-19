@@ -1,0 +1,184 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="URl" content="www.grocree.com">
+        <meta name="Author" content="hk">
+        <link href="http://localhost/styles/landing2.css" rel="stylesheet">
+        <link href="http://localhost/styles/landing.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="Navigator">
+           <a id="logo" href="http://localhost/home">grocree</a>
+           <a href="#intro">About</a>
+           <a href="#Developers">Developers</a>
+           <a href="#companyC">Contacts</a>
+           <a href="http://localhost/home">Go shopping</a>
+        </nav>
+        <div>
+            <section id="intro">
+                <em id="cintro">GROCREE .</em> Distributed grocery Stores.
+                <br> Places Customers and delivery personel relative to stores to ensure <em>
+                tailored</em> customer listings and <em>Fast</em> delivery
+                <br> <a href="http://localhost/home"><em id="rr">FAST AND RELIABLE<em><br>
+                &gt;&gt;</em></em></a></section>
+            <section id="profile">
+               <div class="row1">
+                   <div id="look2">
+                       <div id="phn">
+                          BROWSE THROUGH LISTINGS
+                       </div>
+                       <div id="phone">
+                          <iframe src="http://localhost/home" frameborder="0" style="width: 320px; height: 640px;"></iframe>
+                       </div>
+                   </div>
+                   <div id="look1">
+                       <div id="phn">
+                          TO COMPLETE YOUR ORDER, SUBMIT 'N CHILL
+                       </div>
+                       <div id="phone">
+                          <iframe src="http://localhost/home" frameborder="0" style="width: 320px; height: 640px;"></iframe>
+                       </div>
+                   </div>
+                   </div><div id="computerlook">
+        <div id="cmp">SHOP ANYWHERE,EVERYWHERE, ANY DEVICE,</div><div id="lenovex230">
+    <div class="homebar"><div id="log">
+GROCREE
+         </div><input type="text" placeholder="Search">
+        <div id="notif">
+            <img id="bell" src="http://localhost/icons/bell.png" alt="bell">
+               4
+         </div>
+         <div id="USER">
+            <img src="http://localhost/icons/user.png" id="{{user}}" alt="users profile">
+             {{username}}
+         </div>
+    </div>
+    <main id="shoppingwin">
+        {% for item in items %}
+        <figure class="groceryItem" id="{{item.id}}">
+            <img alt="groceryImg" src="{{item.imgURL}}">
+                <figcaption class="desc">
+                     <div class="description">
+                         <div class="name">{{item.name}}</div>
+                         <div class="category">{{item.category}}</div>
+                         <div class="p_description">{{item.description}}</div>
+                      </div>
+                      <div class="PriceTag"><div>{{item.price}}</div></div>
+                 </figcaption>
+               </figure>
+          {% endfor %}
+      </main>
+      <ul class="fm">
+            <li> <a href="maito:kiptooharon.hk@gmail.com">Email</a></li>
+            <li> <a href="https://github.com/aruna-hk">Github</a></li>
+            <li> <a href="https://linkedn.com">linkdn</a></li>
+            <li> <a href="https://twitter.com">twitter</a></li>
+        <ul>
+         <!--script src='/js/0-js.js'></script-->
+    <div>
+  <div id="laptop">
+    <div class="homebar"><input type="text" placeholder="Search">
+        <div id="notif">
+            <img id="bell" src="http://localhost/icons/bell.png" alt="bell">
+               4
+         </div>
+         <div id="USER">
+            <img src="http://localhost/icons/user.png" id="{{user}}" alt="users profile">
+             username
+         </div>
+    </div>
+    <main id="shoppingwin">
+        <figure class="groceryItem" id="item.id">
+            <img alt="groceryImg" src="http://localhost/images/1.png">
+                <figcaption class="desc">
+                     <div class="description">
+                         <div class="name">item.name</div>
+                         <div class="category">item.category</div>
+                         <div class="p_description">item.description</div>
+                      </div>
+                      <div class="PriceTag"><div>50</div></div>
+                 </figcaption>
+               </figure>
+      </main>
+          <address id="contacts">GET IN TOUCH</address>
+          <div id="ordertrack">
+              <div id="shoppingCart">
+                  <div id="totalItems">0</div>
+              </div>
+              <div id="orders">
+                  <div id="pendingOrders">0</div>
+              </div>
+          </div>
+        <div class="Xcart">
+            <div class="Xdesc">
+                    <div>Item</div>
+                    <div>price</div>
+                    <div>Total</div>
+             </div>
+             <div class="Xitems">
+                 <div class="XitemEntry">
+                    <div class="Xname">-</div>
+                    <div class="Xquantity">-</div>
+                    <div class="Xamount">-</div>
+                    <div class="Xremove">X</div>
+                  </div>
+              </div>
+              <div class="XcartFooter">
+                    <div> Total </div>
+                    <div id="totalcost">0</div>
+              </div>
+              <button id="completePurchase">SUBMIT</button>
+         </div>
+
+        <ul class="fm">
+            <li> <a href="maito:kiptooharon.hk@gmail.com">Email</a></li>
+            <li> <a href="https://github.com/aruna-hk">Github</a></li>
+            <li> <a href="https://linkedn.com">linkdn</a></li>
+            <li> <a href="https://twitter.com">twitter</a></li>
+        <ul>
+         <!--script src='/js/0-js.js'></script-->
+    <div>
+
+</div>
+</ul></ul></div></div></ul></ul></div></div></ul></ul></div>   
+            </div></section>
+            <section id="Developers">
+               <div>
+                 Developer
+                 <div id="devops">
+                   <li>
+                       <div class="name">Kiptoo haron</div>
+                       <div class="description">
+                           <img alt="developer Profile" src="http://localhost/images/me.jpg">
+                           <div class="Role">Full Stack Engineer</div>
+                           <div class="dev">
+                               <ul>
+                                   <li><a href="maito:kiptooharon.hk@gmail.com">Email: kiptooharon.hk@gmail.com</a></li>   
+                                 <li><a href="tel:0714261231">Call/Whatsapp: 0714261231</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                    </li>
+                 </div>
+                </div>
+                <div class="repo">
+                   Project repository <br>
+                   <a href="https://www.github.com/aruna-hk/grocree">Grocree repository</a>
+               </div>
+            </section>
+            <section id="companyC">
+               Contact grocree Online grocery Shops and store via:
+                  <ul>
+                      <li><a href="maito:grocree.hk@gmail.com">Email: grocree.hk@gmail.com</a></li> 
+                    <li><a href="tel:0714261231">Call/whatsapp: 0101561067</a></li>
+                  </ul>
+            </section>
+        </div>
+        <script src="fetchhome.js"></script>
+  
+
+    
+
+    </body>
+</html>
