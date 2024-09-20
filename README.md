@@ -1,8 +1,5 @@
                      <h1>GROCREE</h1>
 
-<a href="http://54.173.110.95/landing.html">Deployed project</a>
-<br/>
-
 </p>Distributed online grocery Stores where buyers and delivery personnel are
 placed relative to stores to ensure tailored listings based on location and
 preference as well as to ensure faster delivery by pinging closest delivery
